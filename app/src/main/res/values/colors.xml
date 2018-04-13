@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="colorPrimary">#03a9f4</color>
+    <color name="colorPrimaryDark">#03a9f4</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="itemPress">#DFE2E6</color>
+    <color name="white">#ffffff</color>
+    <color name="main_bg">#F0F2F1</color>
+    <color name="main_color">#03a9f4</color>
+    <color name="main_color60">#9903a9f4</color>
+    <color name="main_color20">#3303a9f4</color>
+    <color name="main_color10">#1903a9f4</color>
+    <color name="gold">#F8B551</color>
+    <color name="gold20">#33F8B551</color>
+    <color name="main_bottom_divider_color">#b2b2b2</color>
+    <color name="transparent">#00000000</color>
+    <color name="transparent60">#99ffffff</color>
+    <color name="gray_color">#b5b5b5</color>
+    <color name="text_color_black_default">#313131</color>
+    <color name="text_color_black_default_50">#7F313131</color>
+    <color name="text_color_gray_default">#AFAFAF</color>
+    <color name="text_color_gray_course">#A0A0A0</color>
+    <color name="text_color_gray_default_50">#7FAFAFAF</color>
+    <color name="text_color_gray_in_gray">#c9c9c9</color>
+    <color name="text_color_gold_default">#FACD89</color>
+    <color name="stroke_main">#DFE2E6</color>
+    <color name="record_anim_color">#33FF5252</color>
+    <color name="red">#FF0000</color>
+    <color name="red60">#99FF0000</color>
+    <color name="gray_click">#dfe0e0</color>
+    <color name="main_blue">#03a9f4</color>
+    <color name="main_blue20">#3303a9f4</color>
+    <color name="main_blue60">#7f03a9f4</color>
+    <color name="gray_un_enable">#DADCDC</color>
+    <color name="text_color_tag_default">#A4A6A6</color>
+    <color name="text_gray_learn_top_tab">#A4A6A6</color>
+    <drawable name="transparent">#00000000</drawable>
+</resources>
