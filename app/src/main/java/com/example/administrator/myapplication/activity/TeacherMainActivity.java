@@ -7,19 +7,20 @@ import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
-import android.widget.TextView;
+import android.view.View;
 
+import com.example.administrator.Utils.TopBarUtils;
 import com.example.administrator.myapplication.R;
 import com.example.administrator.myapplication.adapter.MainViewPagerAdapter;
-import com.example.administrator.myapplication.fragment.FirstFragment;
-import com.example.administrator.myapplication.fragment.SecondFragment;
-import com.example.administrator.myapplication.fragment.ThirdFragment;
+import com.example.administrator.myapplication.fragment.TeacherFirstFragment;
+import com.example.administrator.myapplication.fragment.TeacherSecondFragment;
+import com.example.administrator.myapplication.fragment.TeacherThirdFragment;
 import com.example.administrator.myapplication.view.SteerableViewPager;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class TeacherMainActivity extends AppCompatActivity {
 
     private SteerableViewPager vpMain;
     private BottomNavigationView navigation;
@@ -29,15 +30,17 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         initView();
     }
 
     private void initView() {
+        TopBarUtils topBarUtils = new TopBarUtils(this);
+        topBarUtils.setTitle("我的课程");
+        topBarUtils.getBtnLeft().setVisibility(View.GONE);
         List<Fragment> fragmentList = new ArrayList<>(3);
-        fragmentList.add(FirstFragment.newInstance());
-        fragmentList.add(SecondFragment.newInstance());
-        fragmentList.add(ThirdFragment.newInstance());
+        fragmentList.add(TeacherFirstFragment.newInstance());
+        fragmentList.add(TeacherSecondFragment.newInstance());
+        fragmentList.add(TeacherThirdFragment.newInstance());
         vpMain = findViewById(R.id.vp_main);
         vpMain.setLeft_allow(false);
         vpMain.setRight_allow(false);
@@ -77,11 +80,9 @@ public class MainActivity extends AppCompatActivity {
                     return true;
                 case R.id.navigation_dashboard:
                     vpMain.setCurrentItem(1, false);
-
                     return true;
                 case R.id.navigation_notifications:
                     vpMain.setCurrentItem(2, false);
-
                     return true;
             }
             return false;

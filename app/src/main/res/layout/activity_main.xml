@@ -7,7 +7,9 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.MainActivity">
+    tools:context=".activity.StudentMainActivity">
+
+    <include layout="@layout/include_topbar"/>
 
     <com.example.administrator.myapplication.view.SteerableViewPager
         android:id="@+id/vp_main"

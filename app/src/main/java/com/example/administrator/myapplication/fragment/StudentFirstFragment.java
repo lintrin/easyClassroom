@@ -8,12 +8,12 @@ import android.view.ViewGroup;
 
 import com.example.administrator.myapplication.R;
 
-public class ThirdFragment extends Fragment {
+public class StudentFirstFragment extends Fragment {
 
 
 
-    public static ThirdFragment newInstance() {
-        ThirdFragment fragment = new ThirdFragment();
+    public static StudentFirstFragment newInstance() {
+        StudentFirstFragment fragment = new StudentFirstFragment();
         Bundle args = new Bundle();
         fragment.setArguments(args);
         return fragment;
@@ -28,7 +28,7 @@ public class ThirdFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_third, container, false);
+        return inflater.inflate(R.layout.fragment_student_first, container, false);
     }
 
 }
