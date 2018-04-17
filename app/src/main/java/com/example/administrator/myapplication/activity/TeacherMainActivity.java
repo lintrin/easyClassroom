@@ -7,6 +7,9 @@ import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
+import android.view.View;
+
+import com.example.administrator.Utils.TopBarUtils;
 import com.example.administrator.myapplication.R;
 import com.example.administrator.myapplication.adapter.MainViewPagerAdapter;
 import com.example.administrator.myapplication.fragment.TeacherFirstFragment;
@@ -31,6 +34,9 @@ public class TeacherMainActivity extends AppCompatActivity {
     }
 
     private void initView() {
+        TopBarUtils topBarUtils = new TopBarUtils(this);
+        topBarUtils.setTitle("我的课程");
+        topBarUtils.getBtnLeft().setVisibility(View.GONE);
         List<Fragment> fragmentList = new ArrayList<>(3);
         fragmentList.add(TeacherFirstFragment.newInstance());
         fragmentList.add(TeacherSecondFragment.newInstance());

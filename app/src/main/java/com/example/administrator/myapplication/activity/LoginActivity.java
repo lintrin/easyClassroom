@@ -5,17 +5,23 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.AutoCompleteTextView;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.administrator.myapplication.R;
+import com.example.administrator.myapplication.libary.http.BaseRequest;
+import com.example.administrator.myapplication.server.UserServer;
+import com.yanzhenjie.nohttp.rest.Response;
 
 public class LoginActivity extends AppCompatActivity {
 
     private AutoCompleteTextView et_username;
     private AutoCompleteTextView et_password;
     private TextView tv_register;
+    private Button btn_login;
     private Context context;
 
 
@@ -24,6 +30,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         context = this;
         setContentView(R.layout.activity_login);
+
         initView();
         initListener();
 
@@ -35,12 +42,39 @@ public class LoginActivity extends AppCompatActivity {
             startActivity(intent);
 
         });
+        btn_login.setOnClickListener(view -> {
+            String username = et_username.getText().toString();
+            String password = et_password.getText().toString();
+            UserServer.getInstance().login(username, password, new BaseRequest.OnRequestListener() {
+                @Override
+                public void onStart() {
+
+                }
+
+                @Override
+                public void onCompleted(Response response) {
+                    if (username.equals("2014000001")) {
+                        Intent intent = new Intent(context, StudentMainActivity.class);
+                        startActivity(intent);
+                    }else{
+                        Intent intent = new Intent(context, TeacherMainActivity.class);
+                        startActivity(intent);
+                    }
+                }
+
+                @Override
+                public void onError() {
+
+                }
+            });
+        });
     }
 
     private void initView() {
         et_username = findViewById(R.id.et_username);
         et_password = findViewById(R.id.et_password);
         tv_register = findViewById(R.id.tv_register);
+        btn_login = findViewById(R.id.btn_login);
     }
 
 

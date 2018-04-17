@@ -29,6 +29,7 @@ public class UserServer extends BaseRequest {
         Map<String,Object> map = new HashMap<>();
         map.put("idNumber",idNumber);
         map.put("password",password);
+        map.put("type",1);
         post(UserApi.login, map, listener);
     }
 

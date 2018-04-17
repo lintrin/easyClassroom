@@ -78,7 +78,7 @@ public class RegistryActivity extends AppCompatActivity {
                     btn_registry.setEnabled(true);
                     btn_registry.setBackgroundResource(R.color.main_blue);
                     Intent intent = new Intent(context,StudentMainActivity.class);
-                    startActivity(intent);
+//                    startActivity(intent);
                 }
 
                 @Override

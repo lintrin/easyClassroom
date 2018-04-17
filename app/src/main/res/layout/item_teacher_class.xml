@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/stroke_main" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:orientation="horizontal">
+        <View
+            android:layout_width="1px"
+            android:layout_height="match_parent"
+            android:background="@color/stroke_main" />
+        <TextView
+            android:id="@+id/tv_course_id"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:textColor="@color/text_color_black_default"
+            android:gravity="center" />
+        <View
+            android:layout_width="1px"
+            android:layout_height="match_parent"
+            android:background="@color/stroke_main" />
+        <TextView
+            android:id="@+id/tv_course_sign_count"
+            android:layout_width="0dp"
+            android:textColor="@color/text_color_black_default"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center" />
+        <View
+            android:layout_width="1px"
+            android:layout_height="match_parent"
+            android:background="@color/stroke_main" />
+        <TextView
+            android:id="@+id/tv_course_student_count"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:textColor="@color/text_color_black_default"
+            android:gravity="center" />
+        <View
+            android:layout_width="1px"
+            android:layout_height="match_parent"
+            android:background="@color/stroke_main" />
+        <TextView
+            android:id="@+id/tv_course_sign_code"
+            android:textColor="@color/text_color_black_default"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center" />
+        <View
+            android:layout_width="1px"
+            android:layout_height="match_parent"
+            android:background="@color/stroke_main" />
+        <TextView
+            android:text="作业下载"
+            android:id="@+id/tv_course_work"
+            android:layout_width="0dp"
+            android:textColor="@color/main_blue"
+            android:autoLink="all"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center" />
+        <View
+            android:layout_width="1px"
+            android:layout_height="match_parent"
+            android:background="@color/stroke_main" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/stroke_main" />
+</LinearLayout>
