@@ -9,6 +9,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.TextView;
 
 import com.example.administrator.myapplication.R;
@@ -20,9 +22,11 @@ public class LoginActivity extends AppCompatActivity {
 
     private AutoCompleteTextView et_username;
     private AutoCompleteTextView et_password;
+    private CheckBox login_checkBox;
     private TextView tv_register;
     private Button btn_login;
     private Context context;
+    public boolean isChecked;
 
 
     @Override
@@ -45,7 +49,7 @@ public class LoginActivity extends AppCompatActivity {
         btn_login.setOnClickListener(view -> {
             String username = et_username.getText().toString();
             String password = et_password.getText().toString();
-            UserServer.getInstance().login(username, password, new BaseRequest.OnRequestListener() {
+            UserServer.getInstance().login(username, password, isChecked,new BaseRequest.OnRequestListener() {
                 @Override
                 public void onStart() {
 
@@ -53,13 +57,7 @@ public class LoginActivity extends AppCompatActivity {
 
                 @Override
                 public void onCompleted(Response response) {
-                    if (username.equals("2014000001")) {
-                        Intent intent = new Intent(context, StudentMainActivity.class);
-                        startActivity(intent);
-                    }else{
-                        Intent intent = new Intent(context, TeacherMainActivity.class);
-                        startActivity(intent);
-                    }
+                    Log.i("sss", "onCompleted: "+response.toString());
                 }
 
                 @Override
@@ -68,6 +66,7 @@ public class LoginActivity extends AppCompatActivity {
                 }
             });
         });
+        login_checkBox.setOnCheckedChangeListener((buttonView, _isChecked) -> isChecked = _isChecked);
     }
 
     private void initView() {
@@ -75,6 +74,7 @@ public class LoginActivity extends AppCompatActivity {
         et_password = findViewById(R.id.et_password);
         tv_register = findViewById(R.id.tv_register);
         btn_login = findViewById(R.id.btn_login);
+        login_checkBox = findViewById(R.id.login_checkBox);
     }
 
 

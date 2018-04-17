@@ -34,7 +34,8 @@ public class HttpManager {
                 // 配置网络层，默认URLConnectionNetworkExecutor，如果想用OkHttp：OkHttpNetworkExecutor。
                 .networkExecutor(new OkHttpNetworkExecutor())
                 // 全局通用Header，add是添加，多次调用add不会覆盖上次add。
-                .addHeader("referer", "http://joyapper.com")
+//                .addHeader("referer", "http://joyapper.com")
+                .addHeader("Content-Type","application/json")
                 // 全局通用Param，add是添加，多次调用add不会覆盖上次add。
 //                .addParam()
                 .retry(2) // 全局重试次数，配置后每个请求失败都会重试x次。

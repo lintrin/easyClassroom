@@ -16,6 +16,8 @@ import com.yanzhenjie.nohttp.rest.OnResponseListener;
 import com.yanzhenjie.nohttp.rest.Request;
 import com.yanzhenjie.nohttp.rest.Response;
 
+import org.json.JSONObject;
+
 import java.net.ProtocolException;
 import java.util.Map;
 
@@ -32,6 +34,12 @@ public class BaseRequest {
         request.add(data);
         addQeueu(request,listener);
     }
+    public void post(String url, JSONObject data, OnRequestListener listener){
+        Request<String> request = NoHttp.createStringRequest(url, RequestMethod.POST);
+        request.setDefineRequestBodyForJson(data);
+        addQeueu(request,listener);
+    }
+
 
     private void addQeueu(Request<String> request, OnRequestListener listener) {
         CallServer.getInstance().add(0, request, new OnResponseListener() {
