@@ -33,5 +33,4 @@ dependencies {
     implementation 'com.yanzhenjie.nohttp:okhttp:1.1.9'
     implementation 'com.alibaba:fastjson:1.1.56.android'
 
-
 }

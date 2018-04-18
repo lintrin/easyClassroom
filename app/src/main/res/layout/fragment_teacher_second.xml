@@ -20,6 +20,7 @@
             android:textStyle="bold" />
 
         <Button
+            android:id="@+id/btn_teacher_add_course"
             android:textColor="@color/white"
             android:background="@color/main_blue"
             android:layout_width="wrap_content"

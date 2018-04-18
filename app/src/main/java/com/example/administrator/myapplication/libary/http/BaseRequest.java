@@ -39,7 +39,15 @@ public class BaseRequest {
         request.setDefineRequestBodyForJson(data);
         addQeueu(request,listener);
     }
-
+    public void get(String url, JSONObject data, OnRequestListener listener){
+        Request<String> request = NoHttp.createStringRequest(url, RequestMethod.GET);
+        request.setDefineRequestBodyForJson(data);
+        addQeueu(request,listener);
+    }
+    public void get(String url,OnRequestListener listener){
+        Request<String> request = NoHttp.createStringRequest(url, RequestMethod.GET);
+        addQeueu(request,listener);
+    }
 
     private void addQeueu(Request<String> request, OnRequestListener listener) {
         CallServer.getInstance().add(0, request, new OnResponseListener() {
@@ -72,7 +80,7 @@ public class BaseRequest {
                 } else {
                     Toast.makeText(MyApp.context, MyApp.context.getText(R.string.error_unknow),Toast.LENGTH_SHORT).show();
                 }
-                listener.onError();
+                listener.onError("json解析出错");
             }
 
             @Override
@@ -86,7 +94,7 @@ public class BaseRequest {
     public interface OnRequestListener{
         void onStart();
         void onCompleted(Response response);
-        void onError();
+        void onError(String msg);
     }
 
 }

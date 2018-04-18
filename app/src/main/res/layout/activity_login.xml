@@ -45,13 +45,14 @@
     </android.support.design.widget.TextInputLayout>
 
     <CheckBox
+        android:layout_marginTop="8dp"
         android:layout_marginLeft="20dp"
         android:id="@+id/login_checkBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/layout_input_password"
-
-        android:text="CheckBox" />
+        android:textColor="@color/gray_color"
+        android:text="教师登录" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

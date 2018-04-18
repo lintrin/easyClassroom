@@ -9,14 +9,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.TypeReference;
+import com.example.administrator.Utils.JsonUtils;
 import com.example.administrator.Utils.TextUtils;
 import com.example.administrator.myapplication.R;
 import com.example.administrator.myapplication.libary.http.BaseRequest;
-import com.example.administrator.myapplication.model.BaseData;
-import com.example.administrator.myapplication.model.Student;
-import com.example.administrator.myapplication.model.impl.StudentModel;
+import com.example.administrator.myapplication.model.User;
+import com.example.administrator.myapplication.model.impl.UserModel;
 import com.example.administrator.myapplication.server.UserServer;
 import com.yanzhenjie.nohttp.rest.Response;
 
@@ -72,9 +70,9 @@ public class RegistryActivity extends AppCompatActivity {
 
                 @Override
                 public void onCompleted(Response response) {
-                    BaseData<Student> studyData = JSON.parseObject(response.get().toString(),new TypeReference<BaseData<Student>>(){});
-                    StudentModel.getInstance().setStudent(studyData.getBody());
-                    Log.i("sss", "onCompleted: "+studyData.getBody().toString());
+                    User user = JsonUtils.parseObject(response.get().toString(),"body", User.class);
+                    UserModel.getInstance().setUser(user);
+                    Log.i("sss", "onCompleted: "+user.toString());
                     btn_registry.setEnabled(true);
                     btn_registry.setBackgroundResource(R.color.main_blue);
                     Intent intent = new Intent(context,StudentMainActivity.class);
@@ -82,7 +80,7 @@ public class RegistryActivity extends AppCompatActivity {
                 }
 
                 @Override
-                public void onError() {
+                public void onError(String json解析出错) {
                     btn_registry.setEnabled(true);
                     btn_registry.setBackgroundResource(R.color.main_blue);
                 }

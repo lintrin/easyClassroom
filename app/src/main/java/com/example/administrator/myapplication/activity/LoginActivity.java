@@ -5,17 +5,16 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
-import android.view.View;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.TextView;
 
+import com.example.administrator.Utils.JsonUtils;
 import com.example.administrator.myapplication.R;
 import com.example.administrator.myapplication.libary.http.BaseRequest;
-import com.example.administrator.myapplication.server.UserServer;
+import com.example.administrator.myapplication.model.User;
+import com.example.administrator.myapplication.model.impl.UserModel;
 import com.yanzhenjie.nohttp.rest.Response;
 
 public class LoginActivity extends AppCompatActivity {
@@ -26,7 +25,7 @@ public class LoginActivity extends AppCompatActivity {
     private TextView tv_register;
     private Button btn_login;
     private Context context;
-    public boolean isChecked;
+    public boolean isTeacher;
 
 
     @Override
@@ -49,7 +48,7 @@ public class LoginActivity extends AppCompatActivity {
         btn_login.setOnClickListener(view -> {
             String username = et_username.getText().toString();
             String password = et_password.getText().toString();
-            UserServer.getInstance().login(username, password, isChecked,new BaseRequest.OnRequestListener() {
+            UserModel.getInstance().login(username, password, isTeacher,new BaseRequest.OnRequestListener() {
                 @Override
                 public void onStart() {
 
@@ -57,16 +56,25 @@ public class LoginActivity extends AppCompatActivity {
 
                 @Override
                 public void onCompleted(Response response) {
-                    Log.i("sss", "onCompleted: "+response.toString());
+                    User user = JsonUtils.parseObject(response.get().toString(),"body", User.class);
+                    //type 2学生 1老师
+                    if (user.getType()==2){
+                        Intent intent = new Intent(context,StudentMainActivity.class);
+                        startActivity(intent);
+                    }else{
+                        Intent intent = new Intent(context,TeacherMainActivity.class);
+                        startActivity(intent);
+                    }
+
                 }
 
                 @Override
-                public void onError() {
+                public void onError(String json解析出错) {
 
                 }
             });
         });
-        login_checkBox.setOnCheckedChangeListener((buttonView, _isChecked) -> isChecked = _isChecked);
+        login_checkBox.setOnCheckedChangeListener((buttonView, _isChecked) -> isTeacher = _isChecked);
     }
 
     private void initView() {

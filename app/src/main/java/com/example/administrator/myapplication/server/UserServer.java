@@ -37,11 +37,11 @@ public class UserServer extends BaseRequest {
                 map.put("type", 1);
             else
                 map.put("type", 2);
+            post(UserApi.login, map, listener);
         } catch (JSONException e) {
-            Log.i("sss", "login: error");
+            listener.onError("json解析出错");
             e.printStackTrace();
         }
-        post(UserApi.login, map, listener);
     }
 
     public void registry(String idNumber, String password, int userType, OnRequestListener listener) {
@@ -52,6 +52,7 @@ public class UserServer extends BaseRequest {
             map.put("type", userType);
             post(UserApi.registry, map, listener);
         } catch (JSONException e) {
+            listener.onError("json解析出错");
             e.printStackTrace();
         }
     }

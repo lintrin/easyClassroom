@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.example.administrator.myapplication.R;
 import com.example.administrator.myapplication.adapter.TeacherClassAdapter;
@@ -18,6 +19,7 @@ public class TeacherSecondFragment extends Fragment {
 
     View mainView;
     RecyclerView rv_course_teacher;
+    Button btn_teacher_add_course;
 
     public static TeacherSecondFragment newInstance() {
         TeacherSecondFragment fragment = new TeacherSecondFragment();
@@ -37,14 +39,22 @@ public class TeacherSecondFragment extends Fragment {
         if (mainView==null) {
             mainView = inflater.inflate(R.layout.fragment_teacher_second, null);
             initView();
+            initListener();
         }
         return mainView;
+    }
+
+    private void initListener() {
+        btn_teacher_add_course.setOnClickListener(view -> {
+
+        });
     }
 
     private void initView() {
         rv_course_teacher = mainView.findViewById(R.id.rv_course_teacher);
         rv_course_teacher.setAdapter(new TeacherCourseAdapter(getContext()));
         rv_course_teacher.setLayoutManager(new GridLayoutManager(getContext(),3));
+        btn_teacher_add_course = mainView.findViewById(R.id.btn_teacher_add_course);
     }
 
 }
