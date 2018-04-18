@@ -31,7 +31,7 @@
         <TextView
             android:id="@+id/tv_news_msg"
             android:layout_width="0dp"
-            android:textColor="@color/text_color_black_default"
+            android:textColor="@color/main_blue"
             android:layout_height="match_parent"
             android:layout_weight="3"
             android:gravity="center" />

@@ -9,6 +9,7 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.administrator.Utils.JsonUtils;
 import com.example.administrator.myapplication.R;
@@ -57,19 +58,22 @@ public class LoginActivity extends AppCompatActivity {
                 @Override
                 public void onCompleted(Response response) {
                     User user = JsonUtils.parseObject(response.get().toString(),"body", User.class);
-                    //type 2学生 1老师
-                    if (user.getType()==2){
-                        Intent intent = new Intent(context,StudentMainActivity.class);
-                        startActivity(intent);
+                    if (user!=null) {
+                        //type 2学生 1老师
+                        if (user.getType() == 2) {
+                            Intent intent = new Intent(context, StudentMainActivity.class);
+                            startActivity(intent);
+                        } else {
+                            Intent intent = new Intent(context, TeacherMainActivity.class);
+                            startActivity(intent);
+                        }
                     }else{
-                        Intent intent = new Intent(context,TeacherMainActivity.class);
-                        startActivity(intent);
+                        Toast.makeText(context, "用户为空", Toast.LENGTH_SHORT).show();
                     }
-
                 }
 
                 @Override
-                public void onError(String json解析出错) {
+                public void onError(String msg) {
 
                 }
             });

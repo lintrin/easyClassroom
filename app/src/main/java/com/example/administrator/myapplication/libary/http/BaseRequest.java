@@ -24,32 +24,37 @@ import java.util.Map;
 public class BaseRequest {
 
 
-    public void get(String url, Map<String,Object> data, OnRequestListener listener){
+    protected static void get(String url, Map<String,Object> data, OnRequestListener listener){
         Request<String> request = NoHttp.createStringRequest(url, RequestMethod.GET);
         request.add(data);
         addQeueu(request,listener);
     }
-    public void post(String url, Map<String,Object> data, OnRequestListener listener){
+    protected static void post(String url, Map<String,Object> data, OnRequestListener listener){
         Request<String> request = NoHttp.createStringRequest(url, RequestMethod.POST);
         request.add(data);
         addQeueu(request,listener);
     }
-    public void post(String url, JSONObject data, OnRequestListener listener){
+    protected static void post(String url, JSONObject data, OnRequestListener listener){
         Request<String> request = NoHttp.createStringRequest(url, RequestMethod.POST);
         request.setDefineRequestBodyForJson(data);
         addQeueu(request,listener);
     }
-    public void get(String url, JSONObject data, OnRequestListener listener){
+    protected static void post(String url, String jsonString, OnRequestListener listener){
+        Request<String> request = NoHttp.createStringRequest(url, RequestMethod.POST);
+        request.setDefineRequestBodyForJson(jsonString);
+        addQeueu(request,listener);
+    }
+    protected static void get(String url, JSONObject data, OnRequestListener listener){
         Request<String> request = NoHttp.createStringRequest(url, RequestMethod.GET);
         request.setDefineRequestBodyForJson(data);
         addQeueu(request,listener);
     }
-    public void get(String url,OnRequestListener listener){
+    protected static void get(String url,OnRequestListener listener){
         Request<String> request = NoHttp.createStringRequest(url, RequestMethod.GET);
         addQeueu(request,listener);
     }
 
-    private void addQeueu(Request<String> request, OnRequestListener listener) {
+    private static void addQeueu(Request<String> request, OnRequestListener listener) {
         CallServer.getInstance().add(0, request, new OnResponseListener() {
             @Override
             public void onStart(int what) {

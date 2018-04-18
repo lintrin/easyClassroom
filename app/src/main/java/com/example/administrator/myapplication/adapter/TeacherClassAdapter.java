@@ -1,6 +1,7 @@
 package com.example.administrator.myapplication.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.administrator.myapplication.R;
+import com.example.administrator.myapplication.activity.CheckHomeWordActivity;
 import com.example.administrator.myapplication.model.TeacherClass;
 
 import java.util.ArrayList;
@@ -66,6 +68,11 @@ public class TeacherClassAdapter extends BaseRecycleViewAdapter<TeacherClass> {
             mTvCourseSignCount.setText(data.getSignCount() + "");
             mTvCourseStudentCount.setText(data.getStudentCount() + "");
             mTvCourseSignCode.setText(data.getSignCode() + "");
+            mTvCourseWork.setText("批改作业");
+            itemView.setOnClickListener(v -> {
+                Intent intent = new Intent(context, CheckHomeWordActivity.class);
+                context.startActivity(intent);
+            });
         }
     }
 

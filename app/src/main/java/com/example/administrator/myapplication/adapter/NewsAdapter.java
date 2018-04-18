@@ -2,6 +2,7 @@ package com.example.administrator.myapplication.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Paint;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -53,6 +54,7 @@ public class NewsAdapter extends BaseRecycleViewAdapter<News> {
 
             mTvNewsTime.setText(data.getDate());
             mTvNewsMsg.setText(data.getTitle());
+            mTvNewsMsg.getPaint().setFlags(Paint. UNDERLINE_TEXT_FLAG );
             itemView.setOnClickListener(view -> {
                 Intent intent = new Intent(context,NewsActivity.class);
                 intent.putExtra("news",data);

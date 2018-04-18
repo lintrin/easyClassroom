@@ -32,7 +32,7 @@ public class NewsActivity extends AppCompatActivity {
         mTvNewsTitle.setText(news.getTitle());
         mTvNewsContent.setText(news.getContent());
         mTvNewsTime.setText(news.getDate());
-        mTvNewsCreateUserName.setText(news.getCreateUserName());
+        mTvNewsCreateUserName.setText("发布人："+news.getCreateUserName());
     }
 
     private void initView() {
