@@ -9,23 +9,22 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.administrator.myapplication.R;
-import com.example.administrator.myapplication.activity.TeacherClassActivity;
-import com.example.administrator.myapplication.model.TeacherClass;
-import com.example.administrator.myapplication.model.TeacherCourse;
+import com.example.administrator.myapplication.activity.TeacherCourseActivity;
+import com.example.administrator.myapplication.model.Course;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class TeacherCourseAdapter extends BaseRecycleViewAdapter<TeacherCourse> {
+public class TeacherCourseAdapter extends BaseRecycleViewAdapter<Course> {
 
     private Context context;
 
     public TeacherCourseAdapter(Context context) {
         this.context = context;
-        List<TeacherCourse> list = new ArrayList<>();
-        list.add(new TeacherCourse("汇编语言", "2017-1028 第一学期"));
-        list.add(new TeacherCourse("java程序设计", "2017-1028 第一学期"));
-        list.add(new TeacherCourse("汇编语言", "2017-1028 第一学期"));
+        List<Course> list = new ArrayList<>();
+        list.add(new Course("汇编语言", "2017", "2018", 1));
+        list.add(new Course("java程序设计", "2017", "2018", 1));
+        list.add(new Course("汇编语言", "2017", "2018", 1));
         setData(list);
     }
 
@@ -41,9 +40,11 @@ public class TeacherCourseAdapter extends BaseRecycleViewAdapter<TeacherCourse> 
     }
 
     @Override
-    public void onBind(RecyclerView.ViewHolder viewHolder, int realPosition, TeacherCourse data) {
+    public void onBind(RecyclerView.ViewHolder viewHolder, int realPosition, Course data) {
         ((VHolder) viewHolder).setData(realPosition, data);
     }
+
+
 
     class VHolder extends RecyclerView.ViewHolder {
         TextView mTvCourseName;
@@ -55,12 +56,12 @@ public class TeacherCourseAdapter extends BaseRecycleViewAdapter<TeacherCourse> 
             this.mTvCourseSeason = (TextView) view.findViewById(R.id.tv_course_season);
         }
 
-        void setData(int position, TeacherCourse data) {
-            mTvCourseName.setText(data.getClassName());
-            mTvCourseSeason.setText(data.getSeason());
+        void setData(int position, Course data) {
+            mTvCourseName.setText(data.getName());
+            mTvCourseSeason.setText(data.getBeginPeriod()+"-"+data.getEndPeriod()+" 第"+data.getTerm()+"学期");
             itemView.setOnClickListener(view -> {
-                Intent intent = new Intent(context, TeacherClassActivity.class);
-                intent.putExtra("teacherCourse", data);
+                Intent intent = new Intent(context, TeacherCourseActivity.class);
+                intent.putExtra("course", data);
                 context.startActivity(intent);
             });
         }

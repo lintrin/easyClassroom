@@ -25,7 +25,7 @@ public class ChatRoomAdapter extends BaseRecycleViewAdapter<Course> {
             Course course = new Course();
             course.setClassroomId("S001");
             course.setName("大学英语三");
-            course.setTeacherName("陈老师");
+            course.setTeachers("陈老师");
             courseList.add(course);
         }
 
@@ -69,7 +69,7 @@ public class ChatRoomAdapter extends BaseRecycleViewAdapter<Course> {
         void setData(int position,Course data){
             mTvItemChatroomId.setText("课程号："+data.getClassroomId());
             mTvItemChatroomName.setText("课程："+data.getName());
-            mTvItemChatroomTeacherName.setText("任课老师："+data.getTeacherName());
+            mTvItemChatroomTeacherName.setText("任课老师："+data.getTeachers());
             itemView.setOnClickListener(view1 -> {
                //todo 群聊
                 Intent intent = new Intent(context, ChatingRoomActivity.class);

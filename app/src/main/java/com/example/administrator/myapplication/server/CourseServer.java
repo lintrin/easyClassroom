@@ -22,14 +22,12 @@ public class CourseServer extends BaseRequest {
     }
 
     public static void getCourse(int id,OnRequestListener listener){
-        JSONObject map = new JSONObject();
-        try {
-            map.put("id",id);
-            get(CourseApi.getCourse,map,listener);
-        } catch (JSONException e) {
-            listener.onError("json错误");
-            e.printStackTrace();
-        }
+        get(CourseApi.getCourse+"?id="+id,listener);
+
+    }
+
+    public static void getCourseList(OnRequestListener listener){
+        get(CourseApi.getCourseList,listener);
     }
 
 }

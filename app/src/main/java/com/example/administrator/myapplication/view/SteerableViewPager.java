@@ -37,11 +37,14 @@ public class SteerableViewPager extends ViewPager {
                 }else {
                     mLastMotionX = ev.getX() - x;
                     if (mLastMotionX > 0) {
-                        if (!left_allow)
-                            return false;
+                        if (!left_allow) {
+                            getParent().requestDisallowInterceptTouchEvent(false);
+
+                        }
                     } else if (mLastMotionX < 0) {
-                        if (!right_allow)
-                            return false;
+                        if (!right_allow) {
+                            getParent().requestDisallowInterceptTouchEvent(false);
+                        }
                     }
                 }
 
@@ -49,6 +52,7 @@ public class SteerableViewPager extends ViewPager {
         }
         return super.dispatchTouchEvent(ev);
     }
+
 
     public boolean isLeft_allow() {
         return left_allow;

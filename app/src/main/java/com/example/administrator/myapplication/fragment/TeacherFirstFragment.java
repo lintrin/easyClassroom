@@ -120,7 +120,6 @@ public class TeacherFirstFragment extends Fragment implements OnItemClickListene
 
         convenientBanner = mainView.findViewById(R.id.convenientBanner);
 
-
     }
 
 
@@ -145,4 +144,8 @@ public class TeacherFirstFragment extends Fragment implements OnItemClickListene
         intent.putExtra("url", "http://www.zstu.edu.cn/");
         startActivity(intent);
     }
+
+
 }
+
+

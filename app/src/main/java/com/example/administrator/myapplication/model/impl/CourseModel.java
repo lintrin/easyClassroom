@@ -25,4 +25,8 @@ public class CourseModel {
     public void getCourse(int id, BaseRequest.OnRequestListener listener){
         CourseServer.getCourse(id,listener);
     }
+
+    public void getCourseList(BaseRequest.OnRequestListener listener){
+        CourseServer.getCourseList(listener);
+    }
 }

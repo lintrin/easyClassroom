@@ -27,7 +27,7 @@
         </activity>
         <activity android:name=".activity.RegistryActivity" />
         <activity android:name=".activity.TeacherMainActivity" />
-        <activity android:name=".activity.TeacherClassActivity" />
+        <activity android:name=".activity.TeacherCourseActivity" />
         <activity android:name=".activity.NewsActivity" />
         <activity android:name=".activity.WebActivity" />
         <activity android:name=".activity.CourseAddActivity" />

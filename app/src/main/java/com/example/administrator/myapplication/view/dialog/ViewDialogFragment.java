@@ -70,11 +70,11 @@ public class ViewDialogFragment extends DialogFragment {
                     course.setBriefIntroduction(mEtCourseSummary.getText().toString());
                     course.setBeginPeriod(mEtCourseBegin.getText().toString());
                     course.setEndPeriod(mEtCourseEnd.getText().toString());
-                    course.setLesson(mEtCourseLesson.getText().toString());
-                    course.setTerm(mEtCourseTerm.getText().toString());
-                    course.setBuildingNumber(mEtCourseBuilding.getText().toString());
+                    course.setLesson(Integer.parseInt(mEtCourseLesson.getText().toString()));
+                    course.setTerm(Integer.parseInt(mEtCourseTerm.getText().toString()));
+                    course.setBuildingNumber(Integer.parseInt(mEtCourseBuilding.getText().toString()));
                     course.setClassroom(mEtCourseClassroom.getText().toString());
-                    course.setDay(mEtCourseDay.getText().toString());
+                    course.setDay(Integer.parseInt(mEtCourseDay.getText().toString()));
                     EventBus.getDefault().post(course);
                     dismiss();
                 })
