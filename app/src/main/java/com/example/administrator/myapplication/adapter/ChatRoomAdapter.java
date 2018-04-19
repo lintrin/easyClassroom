@@ -2,12 +2,14 @@ package com.example.administrator.myapplication.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.administrator.Utils.JMessageUtil;
 import com.example.administrator.myapplication.R;
 import com.example.administrator.myapplication.activity.ChatingRoomActivity;
 import com.example.administrator.myapplication.model.Course;
@@ -73,6 +75,10 @@ public class ChatRoomAdapter extends BaseRecycleViewAdapter<Course> {
             itemView.setOnClickListener(view1 -> {
                //todo 群聊
                 Intent intent = new Intent(context, ChatingRoomActivity.class);
+                // 传入聊天室ID，默认为课程的主键ID
+                Bundle content = new Bundle();
+                content.putLong(JMessageUtil.CHATTING_ROOM_KEY, (long) data.getId());
+                intent.putExtras(content);
                 context.startActivity(intent);
             });
         }

@@ -5,6 +5,9 @@ import android.content.Context;
 
 import com.example.administrator.myapplication.libary.http.HttpManager;
 
+import cn.jpush.im.android.api.JMessageClient;
+
+
 public class MyApp extends Application{
 
     public static Context context;
@@ -13,6 +16,7 @@ public class MyApp extends Application{
     public void onCreate() {
         super.onCreate();
         context = this;
-        HttpManager.initNoHttpWhitDBCache(this, false, true);
+        HttpManager.initNoHttpWhitDBCache(this, false, false);
+        JMessageClient.init(context);
     }
 }

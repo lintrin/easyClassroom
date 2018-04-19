@@ -8,6 +8,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 
+import com.example.administrator.Utils.JMessageUtil;
 import com.example.administrator.myapplication.R;
 import com.example.administrator.myapplication.adapter.MainViewPagerAdapter;
 import com.example.administrator.myapplication.fragment.StudentFirstFragment;
@@ -17,6 +18,10 @@ import com.example.administrator.myapplication.view.SteerableViewPager;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import cn.jpush.im.android.api.JMessageClient;
+import cn.jpush.im.android.api.model.Conversation;
+import cn.jpush.im.android.api.model.Message;
 
 public class StudentMainActivity extends AppCompatActivity {
 
@@ -42,6 +47,7 @@ public class StudentMainActivity extends AppCompatActivity {
         vpMain.setAdapter(new MainViewPagerAdapter(getSupportFragmentManager(), fragmentList));
         navigation = findViewById(R.id.navigation);
         initListener();
+        getConversation();
     }
 
     private void initListener() {
@@ -85,4 +91,22 @@ public class StudentMainActivity extends AppCompatActivity {
             return false;
         }
     };
+
+    /**
+     * 单聊会话
+     */
+    private void getConversation() {
+        String idNumber = "101026";
+        Conversation conversation = Conversation.createSingleConversation(idNumber, JMessageUtil.APP_KEY);
+        JMessageClient.getConversationList();
+//        sendMessage();
+        conversation.getAllMessage();
+    }
+
+    /**
+     * 简单发送消息
+     */
+    private void sendMessage() {
+        JMessageClient.createSingleTextMessage("101026", JMessageUtil.APP_KEY, "第一条测试消息");
+    }
 }

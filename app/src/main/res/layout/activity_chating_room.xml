@@ -6,4 +6,31 @@
     android:layout_height="match_parent"
     tools:context=".activity.ChatingRoomActivity">
 
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="80dp">
+
+        <AutoCompleteTextView
+            android:id="@+id/et_chat_room_message"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="请输入介绍"
+            android:imeOptions="actionUnspecified"
+            android:inputType="text"
+            android:maxLines="1"
+            android:singleLine="true" />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <Button
+        android:id="@+id/btn_chat_room_send"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:text="发送"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
 </android.support.constraint.ConstraintLayout>

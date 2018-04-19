@@ -18,6 +18,11 @@ import com.example.administrator.myapplication.model.User;
 import com.example.administrator.myapplication.model.impl.UserModel;
 import com.yanzhenjie.nohttp.rest.Response;
 
+import cn.jpush.im.android.api.JMessageClient;
+import cn.jpush.im.android.api.callback.GetUserInfoCallback;
+import cn.jpush.im.android.api.model.UserInfo;
+import cn.jpush.im.api.BasicCallback;
+
 public class LoginActivity extends AppCompatActivity {
 
     private AutoCompleteTextView et_username;
@@ -70,6 +75,7 @@ public class LoginActivity extends AppCompatActivity {
                     }else{
                         Toast.makeText(context, "用户为空", Toast.LENGTH_SHORT).show();
                     }
+
                 }
 
                 @Override
@@ -89,5 +95,42 @@ public class LoginActivity extends AppCompatActivity {
         login_checkBox = findViewById(R.id.login_checkBox);
     }
 
+    private void getUserInfo(String idNumber) {
+        JMessageClient.getUserInfo(idNumber, new GetUserInfoCallback() {
+            @Override
+            public void gotResult(int i, String s, UserInfo userInfo) {
+                //查看是否有用户信息，有进行登录，没有的话进行注册
+                if (userInfo == null) {
+                    registerIM(idNumber);
+                } else {
+                    loginIM(idNumber);
+                }
+            }
+        });
+    }
 
+    private void registerIM(String idNumber) {
+        String defaultPassword = "123456";
+        JMessageClient.register(idNumber, defaultPassword, new BasicCallback() {
+            @Override
+            public void gotResult(int i, String s) {
+                loginIM(idNumber);
+            }
+        });
+    }
+
+    private void loginIM(String idNumber) {
+        String defaultPassword = "123456";
+        JMessageClient.login(idNumber, defaultPassword, new BasicCallback() {
+            @Override
+            public void gotResult(int i, String s) {
+
+            }
+        });
+    }
+
+
+    private void loginOutIM(String idNumber) {
+        JMessageClient.logout();
+    }
 }
