@@ -61,9 +61,10 @@ public class TeacherSecondFragment extends Fragment {
 
             @Override
             public void onCompleted(Response response) {
-                Log.i("sss", "onCompleted: "+response.get().toString());
+                Log.i("sss", "onCompleted: " + response.get().toString());
                 List<Course> courseList = JsonUtils.parseArray(response.get().toString(), "body", Course.class);
-                adapter.refreshData(courseList);
+                if (courseList != null)
+                    adapter.refreshData(courseList);
             }
 
             @Override
@@ -99,7 +100,7 @@ public class TeacherSecondFragment extends Fragment {
     private void initView() {
         rv_course_teacher = mainView.findViewById(R.id.rv_course_teacher);
 
-        adapter =  new TeacherCourseAdapter(getContext());
+        adapter = new TeacherCourseAdapter(getContext());
         rv_course_teacher.setAdapter(adapter);
         rv_course_teacher.setLayoutManager(new GridLayoutManager(getContext(), 3));
         btn_teacher_add_course = mainView.findViewById(R.id.btn_teacher_add_course);
