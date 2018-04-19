@@ -31,7 +31,8 @@
         <activity android:name=".activity.NewsActivity" />
         <activity android:name=".activity.WebActivity" />
         <activity android:name=".activity.CourseAddActivity" />
-        <activity android:name=".activity.CheckHomeWordActivity"></activity>
+        <activity android:name=".activity.CheckHomeWordActivity" />
+        <activity android:name=".activity.ChatingRoomActivity"></activity>
     </application>
 
 </manifest>

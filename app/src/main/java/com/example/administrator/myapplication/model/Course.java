@@ -42,6 +42,7 @@ public class Course {
     private String name;
     private String term;
     private String tids;
+    private String teacherName;
 
     public String getBeginPeriod() {
         return beginPeriod;
@@ -185,5 +186,13 @@ public class Course {
 
     public void setTids(String tids) {
         this.tids = tids;
+    }
+
+    public void setTeacherName(String teacherName) {
+        this.teacherName = teacherName;
+    }
+
+    public String getTeacherName() {
+        return teacherName;
     }
 }

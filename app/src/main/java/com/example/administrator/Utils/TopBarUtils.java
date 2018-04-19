@@ -14,6 +14,11 @@ public class TopBarUtils {
     public TopBarUtils(Activity activity) {
         btnLeft = activity.findViewById(R.id.include_topbar_close);
         tvTitle = activity.findViewById(R.id.include_topbar_title);
+        if (btnLeft != null) {
+            btnLeft.setOnClickListener(view -> {
+                activity.finish();
+            });
+        }
     }
 
     public void setTitle(String text) {

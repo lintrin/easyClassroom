@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 
+import com.example.administrator.Utils.TopBarUtils;
 import com.example.administrator.myapplication.R;
 import com.example.administrator.myapplication.model.News;
 
@@ -40,5 +41,7 @@ public class NewsActivity extends AppCompatActivity {
         mTvNewsCreateUserName = (TextView) findViewById(R.id.tv_news_createUserName);
         mTvNewsTime = (TextView) findViewById(R.id.tv_news_time);
         mTvNewsContent = (TextView) findViewById(R.id.tv_news_content);
+        TopBarUtils topBarUtils  =new TopBarUtils(this);
+        topBarUtils.setTitle("公告");
     }
 }

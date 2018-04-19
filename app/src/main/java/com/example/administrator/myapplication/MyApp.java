@@ -13,6 +13,6 @@ public class MyApp extends Application{
     public void onCreate() {
         super.onCreate();
         context = this;
-        HttpManager.initNoHttpWhitDBCache(this, false, false);
+        HttpManager.initNoHttpWhitDBCache(this, false, true);
     }
 }
