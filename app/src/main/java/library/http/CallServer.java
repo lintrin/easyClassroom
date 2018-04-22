@@ -1,36 +1,36 @@
-package com.example.administrator.myapplication.libary.http;
+package library.http;
 
 
 import com.yanzhenjie.nohttp.NoHttp;
-import com.yanzhenjie.nohttp.download.DownloadListener;
-import com.yanzhenjie.nohttp.download.DownloadQueue;
-import com.yanzhenjie.nohttp.download.DownloadRequest;
+import com.yanzhenjie.nohttp.rest.OnResponseListener;
+import com.yanzhenjie.nohttp.rest.Request;
+import com.yanzhenjie.nohttp.rest.RequestQueue;
 
 /**
  * Created by Administrator on 2017/2/2 0002.
  */
 
-public class DownloadServer {
+public class CallServer {
 
-    private static DownloadServer instance;
+    private static CallServer instance;
 
     /**
      * 请求队列。
      */
-    private DownloadQueue downloadQueue;
+    private RequestQueue requestQueue;
 
-    private DownloadServer() {
-        downloadQueue = NoHttp.newDownloadQueue(2);
+    private CallServer() {
+        requestQueue = NoHttp.newRequestQueue(3);
     }
 
     /**
      * 请求队列。
      */
-    public synchronized static DownloadServer getInstance() {
+    public synchronized static CallServer getInstance() {
         if (instance == null)
-            synchronized (DownloadServer.class) {
+            synchronized (CallServer.class) {
                 if (instance == null)
-                    instance = new DownloadServer();
+                    instance = new CallServer();
             }
         return instance;
     }
@@ -42,8 +42,8 @@ public class DownloadServer {
      * @param request   请求对象。
      * @param listener  结果回调对象。
      */
-    public <T> void add(int what, DownloadRequest request, DownloadListener listener) {
-        downloadQueue.add(what, request, listener);
+    public <T> void add(int what, Request<T> request, OnResponseListener listener) {
+        requestQueue.add(what, request, listener);
     }
 
     /**
@@ -51,14 +51,13 @@ public class DownloadServer {
      * @param sign 请求的取消标志。
      */
     public void cancelBySign(Object sign) {
-        downloadQueue.cancelBySign(sign);
+        requestQueue.cancelBySign(sign);
     }
 
     /**
      * 取消队列中所有请求。
      */
     public void cancelAll() {
-        downloadQueue.cancelAll();
+        requestQueue.cancelAll();
     }
-
 }

@@ -1,16 +1,9 @@
 package com.example.administrator.myapplication.server;
 
-import com.alibaba.fastjson.JSON;
 import com.example.administrator.Utils.JsonUtils;
 import com.example.administrator.myapplication.api.CourseApi;
-import com.example.administrator.myapplication.libary.http.BaseRequest;
+import library.http.BaseRequest;
 import com.example.administrator.myapplication.model.Course;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.util.HashMap;
-import java.util.Map;
 
 public class CourseServer extends BaseRequest {
 

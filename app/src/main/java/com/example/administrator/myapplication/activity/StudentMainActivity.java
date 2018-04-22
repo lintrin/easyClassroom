@@ -47,7 +47,7 @@ public class StudentMainActivity extends AppCompatActivity {
         vpMain.setAdapter(new MainViewPagerAdapter(getSupportFragmentManager(), fragmentList));
         navigation = findViewById(R.id.navigation);
         initListener();
-        getConversation();
+//        getConversation();
     }
 
     private void initListener() {

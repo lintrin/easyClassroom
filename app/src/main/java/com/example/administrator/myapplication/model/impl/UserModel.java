@@ -1,15 +1,9 @@
 package com.example.administrator.myapplication.model.impl;
 
-import android.util.Log;
+import library.http.BaseRequest;
 
-import com.example.administrator.myapplication.api.UserApi;
-import com.example.administrator.myapplication.libary.http.BaseRequest;
-import com.example.administrator.myapplication.model.Student;
 import com.example.administrator.myapplication.model.User;
 import com.example.administrator.myapplication.server.UserServer;
-
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class UserModel {
     private static UserModel instance;

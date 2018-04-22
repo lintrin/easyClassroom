@@ -1,6 +1,6 @@
 package com.example.administrator.myapplication.model.impl;
 
-import com.example.administrator.myapplication.libary.http.BaseRequest;
+import library.http.BaseRequest;
 import com.example.administrator.myapplication.model.Course;
 import com.example.administrator.myapplication.server.CourseServer;
 

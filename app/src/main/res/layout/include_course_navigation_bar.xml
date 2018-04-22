@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/bottomTab"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignParentBottom="true"
+    android:orientation="vertical">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/stroke_main" />
+
+    <RadioGroup
+        android:id="@+id/tab_rg_menu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ffffff"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/tab_resource"
+            style="@style/tab_checked_style"
+            android:checked="true"
+            android:drawableTop="@drawable/btn_course"
+            android:text="公共资源" />
+
+        <RadioButton
+            android:id="@+id/tab_homework"
+            style="@style/tab_unchecked_style"
+            android:drawableTop="@drawable/btn_course"
+            android:text="作业" />
+
+        <RadioButton
+            android:id="@+id/tab_member"
+            style="@style/tab_unchecked_style"
+            android:drawableTop="@drawable/btn_course"
+            android:text="成员" />
+
+        <RadioButton
+            android:id="@+id/tab_sign"
+            style="@style/tab_unchecked_style"
+            android:drawableTop="@drawable/btn_course"
+            android:text="签到" />
+
+        <RadioButton
+            android:id="@+id/tab_notic"
+            style="@style/tab_unchecked_style"
+            android:drawableTop="@drawable/btn_course"
+            android:text="公共" />
+
+
+    </RadioGroup>
+</LinearLayout>

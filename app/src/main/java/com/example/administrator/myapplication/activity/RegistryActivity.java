@@ -12,7 +12,7 @@ import android.widget.Toast;
 import com.example.administrator.Utils.JsonUtils;
 import com.example.administrator.Utils.TextUtils;
 import com.example.administrator.myapplication.R;
-import com.example.administrator.myapplication.libary.http.BaseRequest;
+import library.http.BaseRequest;
 import com.example.administrator.myapplication.model.User;
 import com.example.administrator.myapplication.model.impl.UserModel;
 import com.example.administrator.myapplication.server.UserServer;

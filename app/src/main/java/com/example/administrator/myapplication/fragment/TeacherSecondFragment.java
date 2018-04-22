@@ -3,8 +3,6 @@ package com.example.administrator.myapplication.fragment;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.LinearSnapHelper;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -15,9 +13,8 @@ import android.widget.Toast;
 
 import com.example.administrator.Utils.JsonUtils;
 import com.example.administrator.myapplication.R;
-import com.example.administrator.myapplication.adapter.TeacherClassAdapter;
 import com.example.administrator.myapplication.adapter.TeacherCourseAdapter;
-import com.example.administrator.myapplication.libary.http.BaseRequest;
+import library.http.BaseRequest;
 import com.example.administrator.myapplication.model.Course;
 import com.example.administrator.myapplication.model.impl.CourseModel;
 import com.example.administrator.myapplication.server.CourseServer;
@@ -30,7 +27,6 @@ import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class TeacherSecondFragment extends Fragment {
 

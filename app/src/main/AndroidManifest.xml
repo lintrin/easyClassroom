@@ -7,7 +7,6 @@
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
-
     <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
@@ -28,11 +27,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
-        <service android:name="cn.jpush.android.service.PushService"
+        <service
+            android:name="cn.jpush.android.service.PushService"
             android:process=":multiprocess"
-            tools:node="replace" >
-        </service>
+            tools:node="replace"></service>
 
         <activity
             android:name=".activity.StudentMainActivity"
@@ -51,7 +49,8 @@
         <activity android:name=".activity.WebActivity" />
         <activity android:name=".activity.CourseAddActivity" />
         <activity android:name=".activity.CheckHomeWordActivity" />
-        <activity android:name=".activity.ChatingRoomActivity"></activity>
+        <activity android:name=".activity.ChatingRoomActivity" />
+        <activity android:name=".activity.StudentCourseActivity"></activity>
     </application>
 
 </manifest>

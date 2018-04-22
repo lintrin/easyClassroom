@@ -23,7 +23,6 @@ public abstract class BaseRecycleViewAdapter<T> extends RecyclerView.Adapter<Rec
     private View mFooterView;
 
 
-
     public interface OnHeaderClickListener {
         void onHeaderClick();
     }
@@ -71,8 +70,12 @@ public abstract class BaseRecycleViewAdapter<T> extends RecyclerView.Adapter<Rec
     }
 
     public void refreshData(List<T> list) {
-        dataList.clear();
-        dataList.addAll(list);
+        if (dataList==null){
+            dataList = list;
+        }else {
+            dataList.clear();
+            dataList.addAll(list);
+        }
         notifyDataSetChanged();
 
     }
@@ -83,7 +86,7 @@ public abstract class BaseRecycleViewAdapter<T> extends RecyclerView.Adapter<Rec
 
         if (mHeaderView != null && position == 0)
             type = TYPE_HEADER;
-        else if (mFooterView!=null&&position == dataList.size()+IsAddedHeader())
+        else if (mFooterView != null && position == dataList.size() + IsAddedHeader())
             type = TYPE_FOOTER;
         else
             type = getItemType(position);
@@ -171,7 +174,10 @@ public abstract class BaseRecycleViewAdapter<T> extends RecyclerView.Adapter<Rec
 
     @Override
     public int getItemCount() {
-        return dataList.size() + IsAddedHeader() + IsAddedFooter();
+        if (dataList == null)
+            return 0;
+        else
+            return dataList.size() + IsAddedHeader() + IsAddedFooter();
     }
 
     public abstract RecyclerView.ViewHolder onCreate(ViewGroup parent, final int viewType);

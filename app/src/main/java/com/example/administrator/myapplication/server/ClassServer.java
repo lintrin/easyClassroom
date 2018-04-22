@@ -1,7 +1,7 @@
 package com.example.administrator.myapplication.server;
 
 import com.example.administrator.myapplication.api.ClassApi;
-import com.example.administrator.myapplication.libary.http.BaseRequest;
+import library.http.BaseRequest;
 
 public class ClassServer extends BaseRequest{
 

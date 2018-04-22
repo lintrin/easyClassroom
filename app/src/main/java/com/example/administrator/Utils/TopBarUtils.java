@@ -1,31 +1,44 @@
 package com.example.administrator.Utils;
 
 import android.app.Activity;
+import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.administrator.myapplication.R;
 
 public class TopBarUtils {
-    private ImageButton btnLeft;
+    private ImageView btnLeft;
     private TextView tvTitle;
+    private ImageView btnRight;
 
 
     public TopBarUtils(Activity activity) {
-        btnLeft = activity.findViewById(R.id.include_topbar_close);
+        btnLeft = activity.findViewById(R.id.include_topbar_left);
         tvTitle = activity.findViewById(R.id.include_topbar_title);
-        if (btnLeft != null) {
-            btnLeft.setOnClickListener(view -> {
-                activity.finish();
-            });
-        }
+        btnRight = activity.findViewById(R.id.include_topbar_right);
+    }
+
+    public TopBarUtils(View view){
+        btnLeft = view.findViewById(R.id.include_topbar_left);
+        tvTitle = view.findViewById(R.id.include_topbar_title);
+        btnRight = view.findViewById(R.id.include_topbar_right);
     }
 
     public void setTitle(String text) {
         tvTitle.setText(text);
     }
 
-    public ImageButton getBtnLeft() {
+    public TextView getTvTitle() {
+        return tvTitle;
+    }
+
+    public ImageView getBtnLeft() {
         return btnLeft;
+    }
+
+    public ImageView getBtnRight() {
+        return btnRight;
     }
 }

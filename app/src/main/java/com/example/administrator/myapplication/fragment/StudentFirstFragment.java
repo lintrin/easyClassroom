@@ -18,7 +18,7 @@ import com.example.administrator.Utils.ResourceUtils;
 import com.example.administrator.myapplication.R;
 import com.example.administrator.myapplication.activity.WebActivity;
 import com.example.administrator.myapplication.adapter.NewsAdapter;
-import com.example.administrator.myapplication.libary.http.BaseRequest;
+import library.http.BaseRequest;
 import com.example.administrator.myapplication.model.News;
 import com.example.administrator.myapplication.model.impl.NewsModel;
 import com.example.administrator.view.LocalImageHolderView;

@@ -8,13 +8,14 @@
     android:background="@color/main_color"
     android:orientation="horizontal">
 
-        <ImageButton
-            android:id="@+id/include_topbar_close"
+        <ImageView
+            android:padding="8dp"
+            android:id="@+id/include_topbar_left"
             android:layout_width="48dp"
             android:layout_height="48dp"
+            android:scaleType="centerCrop"
             android:background="@drawable/ripple_main_color"
-            android:scaleType="center"
-            android:src="@drawable/actionbar_btn_close" />
+            android:src="@drawable/zstu" />
 
         <TextView
             android:id="@+id/include_topbar_title"
@@ -23,12 +24,12 @@
             android:layout_gravity="center_vertical"
             android:layout_weight="1"
             tools:text="title"
-            android:gravity="center"
+            android:gravity="left"
             android:textColor="@color/white"
             android:textSize="16sp" />
 
         <ImageView
-            android:id="@+id/include_topbar_more"
+            android:id="@+id/include_topbar_right"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:background="@drawable/ripple_main_color"

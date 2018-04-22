@@ -1,4 +1,4 @@
-package com.example.administrator.myapplication.libary.http;
+package library.http;
 
 
 import com.yanzhenjie.nohttp.Headers;
@@ -6,7 +6,6 @@ import com.yanzhenjie.nohttp.NoHttp;
 import com.yanzhenjie.nohttp.RequestMethod;
 import com.yanzhenjie.nohttp.download.DownloadListener;
 import com.yanzhenjie.nohttp.download.DownloadRequest;
-import com.yanzhenjie.nohttp.error.TimeoutError;
 import com.yanzhenjie.nohttp.rest.Request;
 import com.yanzhenjie.nohttp.rest.Response;
 

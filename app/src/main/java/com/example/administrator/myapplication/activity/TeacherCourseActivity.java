@@ -14,7 +14,7 @@ import android.widget.TextView;
 import com.example.administrator.Utils.TopBarUtils;
 import com.example.administrator.myapplication.R;
 import com.example.administrator.myapplication.adapter.TeacherClassAdapter;
-import com.example.administrator.myapplication.libary.http.BaseRequest;
+import library.http.BaseRequest;
 import com.example.administrator.myapplication.model.Course;
 import com.example.administrator.myapplication.model.impl.CourseModel;
 import com.yanzhenjie.nohttp.rest.Response;

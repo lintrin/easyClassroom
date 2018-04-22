@@ -1,10 +1,8 @@
 package com.example.administrator.myapplication.server;
 
 
-import android.util.Log;
-
 import com.example.administrator.myapplication.api.UserApi;
-import com.example.administrator.myapplication.libary.http.BaseRequest;
+import library.http.BaseRequest;
 
 import org.json.JSONException;
 import org.json.JSONObject;
