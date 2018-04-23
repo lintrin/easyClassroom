@@ -18,7 +18,7 @@ public class CourseMessageServer extends BaseRequest {
      * @param listener 回调
      */
     public static void getCourseMessageList(Integer id, OnRequestListener listener) {
-        get(CourseMessageApi.getCourseMessageList + "?id=" + id, listener);
+        get(CourseMessageApi.getCourseMessageList + "?courseId=" + id, listener);
     }
 
 

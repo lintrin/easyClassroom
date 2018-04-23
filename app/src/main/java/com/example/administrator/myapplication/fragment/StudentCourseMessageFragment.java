@@ -48,7 +48,6 @@ public class StudentCourseMessageFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EventBus.getDefault().register(this);
     }
 
     @Override
@@ -63,13 +62,13 @@ public class StudentCourseMessageFragment extends Fragment {
     }
 
     private void initView() {
-        rvCourseMessage = (RecyclerView) mainView.findViewById(R.id.rv_course_message);
+        rvCourseMessage = mainView.findViewById(R.id.rv_course_message);
         rvCourseMessage.setLayoutManager(new LinearLayoutManager(getContext()));
-        CourseMessageAdapter adapter = new CourseMessageAdapter();
-        rvCourseMessage.setAdapter(adapter);
+        courseMessageAdapter = new CourseMessageAdapter(getContext());
+        rvCourseMessage.setAdapter(courseMessageAdapter);
 
         //学生不发课程公告
-        btnSend = (Button) mainView.findViewById(R.id.btn_teacher_add_courseMessage);
+        btnSend = mainView.findViewById(R.id.btn_teacher_add_courseMessage);
         btnSend.setVisibility(View.INVISIBLE);
     }
 
@@ -89,6 +88,7 @@ public class StudentCourseMessageFragment extends Fragment {
                 Log.i("sss", response.get().toString());
                 List<CourseMessage> courseMessages = JsonUtils.parseArray(response.get().toString(), "body", CourseMessage.class);
                 if (courseMessages != null) {
+                    //TODO 提示 CourseMessageAdapter.refreshData(java.util.List)' on a null object reference
                     courseMessageAdapter.refreshData(courseMessages);
                 }
             }
@@ -100,14 +100,8 @@ public class StudentCourseMessageFragment extends Fragment {
         });
     }
 
-    @Subscribe(threadMode = ThreadMode.MAIN)
-    public void refreshLayout() {
-        getCourseMessageList();
-    }
-
     @Override
     public void onDestroy() {
         super.onDestroy();
-        EventBus.getDefault().unregister(this);
     }
 }

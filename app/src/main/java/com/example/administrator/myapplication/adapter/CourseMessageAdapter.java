@@ -10,9 +10,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.administrator.myapplication.R;
-import com.example.administrator.myapplication.activity.NewsActivity;
 import com.example.administrator.myapplication.model.CourseMessage;
-import com.example.administrator.myapplication.model.News;
 
 /**
  * @author by JingQ on 2018/4/23.
@@ -22,6 +20,10 @@ public class CourseMessageAdapter extends BaseRecycleViewAdapter<CourseMessage> 
 
     private Context context;
 
+    public CourseMessageAdapter(Context context) {
+        this.context = context;
+    }
+
     @Override
     public int getItemType(int position) {
         return 0;
@@ -29,7 +31,7 @@ public class CourseMessageAdapter extends BaseRecycleViewAdapter<CourseMessage> 
 
     @Override
     public RecyclerView.ViewHolder onCreate(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.item_news, parent, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.item_course_message, parent, false);
         return new CourseMessageAdapter.VHolder(view);
     }
 
@@ -44,8 +46,8 @@ public class CourseMessageAdapter extends BaseRecycleViewAdapter<CourseMessage> 
 
         VHolder(View view) {
             super(view);
-            this.mTvNewsTime = (TextView) view.findViewById(R.id.tv_news_time);
-            this.mTvNewsMsg = (TextView) view.findViewById(R.id.tv_news_msg);
+            this.mTvNewsTime = view.findViewById(R.id.tv_course_message_time);
+            this.mTvNewsMsg = view.findViewById(R.id.tv_course_message_msg);
         }
 
         public void setData(int position, CourseMessage data) {
