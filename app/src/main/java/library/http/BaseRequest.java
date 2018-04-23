@@ -29,6 +29,12 @@ public class BaseRequest {
         request.add(data);
         addQeueu(request,listener);
     }
+    protected static void postForm(String url,  Map<String,Object> data, OnRequestListener listener){
+        Request<String> request = NoHttp.createStringRequest(url, RequestMethod.POST);
+        request.add(data);
+        request.setHeader("Content-Type","application/x-www-form-urlencoded");
+        addQeueu(request,listener);
+    }
     protected static void post(String url, Map<String,Object> data, OnRequestListener listener){
         Request<String> request = NoHttp.createStringRequest(url, RequestMethod.POST);
         request.add(data);

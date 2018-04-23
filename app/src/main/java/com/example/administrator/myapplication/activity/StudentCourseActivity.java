@@ -10,6 +10,7 @@ import com.example.administrator.myapplication.R;
 import com.example.administrator.myapplication.fragment.StudentCourseMessageFragment;
 import com.example.administrator.myapplication.fragment.CourseRescouresFragment;
 import com.example.administrator.myapplication.fragment.HomeworkFragment;
+import com.example.administrator.myapplication.fragment.TeacherCourseMessageFragment;
 import com.example.administrator.myapplication.model.Course;
 
 
@@ -21,7 +22,7 @@ public class StudentCourseActivity extends AppCompatActivity {
 
     //todo 五个页面实现
     private final Class[] fragments = {CourseRescouresFragment.class,HomeworkFragment.class,
-            HomeworkFragment.class, HomeworkFragment.class, StudentCourseMessageFragment.class
+            HomeworkFragment.class, HomeworkFragment.class, TeacherCourseMessageFragment.class
     };
     @Override
     protected void onCreate(Bundle savedInstanceState) {

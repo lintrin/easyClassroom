@@ -51,5 +51,5 @@ dependencies {
     implementation 'cn.jiguang.sdk:jcore:1.1.9'  // 此处以JCore 1.1.9 版本为例。
     implementation 'cn.jiguang.sdk:jmessage:2.5.0'  // 此处以JMessage 2.5.0 版本为例。
 
-    compile group: 'com.google.guava', name: 'guava', version: '23.0'
+    implementation group: 'com.google.guava', name: 'guava', version: '23.0'
 }

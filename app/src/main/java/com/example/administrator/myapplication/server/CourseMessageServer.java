@@ -35,7 +35,7 @@ public class CourseMessageServer extends BaseRequest {
         Map<String, Object> map = Maps.newHashMap();
         map.put("courseId", courseMessage.getCourseId());
         map.put("content", courseMessage.getContent());
-        post(CourseMessageApi.addCourseMessage, map, listener);
+        postForm(CourseMessageApi.addCourseMessage, map, listener);
     }
 
 }

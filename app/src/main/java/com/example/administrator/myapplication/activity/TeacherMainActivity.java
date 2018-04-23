@@ -34,10 +34,7 @@ public class TeacherMainActivity extends AppCompatActivity {
     }
 
     private void initView() {
-        TopBarUtils topBarUtils = new TopBarUtils(this);
-        topBarUtils.setTitle("我的课程");
-        topBarUtils.getBtnLeft().setVisibility(View.INVISIBLE);
-        topBarUtils.getBtnLeft().setEnabled(false);
+
         List<Fragment> fragmentList = new ArrayList<>(3);
         fragmentList.add(TeacherFirstFragment.newInstance());
         fragmentList.add(TeacherSecondFragment.newInstance());
