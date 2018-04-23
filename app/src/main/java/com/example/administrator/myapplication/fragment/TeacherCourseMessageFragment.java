@@ -1,6 +1,8 @@
 package com.example.administrator.myapplication.fragment;
 
 
+import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -11,13 +13,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.administrator.Utils.JsonUtils;
+import com.example.administrator.Utils.TextUtils;
 import com.example.administrator.myapplication.R;
+import com.example.administrator.myapplication.activity.TeacherCourseActivity;
 import com.example.administrator.myapplication.adapter.CourseMessageAdapter;
 import com.example.administrator.myapplication.model.Course;
 import com.example.administrator.myapplication.model.CourseMessage;
 import com.example.administrator.myapplication.model.impl.CourseMessageModel;
+import com.example.administrator.myapplication.view.dialog.ViewDialogCourseMessageFragment;
 import com.yanzhenjie.nohttp.rest.Response;
 
 import org.greenrobot.eventbus.EventBus;
@@ -31,7 +37,7 @@ import library.http.BaseRequest;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class StudentCourseMessageFragment extends Fragment {
+public class TeacherCourseMessageFragment extends Fragment {
 
     private View mainView;
 
@@ -41,13 +47,21 @@ public class StudentCourseMessageFragment extends Fragment {
 
     private CourseMessageAdapter courseMessageAdapter;
 
-    public StudentCourseMessageFragment() {
+    private Course course;
+
+    public TeacherCourseMessageFragment() {
         // Required empty public constructor
     }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        EventBus.getDefault().register(this);
+        List<Fragment> fragments = this.getFragmentManager().getFragments();
+        // TODO 猜测，最后要等全部页面填好之后才确定下标
+        if (fragments.size() != 0) {
+            course = (Course) fragments.get(0).getArguments().getSerializable("course");
+        }
     }
 
     @Override
@@ -57,6 +71,7 @@ public class StudentCourseMessageFragment extends Fragment {
             mainView = inflater.inflate(R.layout.fragment_course_message, container, false);
             initView();
             initData();
+            initListener();
         }
         return mainView;
     }
@@ -67,17 +82,27 @@ public class StudentCourseMessageFragment extends Fragment {
         courseMessageAdapter = new CourseMessageAdapter(getContext());
         rvCourseMessage.setAdapter(courseMessageAdapter);
 
-        //学生不发课程公告
+        // 老师发课程公告
         btnSend = mainView.findViewById(R.id.btn_teacher_add_courseMessage);
-        btnSend.setVisibility(View.INVISIBLE);
     }
 
     private void initData() {
         getCourseMessageList();
     }
 
+    private void initListener() {
+        btnSend.setOnClickListener(view -> {
+            showDialog();
+        });
+    }
+
+    private void showDialog() {
+        ViewDialogCourseMessageFragment dialogCourseMessageFragment = new ViewDialogCourseMessageFragment();
+        dialogCourseMessageFragment.show(getFragmentManager(), course.getId());
+    }
+
     private void getCourseMessageList() {
-        CourseMessageModel.getInstance().getCourseMessageList(19, new BaseRequest.OnRequestListener() {
+        CourseMessageModel.getInstance().getCourseMessageList(course.getId(), new BaseRequest.OnRequestListener() {
             @Override
             public void onStart() {
 
@@ -99,8 +124,39 @@ public class StudentCourseMessageFragment extends Fragment {
         });
     }
 
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void addMessage (CourseMessage courseMessage) {
+        if (courseMessage == null || TextUtils.isEmpty(courseMessage.getContent())) {
+            Toast.makeText(getContext(), "公告内容不能为空", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        CourseMessageModel.getInstance().addCourseMessage(courseMessage, new BaseRequest.OnRequestListener() {
+            @Override
+            public void onStart() {
+
+            }
+
+            @Override
+            public void onCompleted(Response response) {
+                if (response.getHeaders().getResponseCode() == 200) {
+                    getCourseMessageList();
+                } else {
+                    String msg = JsonUtils.parseObject(response.get().toString(), "msg", String.class);
+                    Toast.makeText(getContext(), msg, Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onError(String msg) {
+
+            }
+        });
+    }
+
+
     @Override
     public void onDestroy() {
         super.onDestroy();
+        EventBus.getDefault().unregister(this);
     }
 }

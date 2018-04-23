@@ -10,12 +10,14 @@ import com.example.administrator.myapplication.R;
 import com.example.administrator.myapplication.fragment.StudentCourseMessageFragment;
 import com.example.administrator.myapplication.fragment.CourseRescouresFragment;
 import com.example.administrator.myapplication.fragment.HomeworkFragment;
+import com.example.administrator.myapplication.model.Course;
 
 
 public class StudentCourseActivity extends AppCompatActivity {
     private RadioGroup mTabRg;
     private FragmentTabHost mTabHost;
 
+    private Course course;
 
     //todo 五个页面实现
     private final Class[] fragments = {CourseRescouresFragment.class,HomeworkFragment.class,
@@ -38,11 +40,16 @@ public class StudentCourseActivity extends AppCompatActivity {
 
     private void initPager() {
         int count =  fragments.length;
+        //MOCK一个课程数据
+        course = new Course();
+        course.setId(19);
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("course", course);
         for (int i = 0; i < count; i++) {
             // 为每一个Tab按钮设置图标、文字和内容
             TabHost.TabSpec tabSpec = mTabHost.newTabSpec(i + "").setIndicator(i + "");
             // 将Tab按钮添加进Tab选项卡中
-            mTabHost.addTab(tabSpec, fragments[i], null);
+            mTabHost.addTab(tabSpec, fragments[i], bundle);
         }
     }
 

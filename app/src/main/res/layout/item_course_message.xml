@@ -31,7 +31,7 @@
         <TextView
             android:id="@+id/tv_course_message_msg"
             android:layout_width="0dp"
-            android:textColor="@color/main_blue"
+            android:textColor="@color/text_color_black_default"
             android:layout_height="match_parent"
             android:layout_weight="3"
             android:gravity="center" />

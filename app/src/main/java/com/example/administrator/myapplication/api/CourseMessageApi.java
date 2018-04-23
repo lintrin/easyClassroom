@@ -16,7 +16,7 @@ public class CourseMessageApi {
     /**
      * 添加
      */
-    public static final String addCourseMessage = baseCourseMessageUrl +"add";
+    public static final String addCourseMessage = baseCourseMessageUrl +"add/";
 
     /**
      * 获取消息

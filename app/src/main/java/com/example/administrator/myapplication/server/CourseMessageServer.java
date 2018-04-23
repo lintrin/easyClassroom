@@ -3,6 +3,9 @@ package com.example.administrator.myapplication.server;
 import com.example.administrator.Utils.JsonUtils;
 import com.example.administrator.myapplication.api.CourseMessageApi;
 import com.example.administrator.myapplication.model.CourseMessage;
+import com.google.common.collect.Maps;
+
+import java.util.Map;
 
 import library.http.BaseRequest;
 
@@ -29,8 +32,10 @@ public class CourseMessageServer extends BaseRequest {
      * @param listener 回调
      */
     public static  void addCourseMessage(CourseMessage courseMessage, OnRequestListener listener){
-        String jsonString = JsonUtils.toJsonString(courseMessage);
-        post(CourseMessageApi.addCourseMessage,jsonString,listener);
+        Map<String, Object> map = Maps.newHashMap();
+        map.put("courseId", courseMessage.getCourseId());
+        map.put("content", courseMessage.getContent());
+        post(CourseMessageApi.addCourseMessage, map, listener);
     }
 
 }
