@@ -9,24 +9,8 @@ import org.json.JSONObject;
 
 
 public class UserServer extends BaseRequest {
-    private static UserServer instance;
 
-    public static UserServer getInstance() {
-        if (instance == null) {
-            synchronized (UserServer.class) {
-                if (instance == null) {
-                    instance = new UserServer();
-                }
-            }
-        }
-        return instance;
-    }
-
-    private UserServer() {
-
-    }
-
-    public void login(String idNumber, String password, boolean isChecked, OnRequestListener listener) {
+    public static void login(String idNumber, String password, boolean isChecked, OnRequestListener listener) {
         JSONObject map = new JSONObject();
         try {
             map.put("idNumber", idNumber);
@@ -42,7 +26,7 @@ public class UserServer extends BaseRequest {
         }
     }
 
-    public void registry(String idNumber, String password, int userType, OnRequestListener listener) {
+    public static void registry(String idNumber, String password, int userType, OnRequestListener listener) {
         JSONObject map = new JSONObject();
         try {
             map.put("idNumber", idNumber);

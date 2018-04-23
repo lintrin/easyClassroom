@@ -15,4 +15,7 @@
     <string name="error_system_unsupport_method">访问网络时系统异常，请联系客服</string>
     <string name="error_unknow">未知异常</string>
 
+    <string name="student_name">201400001</string>
+    <string name="test_password">123456</string>
+
 </resources>

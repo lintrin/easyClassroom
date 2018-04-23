@@ -61,7 +61,7 @@ public class RegistryActivity extends AppCompatActivity {
                 return;
             }
 
-            UserServer.getInstance().registry(username, password, 0, new BaseRequest.OnRequestListener() {
+            UserServer.registry(username, password, 0, new BaseRequest.OnRequestListener() {
                 @Override
                 public void onStart() {
                     btn_registry.setEnabled(false);

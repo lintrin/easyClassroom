@@ -20,7 +20,7 @@ public class UserModel {
     }
 
     public void login(String idNumber, String password, boolean isTeacher, BaseRequest.OnRequestListener listener) {
-        UserServer.getInstance().login(idNumber,password,isTeacher,listener);
+        UserServer.login(idNumber,password,isTeacher,listener);
 
     }
 

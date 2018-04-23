@@ -5,20 +5,8 @@ import library.http.BaseRequest;
 
 public class NewsServer extends BaseRequest {
 
-    private static NewsServer instance;
 
-    public static NewsServer getInstance() {
-        if (instance == null) {
-            synchronized (NewsServer.class) {
-                if (instance == null) {
-                    instance = new NewsServer();
-                }
-            }
-        }
-        return instance;
-    }
-
-    public void getNews(OnRequestListener listener) {
+    public static void getNews(OnRequestListener listener) {
         get(NewsApi.getNews, listener);
     }
 

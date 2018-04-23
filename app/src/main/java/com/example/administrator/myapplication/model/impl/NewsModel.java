@@ -22,7 +22,7 @@ public class NewsModel {
     }
 
     public void getNewsFromNetwork(BaseRequest.OnRequestListener listener) {
-        NewsServer.getInstance().getNews(listener);
+        NewsServer.getNews(listener);
     }
 
 
