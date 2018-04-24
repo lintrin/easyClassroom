@@ -33,7 +33,6 @@ public class TeacherAddCourseActivity extends AppCompatActivity implements View.
     private EditText mEtCourseIntroduction;
     private AppCompatSpinner mEtCourseBegin;
     private AppCompatSpinner mEtCourseEnd;
-    private AppCompatSpinner mEtCourseWeek;
     private AppCompatSpinner mEtCourseLesson;
     private AppCompatSpinner mEtCourseBuilding;
     private EditText mEtCourseClassroom;
@@ -60,7 +59,6 @@ public class TeacherAddCourseActivity extends AppCompatActivity implements View.
         mEtCourseIntroduction = (EditText) findViewById(R.id.et_course_introduction);
         mEtCourseBegin = (AppCompatSpinner) findViewById(R.id.et_course_begin);
         mEtCourseEnd = (AppCompatSpinner) findViewById(R.id.et_course_end);
-        mEtCourseWeek = (AppCompatSpinner) findViewById(R.id.et_course_week);
         mEtCourseLesson = (AppCompatSpinner) findViewById(R.id.et_course_lesson);
         mEtCourseBuilding = (AppCompatSpinner) findViewById(R.id.et_course_building);
         mEtCourseClassroom = (EditText) findViewById(R.id.et_course_classroom);
@@ -105,7 +103,6 @@ public class TeacherAddCourseActivity extends AppCompatActivity implements View.
         course.setLesson(mEtCourseLesson.getSelectedItem().toString());
         course.setBuildingNumber(mEtCourseBuilding.getSelectedItem().toString());
         course.setClassroom(mEtCourseClassroom.getText().toString());
-        course.setDay(mEtCourseWeek.getSelectedItem().toString());
         course.setTerm("1");
         course.setBeginPeriod(beginPeriod);
         course.setEndPeriod(endPeriod);
@@ -119,11 +116,16 @@ public class TeacherAddCourseActivity extends AppCompatActivity implements View.
             @Override
             public void onCompleted(Response response) {
                 Log.i("sss", "onCompleted: " + response.toString());
-                HashMap map = JsonUtils.parseObject(response.toString(), "head", HashMap.class);
-                if (map.get("msg") != null)
-                    Toast.makeText(context, map.get("msg").toString(), Toast.LENGTH_SHORT).show();
-                else {
-                    Toast.makeText(context, map.get("提交失败").toString(), Toast.LENGTH_SHORT).show();
+                HashMap map = JsonUtils.parseObject(response.get().toString(), "head", HashMap.class);
+                if (!map.get("status").equals("Y")) {
+                    if (map.get("msg") != null)
+                        Toast.makeText(context, map.get("msg").toString(), Toast.LENGTH_SHORT).show();
+                    else {
+                        Toast.makeText(context, "提交失败", Toast.LENGTH_SHORT).show();
+                    }
+                }else{
+                    Toast.makeText(context,"创建成功", Toast.LENGTH_SHORT).show();
+                    finish();
                 }
             }
 

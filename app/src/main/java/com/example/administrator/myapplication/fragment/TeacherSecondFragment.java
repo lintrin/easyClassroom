@@ -50,6 +50,24 @@ public class TeacherSecondFragment extends Fragment {
         EventBus.getDefault().register(this);
     }
 
+
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        if (mainView == null) {
+            mainView = inflater.inflate(R.layout.fragment_teacher_second, null);
+            initView();
+            initListener();
+        }
+        return mainView;
+    }
+
+    private void initListener() {
+        btn_teacher_add_course.setOnClickListener(view -> {
+            showAddCourseDialog();
+        });
+    }
     private void getCourseList() {
         CourseServer.getCourseList(new BaseRequest.OnRequestListener() {
             @Override
@@ -72,21 +90,9 @@ public class TeacherSecondFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        if (mainView == null) {
-            mainView = inflater.inflate(R.layout.fragment_teacher_second, null);
-            initView();
-            getCourseList();
-            initListener();
-        }
-        return mainView;
-    }
-
-    private void initListener() {
-        btn_teacher_add_course.setOnClickListener(view -> {
-            showAddCourseDialog();
-        });
+    public void onResume() {
+        super.onResume();
+        getCourseList();
     }
 
     private void showAddCourseDialog() {
