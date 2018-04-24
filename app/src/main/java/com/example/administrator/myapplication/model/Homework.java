@@ -1,40 +1,52 @@
 package com.example.administrator.myapplication.model;
 
 public class Homework {
-    int studentId;
-    String name;
-    String score;
+    int createId;
+    int courseId;
+    String homeworkName;
+    String homeworkContent;
+    String createDate;
 
     public Homework() {
     }
 
-    public Homework(int studentId, String name, String score) {
-        this.studentId = studentId;
-        this.name = name;
-        this.score = score;
+    public int getCreateId() {
+        return createId;
     }
 
-    public int getStudentId() {
-        return studentId;
+    public void setCreateId(int createId) {
+        this.createId = createId;
     }
 
-    public void setStudentId(int studentId) {
-        this.studentId = studentId;
+    public int getCourseId() {
+        return courseId;
     }
 
-    public String getName() {
-        return name;
+    public void setCourseId(int courseId) {
+        this.courseId = courseId;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public String getHomeworkName() {
+        return homeworkName;
     }
 
-    public String getScore() {
-        return score;
+    public void setHomeworkName(String homeworkName) {
+        this.homeworkName = homeworkName;
     }
 
-    public void setScore(String score) {
-        this.score = score;
+    public String getHomeworkContent() {
+        return homeworkContent;
+    }
+
+    public void setHomeworkContent(String homeworkContent) {
+        this.homeworkContent = homeworkContent;
+    }
+
+    public String getCreateDate() {
+        return createDate;
+    }
+
+    public void setCreateDate(String createDate) {
+        this.createDate = createDate;
     }
 }

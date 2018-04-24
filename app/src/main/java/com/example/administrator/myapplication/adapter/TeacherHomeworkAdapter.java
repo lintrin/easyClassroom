@@ -1,0 +1,58 @@
+package com.example.administrator.myapplication.adapter;
+
+import android.content.Context;
+import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+
+import com.example.administrator.myapplication.R;
+import com.example.administrator.myapplication.model.Homework;
+
+import java.util.List;
+
+/**
+ * Created by Administrator on 2018/4/24 0024.
+ */
+
+public class TeacherHomeworkAdapter extends BaseRecycleViewAdapter<Homework> {
+
+    private Context context;
+
+    public TeacherHomeworkAdapter(Context context, List<Homework> homework) {
+        this.context = context;
+        setData(homework);
+    }
+
+    @Override
+    public int getItemType(int position) {
+        return 0;
+    }
+
+    @Override
+    public RecyclerView.ViewHolder onCreate(ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(context).inflate(R.layout.item_teacher_homework, parent, false);
+        return new VHolder(view);
+    }
+
+    @Override
+    public void onBind(RecyclerView.ViewHolder viewHolder, int realPosition, Homework data) {
+        ((VHolder) viewHolder).setData(realPosition, data);
+
+    }
+
+
+    class VHolder extends RecyclerView.ViewHolder {
+        TextView mTvItemHomeworkName;
+
+        VHolder(View view) {
+            super(view);
+            this.mTvItemHomeworkName = (TextView) view.findViewById(R.id.tv_item_homework_name);
+        }
+
+        void setData(int position, Homework data) {
+            mTvItemHomeworkName.setText(data.getHomeworkName());
+        }
+    }
+}

@@ -11,9 +11,8 @@ import android.widget.TextView;
 
 import com.example.administrator.Utils.TextUtils;
 import com.example.administrator.myapplication.R;
-import com.example.administrator.myapplication.activity.StudentCourseActivity;
+import com.example.administrator.myapplication.activity.StudentCourseMainActivity;
 import com.example.administrator.myapplication.model.Course;
-import com.example.administrator.myapplication.model.StudentCourse;
 
 import java.util.List;
 
@@ -73,7 +72,7 @@ public class StudentCourseAdapter extends BaseRecycleViewAdapter<Course> {
             mTvItemStudentCourseCode.setText(data.getCode());
 
             itemView.setOnClickListener(v -> {
-                Intent intent = new Intent(context, StudentCourseActivity.class);
+                Intent intent = new Intent(context, StudentCourseMainActivity.class);
                 context.startActivity(intent);
             });
         }

@@ -6,6 +6,7 @@ import com.example.administrator.myapplication.server.CourseServer;
 
 public class CourseModel {
     private static CourseModel instance;
+    private Course course;
 
     public static CourseModel getInstance() {
         if (instance==null){
@@ -28,5 +29,13 @@ public class CourseModel {
 
     public void getCourseList(BaseRequest.OnRequestListener listener){
         CourseServer.getCourseList(listener);
+    }
+
+    public void setCourse(Course course) {
+        this.course = course;
+    }
+
+    public Course getCourse() {
+        return course;
     }
 }

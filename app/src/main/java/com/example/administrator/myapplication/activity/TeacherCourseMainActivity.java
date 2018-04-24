@@ -1,33 +1,36 @@
 package com.example.administrator.myapplication.activity;
 
+import android.os.Bundle;
 import android.support.v4.app.FragmentTabHost;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.widget.RadioGroup;
 import android.widget.TabHost;
 
 import com.example.administrator.myapplication.R;
-import com.example.administrator.myapplication.fragment.StudentCourseMessageFragment;
 import com.example.administrator.myapplication.fragment.CourseRescouresFragment;
 import com.example.administrator.myapplication.fragment.HomeworkFragment;
 import com.example.administrator.myapplication.fragment.TeacherCourseMessageFragment;
+import com.example.administrator.myapplication.fragment.TeacherHomeworkFragment;
 import com.example.administrator.myapplication.model.Course;
+import com.example.administrator.myapplication.model.impl.CourseModel;
 
 
-public class StudentCourseActivity extends AppCompatActivity {
+public class TeacherCourseMainActivity extends AppCompatActivity {
     private RadioGroup mTabRg;
     private FragmentTabHost mTabHost;
 
     private Course course;
 
     //todo 五个页面实现
-    private final Class[] fragments = {CourseRescouresFragment.class,HomeworkFragment.class,
+    private final Class[] fragments = {CourseRescouresFragment.class,TeacherHomeworkFragment.class,
             HomeworkFragment.class, HomeworkFragment.class, TeacherCourseMessageFragment.class
     };
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_course);
+        course = (Course) getIntent().getSerializableExtra("course");
+        CourseModel.getInstance().setCourse(course);
         initView();
     }
 
@@ -42,8 +45,6 @@ public class StudentCourseActivity extends AppCompatActivity {
     private void initPager() {
         int count =  fragments.length;
         //MOCK一个课程数据
-        course = new Course();
-        course.setId(19);
         Bundle bundle = new Bundle();
         bundle.putSerializable("course", course);
         for (int i = 0; i < count; i++) {

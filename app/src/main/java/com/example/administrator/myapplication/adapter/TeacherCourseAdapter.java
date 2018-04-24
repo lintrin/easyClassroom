@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.example.administrator.myapplication.R;
 import com.example.administrator.myapplication.activity.TeacherCourseActivity;
+import com.example.administrator.myapplication.activity.TeacherCourseMainActivity;
 import com.example.administrator.myapplication.model.Course;
 
 import java.util.ArrayList;
@@ -56,7 +57,7 @@ public class TeacherCourseAdapter extends BaseRecycleViewAdapter<Course> {
             mTvCourseName.setText(data.getName());
             mTvCourseSeason.setText(data.getBeginPeriod()+"-"+data.getEndPeriod()+" 第"+data.getTerm()+"学期");
             itemView.setOnClickListener(view -> {
-                Intent intent = new Intent(context, TeacherCourseActivity.class);
+                Intent intent = new Intent(context, TeacherCourseMainActivity.class);
                 intent.putExtra("course", data);
                 context.startActivity(intent);
             });

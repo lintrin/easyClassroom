@@ -20,12 +20,6 @@ public class CheckHomeWordAdapter extends BaseRecycleViewAdapter<Homework> {
 
     public CheckHomeWordAdapter(Context context, List<Homework> list) {
         this.context = context;
-        if (list == null) {
-            list = new ArrayList<>();
-            list.add(new Homework(2014000000, "JingQ", "0"));
-            list.add(new Homework(2014000001, "小明", "0"));
-
-        }
         setData(list);
     }
 
@@ -65,9 +59,9 @@ public class CheckHomeWordAdapter extends BaseRecycleViewAdapter<Homework> {
         }
 
         void setData(int position,Homework data){
-            mTvItemHomeworkId.setText(data.getStudentId()+"");
-            mTvItemHomeworkName.setText(data.getName());
-            mEtItemHomeworkScore.setText(data.getScore()+"");
+            mTvItemHomeworkId.setText("");
+            mTvItemHomeworkName.setText("");
+            mEtItemHomeworkScore.setText("");
 
         }
     }
