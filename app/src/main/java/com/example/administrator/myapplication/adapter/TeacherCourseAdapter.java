@@ -19,12 +19,8 @@ public class TeacherCourseAdapter extends BaseRecycleViewAdapter<Course> {
 
     private Context context;
 
-    public TeacherCourseAdapter(Context context) {
+    public TeacherCourseAdapter(Context context,List<Course> list) {
         this.context = context;
-        List<Course> list = new ArrayList<>();
-        list.add(new Course("汇编语言", "2017", "2018", 1));
-        list.add(new Course("java程序设计", "2017", "2018", 1));
-        list.add(new Course("汇编语言", "2017", "2018", 1));
         setData(list);
     }
 

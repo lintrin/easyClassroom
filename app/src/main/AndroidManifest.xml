@@ -30,7 +30,7 @@
         <service
             android:name="cn.jpush.android.service.PushService"
             android:process=":multiprocess"
-            tools:node="replace"></service>
+            tools:node="replace" />
 
         <activity
             android:name=".activity.StudentMainActivity"
@@ -50,7 +50,8 @@
         <activity android:name=".activity.CourseAddActivity" />
         <activity android:name=".activity.CheckHomeWordActivity" />
         <activity android:name=".activity.ChatingRoomActivity" />
-        <activity android:name=".activity.StudentCourseActivity"></activity>
+        <activity android:name=".activity.StudentCourseActivity" />
+        <activity android:name=".activity.TeacherAddCourseActivity"></activity>
     </application>
 
 </manifest>

@@ -33,20 +33,20 @@ public class Course implements Serializable{
     private String classroomId;
     private String beginPeriod;
     private String endPeriod;
-    private int term;
-    private int day;
-    private int lesson;
+    private String term;
+    private String day;
+    private String lesson;
     private String code;
-    private int classBegin;
-    private int classEnd;
-    private int buildingNumber;
+    private String classBegin;
+    private String classEnd;
+    private String buildingNumber;
     private String classroom;
     private String teachers;
 
     public Course() {
     }
 
-    public Course(String name, String beginPeriod, String endPeriod, int term) {
+    public Course(String name, String beginPeriod, String endPeriod, String term) {
         this.name = name;
         this.beginPeriod = beginPeriod;
         this.endPeriod = endPeriod;
@@ -117,27 +117,27 @@ public class Course implements Serializable{
         this.endPeriod = endPeriod;
     }
 
-    public int getTerm() {
+    public String getTerm() {
         return term;
     }
 
-    public void setTerm(int term) {
+    public void setTerm(String term) {
         this.term = term;
     }
 
-    public int getDay() {
+    public String getDay() {
         return day;
     }
 
-    public void setDay(int day) {
+    public void setDay(String day) {
         this.day = day;
     }
 
-    public int getLesson() {
+    public String getLesson() {
         return lesson;
     }
 
-    public void setLesson(int lesson) {
+    public void setLesson(String lesson) {
         this.lesson = lesson;
     }
 
@@ -149,27 +149,27 @@ public class Course implements Serializable{
         this.code = code;
     }
 
-    public int getClassBegin() {
+    public String getClassBegin() {
         return classBegin;
     }
 
-    public void setClassBegin(int classBegin) {
+    public void setClassBegin(String classBegin) {
         this.classBegin = classBegin;
     }
 
-    public int getClassEnd() {
+    public String getClassEnd() {
         return classEnd;
     }
 
-    public void setClassEnd(int classEnd) {
+    public void setClassEnd(String classEnd) {
         this.classEnd = classEnd;
     }
 
-    public int getBuildingNumber() {
+    public String getBuildingNumber() {
         return buildingNumber;
     }
 
-    public void setBuildingNumber(int buildingNumber) {
+    public void setBuildingNumber(String buildingNumber) {
         this.buildingNumber = buildingNumber;
     }
 

@@ -1,5 +1,6 @@
 package com.example.administrator.myapplication.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
@@ -13,6 +14,7 @@ import android.widget.Toast;
 
 import com.example.administrator.Utils.JsonUtils;
 import com.example.administrator.myapplication.R;
+import com.example.administrator.myapplication.activity.TeacherAddCourseActivity;
 import com.example.administrator.myapplication.adapter.TeacherCourseAdapter;
 import library.http.BaseRequest;
 import com.example.administrator.myapplication.model.Course;
@@ -57,7 +59,6 @@ public class TeacherSecondFragment extends Fragment {
 
             @Override
             public void onCompleted(Response response) {
-                Log.i("sss", "onCompleted: " + response.get().toString());
                 List<Course> courseList = JsonUtils.parseArray(response.get().toString(), "body", Course.class);
                 if (courseList != null)
                     adapter.refreshData(courseList);
@@ -89,16 +90,19 @@ public class TeacherSecondFragment extends Fragment {
     }
 
     private void showAddCourseDialog() {
-        ViewDialogFragment viewDialogFragment = new ViewDialogFragment();
-        viewDialogFragment.show(getFragmentManager());
+//        ViewDialogFragment viewDialogFragment = new ViewDialogFragment();
+//        viewDialogFragment.show(getFragmentManager());
+        //换成activity了
+        Intent intent = new Intent(getContext(), TeacherAddCourseActivity.class);
+        startActivity(intent);
     }
 
     private void initView() {
         rv_course_teacher = mainView.findViewById(R.id.rv_course_teacher);
 
-        adapter = new TeacherCourseAdapter(getContext());
-        rv_course_teacher.setAdapter(adapter);
+        adapter = new TeacherCourseAdapter(getContext(),null);
         rv_course_teacher.setLayoutManager(new GridLayoutManager(getContext(), 3));
+        rv_course_teacher.setAdapter(adapter);
         btn_teacher_add_course = mainView.findViewById(R.id.btn_teacher_add_course);
     }
 
