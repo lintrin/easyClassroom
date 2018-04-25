@@ -62,27 +62,28 @@ public class CheckInDetailsAdapter extends BaseRecycleViewAdapter<CheckInRecord>
             } else {
                 mEtCheckStatus.setSelection(0);
             }
-            // 修改状态
-            if (!isRefreshing) {
-                mEtCheckStatus.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
-                    @Override
-                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+            mEtCheckStatus.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
+                @Override
+                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                    // 修改状态
+                    if (!isRefreshing) {
                         Log.i("wodianji", "" + position);
                         Log.i("checkIn", data.getIdNumber());
                         // 修改状态接口
 //                        changeStatus(data.getIdNumber(), position, data.getCourseRecordId());
                     }
 
-                    @Override
-                    public void onNothingSelected(AdapterView<?> parent) {
+                }
 
-                    }
-                });
-            }
+                @Override
+                public void onNothingSelected(AdapterView<?> parent) {
+
+                }
+            });
         }
     }
-
 
 
     private void changeStatus(String idNumber, Integer status, Integer courseRecordId) {

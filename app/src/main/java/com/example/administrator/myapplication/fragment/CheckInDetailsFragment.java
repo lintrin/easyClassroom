@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.administrator.Utils.JsonUtils;
+import com.example.administrator.Utils.MyHandler;
 import com.example.administrator.myapplication.R;
 import com.example.administrator.myapplication.adapter.CheckInDetailsAdapter;
 import com.example.administrator.myapplication.model.CheckInRecord;
@@ -71,7 +72,13 @@ public class CheckInDetailsFragment extends Fragment {
             public void onCompleted(Response response) {
                 List<CheckInRecord> checkInRecords = JsonUtils.parseArray(response.get().toString(), "body", CheckInRecord.class);
                 mAdapter.refreshData(checkInRecords);
-                mAdapter.setRefreshing(false);
+                MyHandler.getBusiness0Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        mAdapter.setRefreshing(false);
+                    }
+                },1000);
+
             }
 
             @Override
