@@ -7,6 +7,7 @@ import android.widget.RadioGroup;
 import android.widget.TabHost;
 
 import com.example.administrator.myapplication.R;
+import com.example.administrator.myapplication.fragment.CheckInDetailsFragment;
 import com.example.administrator.myapplication.fragment.StudentCourseMessageFragment;
 import com.example.administrator.myapplication.fragment.CourseRescouresFragment;
 import com.example.administrator.myapplication.fragment.HomeworkFragment;
@@ -22,7 +23,7 @@ public class StudentCourseMainActivity extends AppCompatActivity {
 
     //todo 五个页面实现
     private final Class[] fragments = {CourseRescouresFragment.class,HomeworkFragment.class,
-            HomeworkFragment.class, HomeworkFragment.class, TeacherCourseMessageFragment.class
+            HomeworkFragment.class, CheckInDetailsFragment.class, TeacherCourseMessageFragment.class
     };
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,9 +42,7 @@ public class StudentCourseMainActivity extends AppCompatActivity {
 
     private void initPager() {
         int count =  fragments.length;
-        //MOCK一个课程数据
-        course = new Course();
-        course.setId(19);
+        course = (Course) getIntent().getSerializableExtra("course");
         Bundle bundle = new Bundle();
         bundle.putSerializable("course", course);
         for (int i = 0; i < count; i++) {

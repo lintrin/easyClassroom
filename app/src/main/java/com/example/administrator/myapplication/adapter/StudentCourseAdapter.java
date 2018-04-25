@@ -73,6 +73,7 @@ public class StudentCourseAdapter extends BaseRecycleViewAdapter<Course> {
 
             itemView.setOnClickListener(v -> {
                 Intent intent = new Intent(context, StudentCourseMainActivity.class);
+                intent.putExtra("course", data);
                 context.startActivity(intent);
             });
         }
