@@ -1,7 +1,6 @@
 package com.example.administrator.myapplication.model.impl;
 
-import com.example.administrator.myapplication.model.CourseMessage;
-import com.example.administrator.myapplication.model.Homework;
+import com.example.administrator.myapplication.model.HomeworkOuter;
 import com.example.administrator.myapplication.server.HomeworkServer;
 
 import java.util.List;
@@ -15,7 +14,7 @@ import library.http.BaseRequest;
 public class HomeworkModel {
     private static HomeworkModel instance;
 
-    private List<Homework> homeworkList;
+    private List<HomeworkOuter> homeworkOuterList;
 
     public static HomeworkModel getInstance() {
         if (instance == null) {
@@ -27,15 +26,19 @@ public class HomeworkModel {
         return instance;
     }
 
-    public void requestHomeworkList(int courseId, BaseRequest.OnRequestListener listener) {
-        HomeworkServer.getHomeworkList(courseId, listener);
+    public void requestHomeworkOuterList(int courseId, BaseRequest.OnRequestListener listener) {
+        HomeworkServer.getHomeworkOuterList(courseId, listener);
     }
 
-    public List<Homework> getHomeworkList() {
-        return homeworkList;
+    public void requestHomeworkList(int homeworkOuterId, BaseRequest.OnRequestListener listener) {
+        HomeworkServer.getHomeworkList(homeworkOuterId, listener);
     }
 
-    public void setHomeworkList(List<Homework> homeworkList) {
-        this.homeworkList = homeworkList;
+    public List<HomeworkOuter> getHomeworkOuterList() {
+        return homeworkOuterList;
+    }
+
+    public void setHomeworkOuterList(List<HomeworkOuter> homeworkOuterOuterList) {
+        this.homeworkOuterList = homeworkOuterOuterList;
     }
 }

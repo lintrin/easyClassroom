@@ -1,6 +1,7 @@
 package com.example.administrator.view;
 
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -37,11 +38,13 @@ public class DividerLine extends RecyclerView.ItemDecoration {
     private int[] skipPosition;
     public DividerLine() {
         this(VERTICAL);
+
     }
 
     public DividerLine(int orientation) {
         this.orientation = orientation;
-
+        size=1;
+        color = Color.parseColor("#DFE2E6");
         paint = new Paint();
     }
 

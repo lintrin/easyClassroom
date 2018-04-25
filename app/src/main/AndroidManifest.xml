@@ -51,8 +51,9 @@
         <activity android:name=".activity.CheckHomeWordActivity" />
         <activity android:name=".activity.ChatingRoomActivity" />
         <activity android:name=".activity.StudentCourseMainActivity" />
-        <activity android:name=".activity.TeacherAddCourseActivity"/>
-        <activity android:name=".activity.TeacherCourseMainActivity"/>
+        <activity android:name=".activity.TeacherAddCourseActivity" />
+        <activity android:name=".activity.TeacherCourseMainActivity" />
+        <activity android:name=".activity.TeacherHomeworkActivity"></activity>
     </application>
 
 </manifest>

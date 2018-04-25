@@ -9,16 +9,15 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.administrator.myapplication.R;
-import com.example.administrator.myapplication.model.Homework;
+import com.example.administrator.myapplication.model.HomeworkOuter;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class CheckHomeWordAdapter extends BaseRecycleViewAdapter<Homework> {
+public class CheckHomeWordAdapter extends BaseRecycleViewAdapter<HomeworkOuter> {
 
     Context context;
 
-    public CheckHomeWordAdapter(Context context, List<Homework> list) {
+    public CheckHomeWordAdapter(Context context, List<HomeworkOuter> list) {
         this.context = context;
         setData(list);
     }
@@ -35,7 +34,7 @@ public class CheckHomeWordAdapter extends BaseRecycleViewAdapter<Homework> {
     }
 
     @Override
-    public void onBind(RecyclerView.ViewHolder viewHolder, int realPosition, Homework data) {
+    public void onBind(RecyclerView.ViewHolder viewHolder, int realPosition, HomeworkOuter data) {
         ((VHolder)viewHolder).setData(realPosition,data);
 
     }
@@ -58,7 +57,7 @@ public class CheckHomeWordAdapter extends BaseRecycleViewAdapter<Homework> {
             this.mEtItemHomeworkScore = (EditText) view.findViewById(R.id.et_item_homework_score);
         }
 
-        void setData(int position,Homework data){
+        void setData(int position,HomeworkOuter data){
             mTvItemHomeworkId.setText("");
             mTvItemHomeworkName.setText("");
             mEtItemHomeworkScore.setText("");

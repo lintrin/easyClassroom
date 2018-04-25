@@ -5,24 +5,26 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.administrator.Utils.ImageLoadUtils;
 import com.example.administrator.myapplication.R;
 import com.example.administrator.myapplication.model.Homework;
 
 import java.util.List;
 
 /**
- * Created by Administrator on 2018/4/24 0024.
+ * Created by Administrator on 2018/4/26 0026.
  */
 
 public class TeacherHomeworkAdapter extends BaseRecycleViewAdapter<Homework> {
 
-    private Context context;
+    Context context;
 
-    public TeacherHomeworkAdapter(Context context, List<Homework> homework) {
+    public TeacherHomeworkAdapter(Context context, List<Homework> list) {
         this.context = context;
-        setData(homework);
+        setData(list);
     }
 
     @Override
@@ -38,21 +40,43 @@ public class TeacherHomeworkAdapter extends BaseRecycleViewAdapter<Homework> {
 
     @Override
     public void onBind(RecyclerView.ViewHolder viewHolder, int realPosition, Homework data) {
-        ((VHolder) viewHolder).setData(realPosition, data);
 
+        ((VHolder)viewHolder).setData(realPosition,data);
     }
 
+    static class VHolder extends RecyclerView.ViewHolder {
 
-    class VHolder extends RecyclerView.ViewHolder {
-        TextView mTvItemHomeworkName;
+        ImageView mIvItemTeacherHomework;
+        TextView mTvItemTeacherHomeworkName;
+        TextView mTvItemTeacherHomeworkUserId;
+        TextView mTvItemTeacherHomeworkTime;
+        TextView mTvItemTeacherHomeworkTeacherScore;
+        TextView mTvItemTeacherHomeworkSubmit;
 
         VHolder(View view) {
             super(view);
-            this.mTvItemHomeworkName = (TextView) view.findViewById(R.id.tv_item_homework_name);
+            this.mIvItemTeacherHomework = (ImageView) view.findViewById(R.id.iv_item_teacher_homework);
+            this.mTvItemTeacherHomeworkName = (TextView) view.findViewById(R.id.tv_item_teacher_homework_name);
+            this.mTvItemTeacherHomeworkUserId = (TextView) view.findViewById(R.id.tv_item_teacher_homework_userId);
+            this.mTvItemTeacherHomeworkTime = (TextView) view.findViewById(R.id.tv_item_teacher_homework_time);
+            this.mTvItemTeacherHomeworkTeacherScore = (TextView) view.findViewById(R.id.tv_item_teacher_homework_teacher_score);
+            this.mTvItemTeacherHomeworkSubmit = view.findViewById(R.id.tv_item_teacher_homework_submit);
         }
 
         void setData(int position, Homework data) {
-            mTvItemHomeworkName.setText(data.getHomeworkName());
+            ImageLoadUtils.setImageByUrl(mIvItemTeacherHomework,data.getMarkHomeworkUrl());
+            mTvItemTeacherHomeworkName.setText(data.getUploadName());
+            mTvItemTeacherHomeworkUserId.setText(data.getUserId() + "");
+            mTvItemTeacherHomeworkTime.setText(data.getUploadDate());
+            mTvItemTeacherHomeworkTeacherScore.setText(data.getScore());
+            mTvItemTeacherHomeworkSubmit.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    //todo 作业平分提交
+                }
+            });
         }
     }
+
+
 }

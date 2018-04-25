@@ -1,11 +1,9 @@
 package com.example.administrator.myapplication.fragment;
 
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
-import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -16,9 +14,9 @@ import android.widget.TextView;
 
 import com.example.administrator.Utils.JsonUtils;
 import com.example.administrator.myapplication.R;
-import com.example.administrator.myapplication.adapter.TeacherHomeworkAdapter;
+import com.example.administrator.myapplication.adapter.TeacherHomeworkOuterAdapter;
 import com.example.administrator.myapplication.model.Course;
-import com.example.administrator.myapplication.model.Homework;
+import com.example.administrator.myapplication.model.HomeworkOuter;
 import com.example.administrator.myapplication.model.impl.CourseModel;
 import com.example.administrator.myapplication.model.impl.HomeworkModel;
 import com.example.administrator.view.DividerLine;
@@ -31,17 +29,17 @@ import library.http.BaseRequest;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class TeacherHomeworkFragment extends Fragment {
+public class TeacherHomeworkOuterFragment extends Fragment {
 
 
     private View view;
     private TextView mTvTitle;
     private RecyclerView mRvHomework;
-    private TeacherHomeworkAdapter adapter;
+    private TeacherHomeworkOuterAdapter adapter;
     private Course course;
 
 
-    public TeacherHomeworkFragment() {
+    public TeacherHomeworkOuterFragment() {
         // Required empty public constructor
     }
 
@@ -60,7 +58,7 @@ public class TeacherHomeworkFragment extends Fragment {
 
     private void initData() {
         course = CourseModel.getInstance().getCourse();
-        HomeworkModel.getInstance().requestHomeworkList(course.getId(), new BaseRequest.OnRequestListener() {
+        HomeworkModel.getInstance().requestHomeworkOuterList(course.getId(), new BaseRequest.OnRequestListener() {
             @Override
             public void onStart() {
 
@@ -69,8 +67,9 @@ public class TeacherHomeworkFragment extends Fragment {
             @Override
             public void onCompleted(Response response) {
                 Log.i("sss", "onCompleted: "+response.toString());
-                List<Homework> homeworkList = JsonUtils.parseArray(response.get().toString(),"body",Homework.class);
-                adapter.refreshData(homeworkList);
+                List<HomeworkOuter> homeworkOuterList = JsonUtils.parseArray(response.get().toString(),"body",HomeworkOuter.class);
+                Log.i("sss", "onCompleted: "+homeworkOuterList.size());
+                adapter.refreshData(homeworkOuterList);
             }
 
             @Override
@@ -86,7 +85,7 @@ public class TeacherHomeworkFragment extends Fragment {
         mTvTitle.setText(course.getName());
         mRvHomework = view.findViewById(R.id.rv_homework);
         mRvHomework.setLayoutManager(new LinearLayoutManager(getContext()));
-        adapter = new TeacherHomeworkAdapter(getContext(),null);
+        adapter = new TeacherHomeworkOuterAdapter(getContext(),null);
         mRvHomework.setAdapter(adapter);
         DividerLine line = new DividerLine(DividerLine.VERTICAL);
         line.setSize(1);

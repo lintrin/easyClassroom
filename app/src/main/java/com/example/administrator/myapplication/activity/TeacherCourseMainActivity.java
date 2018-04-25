@@ -10,7 +10,7 @@ import com.example.administrator.myapplication.R;
 import com.example.administrator.myapplication.fragment.CourseRescouresFragment;
 import com.example.administrator.myapplication.fragment.HomeworkFragment;
 import com.example.administrator.myapplication.fragment.TeacherCourseMessageFragment;
-import com.example.administrator.myapplication.fragment.TeacherHomeworkFragment;
+import com.example.administrator.myapplication.fragment.TeacherHomeworkOuterFragment;
 import com.example.administrator.myapplication.model.Course;
 import com.example.administrator.myapplication.model.impl.CourseModel;
 
@@ -22,7 +22,7 @@ public class TeacherCourseMainActivity extends AppCompatActivity {
     private Course course;
 
     //todo 五个页面实现
-    private final Class[] fragments = {CourseRescouresFragment.class,TeacherHomeworkFragment.class,
+    private final Class[] fragments = {CourseRescouresFragment.class,TeacherHomeworkOuterFragment.class,
             HomeworkFragment.class, HomeworkFragment.class, TeacherCourseMessageFragment.class
     };
     @Override
