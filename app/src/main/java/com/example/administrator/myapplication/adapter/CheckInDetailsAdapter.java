@@ -13,6 +13,9 @@ import android.widget.TextView;
 import com.example.administrator.myapplication.R;
 import com.example.administrator.myapplication.model.CheckInRecord;
 import com.example.administrator.myapplication.model.impl.CheckInModel;
+import com.yanzhenjie.nohttp.rest.Response;
+
+import library.http.BaseRequest;
 
 /**
  * @author by JingQ on 2018/4/25.
@@ -69,10 +72,8 @@ public class CheckInDetailsAdapter extends BaseRecycleViewAdapter<CheckInRecord>
                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                     // 修改状态
                     if (!isRefreshing) {
-                        Log.i("wodianji", "" + position);
-                        Log.i("checkIn", data.getIdNumber());
                         // 修改状态接口
-//                        changeStatus(data.getIdNumber(), position, data.getCourseRecordId());
+                        changeStatus(data.getIdNumber(), position, data.getCourseRecordId());
                     }
 
                 }
@@ -87,7 +88,22 @@ public class CheckInDetailsAdapter extends BaseRecycleViewAdapter<CheckInRecord>
 
 
     private void changeStatus(String idNumber, Integer status, Integer courseRecordId) {
-        CheckInModel.getInstance().changeStatus(idNumber, status, courseRecordId, null);
+        CheckInModel.getInstance().changeStatus(idNumber, status, courseRecordId, new BaseRequest.OnRequestListener() {
+            @Override
+            public void onStart() {
+
+            }
+
+            @Override
+            public void onCompleted(Response response) {
+
+            }
+
+            @Override
+            public void onError(String msg) {
+
+            }
+        });
     }
 
     public void setRefreshing(boolean refreshing) {
