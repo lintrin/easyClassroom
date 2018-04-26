@@ -17,11 +17,11 @@ public class ImageLoadUtils {
 
 
     public static void setImageByUrl(ImageView imageView, String url) {
-        setImage(imageView.getContext(), imageView, url, 0, R.drawable.ic_assignment_blue);
+        setImage(imageView.getContext(), imageView, url, 0, R.drawable.ic_assignment);
     }
 
     public static void setImageByUrl(ImageView imageView, String url, int type) {
-        setImage(imageView.getContext(), imageView, url, type, R.drawable.ic_assignment_blue);
+        setImage(imageView.getContext(), imageView, url, type, R.drawable.ic_assignment);
     }
 
     public static void setImage(Context context, ImageView imageView, String url, int type, int defaultDrawable) {
