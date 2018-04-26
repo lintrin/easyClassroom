@@ -42,6 +42,7 @@ public class Course implements Serializable{
     private String buildingNumber;
     private String classroom;
     private String teachers;
+    private String teacherName;
 
     public Course() {
     }
@@ -187,5 +188,13 @@ public class Course implements Serializable{
 
     public void setTeachers(String teachers) {
         this.teachers = teachers;
+    }
+
+    public String getTeacherName() {
+        return teacherName;
+    }
+
+    public void setTeacherName(String teacherName) {
+        this.teacherName = teacherName;
     }
 }

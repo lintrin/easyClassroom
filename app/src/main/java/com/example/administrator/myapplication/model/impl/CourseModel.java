@@ -31,6 +31,20 @@ public class CourseModel {
         CourseServer.getCourseList(listener);
     }
 
+    /**
+     * 根据课程识别码进行查询
+     *
+     * @param code 课程识别码
+     * @param listener 监听器
+     */
+    public void searchCourseByCode(String code, BaseRequest.OnRequestListener listener) {
+        CourseServer.searchCourseByCode(code, listener);
+    }
+
+    public void joinCourse(Integer courseId, BaseRequest.OnRequestListener listener) {
+        CourseServer.joinCourse(courseId, listener);
+    }
+
     public void setCourse(Course course) {
         this.course = course;
     }

@@ -53,7 +53,8 @@
         <activity android:name=".activity.StudentCourseMainActivity" />
         <activity android:name=".activity.TeacherAddCourseActivity" />
         <activity android:name=".activity.TeacherCourseMainActivity" />
-        <activity android:name=".activity.TeacherHomeworkActivity"></activity>
+        <activity android:name=".activity.TeacherHomeworkActivity" />
+        <activity android:name=".activity.StudentJoinCourseActivity"/>
     </application>
 
 </manifest>

@@ -1,25 +1,31 @@
 package com.example.administrator.myapplication.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.administrator.Utils.JsonUtils;
+import com.example.administrator.Utils.TextUtils;
 import com.example.administrator.Utils.TopBarUtils;
 import com.example.administrator.myapplication.R;
+import com.example.administrator.myapplication.activity.StudentJoinCourseActivity;
 import com.example.administrator.myapplication.adapter.StudentCourseAdapter;
-import com.example.administrator.myapplication.adapter.StudentSignAdapter;
-import com.example.administrator.myapplication.adapter.TeacherCourseAdapter;
 import com.example.administrator.myapplication.model.Course;
+import com.example.administrator.myapplication.model.CourseMessage;
 import com.example.administrator.myapplication.model.impl.CourseModel;
 import com.yanzhenjie.nohttp.rest.Response;
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.util.List;
 
@@ -29,6 +35,7 @@ public class StudentSecondFragment extends Fragment implements View.OnClickListe
 
     View mainView;
     private RecyclerView mRvCourseStudent;
+    private Button btnSearchCourse;
     private StudentCourseAdapter adapter;
 
 
@@ -49,11 +56,16 @@ public class StudentSecondFragment extends Fragment implements View.OnClickListe
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         if (mainView == null) {
-            mainView = inflater.inflate(R.layout.fragment_second, container, false);
+            mainView = inflater.inflate(R.layout.fragment_student_course, container, false);
             initView();
             initData();
+            initListener();
         }
         return mainView;
+    }
+
+    private void initListener() {
+        btnSearchCourse.setOnClickListener(this);
     }
 
     private void initData() {
@@ -86,6 +98,7 @@ public class StudentSecondFragment extends Fragment implements View.OnClickListe
         adapter = new StudentCourseAdapter(getContext(),null);
         mRvCourseStudent.setAdapter(adapter);
         mRvCourseStudent.setLayoutManager(new LinearLayoutManager(getContext()));
+        btnSearchCourse = mainView.findViewById(R.id.btn_search_course);
         TopBarUtils topBarUtils = new TopBarUtils(mainView);
         topBarUtils.setTitle("课程");
     }
@@ -93,8 +106,52 @@ public class StudentSecondFragment extends Fragment implements View.OnClickListe
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
+            case R.id.btn_search_course:
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                LayoutInflater inflater = getActivity().getLayoutInflater();
+                final View view = inflater.inflate(R.layout.dialog_search_course, null);
+                AutoCompleteTextView mEtSearchCourse = view.findViewById(R.id.et_search_course);
+                builder.setView(view)
+                        .setPositiveButton("确定", (dialog, which) -> {
+                            String code = mEtSearchCourse.getText().toString();
+                            if (TextUtils.isEmpty(code)) {
+                                Toast.makeText(getContext(), "识别码不能为空！", Toast.LENGTH_SHORT).show();
+                            } else {
+                                searchCourseByNetwork(code);
+                            }
+                        })
+                ;
+                builder.create();
+                builder.show();
+                break;
             default:
                 break;
         }
+    }
+
+    private void searchCourseByNetwork(String code) {
+        CourseModel.getInstance().searchCourseByCode(code, new BaseRequest.OnRequestListener() {
+            @Override
+            public void onStart() {
+
+            }
+
+            @Override
+            public void onCompleted(Response response) {
+                Course course = JsonUtils.parseObject(response.get().toString(), "body", Course.class);
+                if (course == null) {
+                    Toast.makeText(getContext(), "没有找到相应的课程", Toast.LENGTH_SHORT).show();
+                } else {
+                    Intent intent = new Intent(getContext(), StudentJoinCourseActivity.class);
+                    intent.putExtra("course", course);
+                    startActivity(intent);
+                }
+            }
+
+            @Override
+            public void onError(String msg) {
+
+            }
+        });
     }
 }

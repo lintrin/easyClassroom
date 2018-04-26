@@ -8,6 +8,14 @@
     <include layout="@layout/include_topbar"/>
 
 
+    <Button
+        android:id="@+id/btn_search_course"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:layout_marginRight="10dp"
+        android:text="加入课程" />
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_course_student"
         android:layout_width="match_parent"
