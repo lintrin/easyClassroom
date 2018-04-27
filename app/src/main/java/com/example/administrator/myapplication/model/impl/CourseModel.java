@@ -1,5 +1,7 @@
 package com.example.administrator.myapplication.model.impl;
 
+import android.support.annotation.IntegerRes;
+
 import library.http.BaseRequest;
 import com.example.administrator.myapplication.model.Course;
 import com.example.administrator.myapplication.server.CourseServer;
@@ -39,6 +41,16 @@ public class CourseModel {
      */
     public void searchCourseByCode(String code, BaseRequest.OnRequestListener listener) {
         CourseServer.searchCourseByCode(code, listener);
+    }
+
+    /**
+     * 获取课时列表
+     *
+     * @param courseId 课时
+     * @param listener 监听器
+     */
+    public void getCourseRecordList(Integer courseId, BaseRequest.OnRequestListener listener) {
+        CourseServer.getCourseRecordList(courseId, listener);
     }
 
     public void joinCourse(Integer courseId, BaseRequest.OnRequestListener listener) {

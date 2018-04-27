@@ -3,6 +3,8 @@ package com.example.administrator.myapplication.server;
 import com.example.administrator.Utils.JsonUtils;
 import com.example.administrator.myapplication.api.CourseApi;
 import library.http.BaseRequest;
+
+import com.example.administrator.myapplication.api.CourseRecordApi;
 import com.example.administrator.myapplication.model.Course;
 import com.google.common.collect.Maps;
 
@@ -35,4 +37,9 @@ public class CourseServer extends BaseRequest {
         params.put("courseId", courseId);
         postForm(CourseApi.JOIN_COURSE, params, listener);
     }
+
+    public static void getCourseRecordList(Integer courseId, OnRequestListener listener) {
+        get(CourseRecordApi.GET_COURSE_RECORD_LIST + courseId, listener);
+    }
+
 }

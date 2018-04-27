@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="50dp">
+
+    <TextView
+        android:id="@+id/tv_course_record"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="16dp"
+        android:text="2018.04.18"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginLeft="4dp" />
+
+    <TextView
+        android:id="@+id/tv_has_check_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="16dp"
+        android:text="10"
+        app:layout_constraintStart_toEndOf="@+id/tv_course_record"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginLeft="28dp" />
+
+    <TextView
+        android:id="@+id/tv_all_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:text="30"
+        app:layout_constraintStart_toEndOf="@+id/tv_has_check_count"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginLeft="32dp" />
+
+    <Button
+        android:id="@+id/btn_enter"
+        android:layout_width="wrap_content"
+        android:layout_height="36dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="4dp"
+        android:text="进入"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginRight="8dp" />
+
+    <TextView
+        android:id="@+id/tv_check_code"
+        android:layout_width="wrap_content"
+        android:layout_height="17dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:text="识别码"
+        app:layout_constraintEnd_toStartOf="@+id/btn_enter"
+        app:layout_constraintHorizontal_bias="0.521"
+        app:layout_constraintStart_toEndOf="@+id/tv_all_count"
+        app:layout_constraintTop_toTopOf="parent" />
+</android.support.constraint.ConstraintLayout>

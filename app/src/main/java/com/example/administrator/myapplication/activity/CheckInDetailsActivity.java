@@ -1,12 +1,10 @@
-package com.example.administrator.myapplication.fragment;
+package com.example.administrator.myapplication.activity;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
+import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
 import com.example.administrator.Utils.JsonUtils;
 import com.example.administrator.Utils.MyHandler;
@@ -24,41 +22,38 @@ import library.http.BaseRequest;
  * @author by JingQ on 2018/4/25.
  */
 
-public class CheckInDetailsFragment extends Fragment {
-
-    private View mainView;
+public class CheckInDetailsActivity extends AppCompatActivity {
 
     private RecyclerView rvCheckInDetails;
 
     private CheckInDetailsAdapter mAdapter;
 
-    public CheckInDetailsFragment() {
+    private Integer courseRecordId;
+
+    public CheckInDetailsActivity() {
         // Required empty public constructor
     }
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        if (mainView == null) {
-            mainView = inflater.inflate(R.layout.fragment_teacher_check_in_details, container, false);
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_teacher_check_in_details);
 
-            initView();
-            initData();
-        }
-        return mainView;
+        initView();
+        initData();
     }
 
     private void initView() {
-        rvCheckInDetails = mainView.findViewById(R.id.rv_check_in_details);
-        rvCheckInDetails.setLayoutManager(new LinearLayoutManager(getContext()));
-        mAdapter = new CheckInDetailsAdapter(getContext());
+        rvCheckInDetails = findViewById(R.id.rv_check_in_details);
+        rvCheckInDetails.setLayoutManager(new LinearLayoutManager(this));
+        mAdapter = new CheckInDetailsAdapter(this);
         rvCheckInDetails.setAdapter(mAdapter);
     }
 
     private void initData() {
-        //TODO MOCK数据，课时数据
-        getCheckInList(20);
+        courseRecordId = (Integer) getIntent().getSerializableExtra("courseRecordId");
+        getCheckInList(courseRecordId);
     }
 
     private void getCheckInList(Integer courseRecordId) {

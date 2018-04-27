@@ -7,8 +7,7 @@ import android.widget.RadioGroup;
 import android.widget.TabHost;
 
 import com.example.administrator.myapplication.R;
-import com.example.administrator.myapplication.fragment.CheckInDetailsFragment;
-import com.example.administrator.myapplication.fragment.StudentCourseMessageFragment;
+import com.example.administrator.myapplication.fragment.StudentCheckInFragment;
 import com.example.administrator.myapplication.fragment.CourseRescouresFragment;
 import com.example.administrator.myapplication.fragment.HomeworkFragment;
 import com.example.administrator.myapplication.fragment.TeacherCourseMessageFragment;
@@ -23,7 +22,7 @@ public class StudentCourseMainActivity extends AppCompatActivity {
 
     //todo 五个页面实现
     private final Class[] fragments = {CourseRescouresFragment.class,HomeworkFragment.class,
-            HomeworkFragment.class, CheckInDetailsFragment.class, TeacherCourseMessageFragment.class
+            HomeworkFragment.class, StudentCheckInFragment.class, TeacherCourseMessageFragment.class
     };
     @Override
     protected void onCreate(Bundle savedInstanceState) {
