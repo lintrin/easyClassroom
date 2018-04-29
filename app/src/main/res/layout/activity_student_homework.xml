@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:orientation="vertical">
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="48dp"
+    android:background="@color/main_color"
+    android:orientation="horizontal">
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="20dp"
+        android:text="course"
+        android:textColor="@color/white"
+        android:textSize="18sp" />
+
+</LinearLayout>
+
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="8dp"
+    android:orientation="vertical">
+
+    <include layout="@layout/include_stroke" />
+
+    <TextView
+        android:layout_marginTop="2dp"
+        android:layout_marginBottom="2dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:text="提交记录" />
+
+    <include layout="@layout/include_stroke" />
+</LinearLayout>
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="20dp">
+
+    <ImageView
+        android:src="@drawable/ic_assignment"
+        android:id="@+id/iv_student_avatar"
+        android:layout_width="42dp"
+        android:layout_height="42dp" />
+
+    <TextView
+        android:id="@+id/tv_student_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/iv_student_avatar"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@id/iv_student_avatar"
+        android:text="name" />
+
+    <TextView
+        android:layout_marginTop="4dp"
+        android:id="@+id/tv_student_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_student_name"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@id/iv_student_avatar"
+        android:text="201400001" />
+
+    <TextView
+        android:id="@+id/tv_student_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_student_number"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="4dp"
+        android:layout_toRightOf="@id/iv_student_avatar"
+        android:text="2018.04.18 13:16" />
+
+    <TextView
+        android:id="@+id/tv_student_homework_state"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/tv_student_date"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@id/tv_student_date"
+        android:text="已提交" />
+
+    <Button
+        android:id="@+id/btn_student_homework_submit"
+        android:background="@drawable/shape_gold_r2"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        android:text="上传作业"
+        android:layout_width="wrap_content"
+        android:layout_height="32dp"
+        android:layout_marginTop="8dp"
+        android:layout_below="@id/tv_student_date"/>
+
+
+</RelativeLayout>
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="8dp"
+    android:orientation="vertical">
+
+    <include layout="@layout/include_stroke" />
+
+    <TextView
+        android:layout_marginTop="2dp"
+        android:layout_marginBottom="2dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:text="批改记录" />
+
+    <include layout="@layout/include_stroke" />
+</LinearLayout>
+
+<android.support.v7.widget.RecyclerView
+    android:id="@+id/rv_student_homework_mark"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"/>
+
+
+</LinearLayout>

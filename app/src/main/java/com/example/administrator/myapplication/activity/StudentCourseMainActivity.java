@@ -10,8 +10,10 @@ import com.example.administrator.myapplication.R;
 import com.example.administrator.myapplication.fragment.StudentCheckInFragment;
 import com.example.administrator.myapplication.fragment.CourseRescouresFragment;
 import com.example.administrator.myapplication.fragment.HomeworkFragment;
+import com.example.administrator.myapplication.fragment.StudentHomeworkFragment;
 import com.example.administrator.myapplication.fragment.TeacherCourseMessageFragment;
 import com.example.administrator.myapplication.model.Course;
+import com.example.administrator.myapplication.model.impl.CourseModel;
 
 
 public class StudentCourseMainActivity extends AppCompatActivity {
@@ -21,7 +23,7 @@ public class StudentCourseMainActivity extends AppCompatActivity {
     private Course course;
 
     //todo 五个页面实现
-    private final Class[] fragments = {CourseRescouresFragment.class,HomeworkFragment.class,
+    private final Class[] fragments = {CourseRescouresFragment.class,StudentHomeworkFragment.class,
             HomeworkFragment.class, StudentCheckInFragment.class, TeacherCourseMessageFragment.class
     };
     @Override
@@ -42,6 +44,7 @@ public class StudentCourseMainActivity extends AppCompatActivity {
     private void initPager() {
         int count =  fragments.length;
         course = (Course) getIntent().getSerializableExtra("course");
+        CourseModel.getInstance().setCourse(course);
         Bundle bundle = new Bundle();
         bundle.putSerializable("course", course);
         for (int i = 0; i < count; i++) {

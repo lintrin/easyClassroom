@@ -18,11 +18,11 @@ import java.util.List;
  * Created by Administrator on 2018/4/24 0024.
  */
 
-public class TeacherHomeworkOuterAdapter extends BaseRecycleViewAdapter<HomeworkOuter> {
+public class HomeworkOuterAdapter extends BaseRecycleViewAdapter<HomeworkOuter> {
 
     private Context context;
 
-    public TeacherHomeworkOuterAdapter(Context context, List<HomeworkOuter> homeworkOuters) {
+    public HomeworkOuterAdapter(Context context, List<HomeworkOuter> homeworkOuters) {
         this.context = context;
         setData(homeworkOuters);
     }
@@ -55,12 +55,6 @@ public class TeacherHomeworkOuterAdapter extends BaseRecycleViewAdapter<Homework
 
         void setData(int position, HomeworkOuter data) {
             mTvItemHomeworkName.setText(data.getHomeworkName());
-            itemView.setOnClickListener(v -> {
-                Intent intent = new Intent(context, TeacherHomeworkActivity.class);
-                intent.putExtra("homeworkOuterId", data.getCreateId());
-                intent.putExtra("title",data.getHomeworkName());
-                context.startActivity(intent);
-            });
         }
     }
 }

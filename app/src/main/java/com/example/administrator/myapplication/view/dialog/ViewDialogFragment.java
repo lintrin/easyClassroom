@@ -39,6 +39,8 @@ public class ViewDialogFragment extends DialogFragment {
     private AutoCompleteTextView mEtCourseDay;
 
 
+
+
     public void show(FragmentManager fragmentManager) {
         show(fragmentManager, "ViewDialogFragment");
     }
@@ -77,8 +79,7 @@ public class ViewDialogFragment extends DialogFragment {
                     course.setDay(mEtCourseDay.getText().toString());
                     EventBus.getDefault().post(course);
                     dismiss();
-                })
-        ;
+                });
         return builder.create();
     }
 

@@ -41,4 +41,13 @@ public class HomeworkModel {
     public void setHomeworkOuterList(List<HomeworkOuter> homeworkOuterOuterList) {
         this.homeworkOuterList = homeworkOuterOuterList;
     }
+
+    public void addHomeWork(HomeworkOuter homeworkOuter,BaseRequest.OnRequestListener listener) {
+
+        HomeworkServer.addHomeWork(homeworkOuter,listener);
+    }
+
+    public void requestHomework(int homeworkOuterId, BaseRequest.OnRequestListener listener) {
+        HomeworkServer.getHomeWork(homeworkOuterId,listener);
+    }
 }
