@@ -9,11 +9,9 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.administrator.myapplication.R;
-import com.example.administrator.myapplication.activity.TeacherCourseActivity;
-import com.example.administrator.myapplication.activity.TeacherCourseMainActivity;
+import com.example.administrator.myapplication.ui.teacher.course.next.TeacherCourseMainActivity;
 import com.example.administrator.myapplication.model.Course;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class TeacherCourseAdapter extends BaseRecycleViewAdapter<Course> {

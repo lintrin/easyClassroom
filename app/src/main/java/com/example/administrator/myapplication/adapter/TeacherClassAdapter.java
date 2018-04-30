@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.administrator.myapplication.R;
-import com.example.administrator.myapplication.activity.CheckHomeWordActivity;
+import com.example.administrator.myapplication.ui.unuse.CheckHomeWordActivity;
 import com.example.administrator.myapplication.model.TeacherClass;
 
 import java.util.ArrayList;

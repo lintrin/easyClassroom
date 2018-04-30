@@ -2,9 +2,7 @@ package com.example.administrator.myapplication.adapter;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,7 +10,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.administrator.myapplication.R;
-import com.example.administrator.myapplication.activity.CheckInDetailsActivity;
+import com.example.administrator.myapplication.ui.teacher.course.next.sign.TeacherCheckInDetailsActivity;
 import com.example.administrator.myapplication.model.CourseRecord;
 
 /**
@@ -66,7 +64,7 @@ public class TeacherCheckInAdapter extends BaseRecycleViewAdapter<CourseRecord> 
             mTVCheckCode.setText(data.getCheckCode());
 
             mBtnEnter.setOnClickListener(view -> {
-                Intent intent = new Intent(context, CheckInDetailsActivity.class);
+                Intent intent = new Intent(context, TeacherCheckInDetailsActivity.class);
                 intent.putExtra("courseRecordId", data.getId());
                 context.startActivity(intent);
             });

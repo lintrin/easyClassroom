@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import com.example.administrator.Utils.JMessageUtil;
 import com.example.administrator.myapplication.R;
-import com.example.administrator.myapplication.activity.ChatingRoomActivity;
+import com.example.administrator.myapplication.ui.communal.ChattingRoomActivity;
 import com.example.administrator.myapplication.model.Course;
 
 import java.util.ArrayList;
@@ -74,7 +74,7 @@ public class ChatRoomAdapter extends BaseRecycleViewAdapter<Course> {
             mTvItemChatroomTeacherName.setText("任课老师："+data.getTeachers());
             itemView.setOnClickListener(view1 -> {
                //todo 群聊
-                Intent intent = new Intent(context, ChatingRoomActivity.class);
+                Intent intent = new Intent(context, ChattingRoomActivity.class);
                 // 传入聊天室ID，默认为课程的主键ID
                 Bundle content = new Bundle();
                 content.putLong(JMessageUtil.CHATTING_ROOM_KEY, (long) data.getId());

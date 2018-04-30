@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import com.example.administrator.Utils.ImageLoadUtils;
 import com.example.administrator.myapplication.R;
-import com.example.administrator.myapplication.activity.TeacherHomeworkMarkActivity;
+import com.example.administrator.myapplication.ui.teacher.course.next.homework.TeacherHomeworkMarkActivity;
 import com.example.administrator.myapplication.model.Homework;
 
 import java.util.List;

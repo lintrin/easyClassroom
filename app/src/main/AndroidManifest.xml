@@ -33,31 +33,31 @@
             tools:node="replace" />
 
         <activity
-            android:name=".activity.StudentMainActivity"
+            android:name=".ui.student.StudentMainActivity"
             android:label="@string/app_name" />
-        <activity android:name=".activity.LoginActivity">
+        <activity android:name=".ui.login.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.RegistryActivity" />
-        <activity android:name=".activity.TeacherMainActivity" />
-        <activity android:name=".activity.TeacherCourseActivity" />
-        <activity android:name=".activity.NewsActivity" />
-        <activity android:name=".activity.WebActivity" />
-        <activity android:name=".activity.CourseAddActivity" />
-        <activity android:name=".activity.CheckHomeWordActivity" />
-        <activity android:name=".activity.ChatingRoomActivity" />
-        <activity android:name=".activity.StudentCourseMainActivity" />
-        <activity android:name=".activity.TeacherAddCourseActivity" />
-        <activity android:name=".activity.TeacherCourseMainActivity" />
-        <activity android:name=".activity.TeacherHomeworkActivity" />
-        <activity android:name=".activity.StudentJoinCourseActivity" />
-        <activity android:name=".activity.CheckInDetailsActivity" />
-        <activity android:name=".activity.StudentHomeworkActivity" />
-        <activity android:name=".activity.TeacherHomeworkMarkActivity"></activity>
+        <activity android:name=".ui.login.RegistryActivity" />
+        <activity android:name=".ui.teacher.TeacherMainActivity" />
+        <activity android:name=".ui.unuse.TeacherCourseActivity" />
+        <activity android:name=".ui.communal.NewsActivity" />
+        <activity android:name=".ui.communal.WebActivity" />
+        <activity android:name=".ui.unuse.CourseAddActivity" />
+        <activity android:name=".ui.unuse.CheckHomeWordActivity" />
+        <activity android:name=".ui.communal.ChattingRoomActivity" />
+        <activity android:name=".ui.student.course.next.StudentCourseMainActivity" />
+        <activity android:name=".ui.teacher.course.TeacherAddCourseActivity" />
+        <activity android:name=".ui.teacher.course.next.TeacherCourseMainActivity" />
+        <activity android:name=".ui.teacher.course.next.homework.TeacherHomeworkActivity" />
+        <activity android:name=".ui.student.course.StudentJoinCourseActivity" />
+        <activity android:name=".ui.teacher.course.next.sign.TeacherCheckInDetailsActivity" />
+        <activity android:name=".ui.student.course.next.homework.StudentHomeworkRecordActivity" />
+        <activity android:name=".ui.teacher.course.next.homework.TeacherHomeworkMarkActivity"></activity>
     </application>
 
 </manifest>

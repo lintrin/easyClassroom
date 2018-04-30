@@ -10,11 +10,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.administrator.myapplication.R;
-import com.example.administrator.myapplication.activity.NewsActivity;
+import com.example.administrator.myapplication.ui.communal.NewsActivity;
 import com.example.administrator.myapplication.model.News;
-
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 public class NewsAdapter extends BaseRecycleViewAdapter<News> {
     private Context context;

@@ -7,7 +7,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.StudentMainActivity">
+    tools:context=".ui.student.StudentMainActivity">
 
 
     <com.example.administrator.myapplication.view.SteerableViewPager
