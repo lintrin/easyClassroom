@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context="com.example.administrator.myapplication.activity.TeacherHomeworkMarkActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="5">
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:layout_weight="2">
+
+        <include layout="@layout/include_stroke"/>
+
+        <TextView
+            android:text="学生上传附件"
+            android:textSize="16sp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <ImageView
+            android:id="@+id/iv_mark_file"
+            android:src="@drawable/ic_assignment"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="40dp"
+            android:layout_width="52dp"
+            android:layout_marginBottom="10dp"
+            android:layout_height="52dp" />
+        <include layout="@layout/include_stroke"/>
+        <LinearLayout
+            android:layout_marginLeft="20dp"
+            android:gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_height="match_parent">
+            <EditText
+                android:id="@+id/ed_mark_score"
+                android:background="@drawable/shape_stroke_r6"
+                android:layout_width="80dp"
+                android:hint="评分"
+                android:layout_height="30dp" />
+
+            <Button
+                android:id="@+id/btn_mark_submit"
+                android:layout_marginLeft="12dp"
+                android:background="@drawable/shape_blue_r2"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                android:layout_width="48dp"
+                android:layout_height="30dp"
+                android:text="确认"/>
+
+            <View
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@color/stroke_main"/>
+
+            <LinearLayout
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <Button
+                    android:id="@+id/btn_mark_result_submit"
+                    android:layout_marginLeft="12dp"
+                    android:background="@drawable/shape_gold_r2"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:text="返回批改结果"/>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+
+</LinearLayout>

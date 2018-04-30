@@ -4,8 +4,8 @@ android {
     compileSdkVersion 27
     defaultConfig {
         applicationId "com.example.administrator.myapplication"
-        minSdkVersion 14
-        targetSdkVersion 27
+        minSdkVersion 15
+        targetSdkVersion 22
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -46,7 +46,7 @@ dependencies {
     implementation 'com.alibaba:fastjson:1.1.56.android'
     implementation 'com.bigkoo:convenientbanner:2.0.5'
     implementation 'com.github.bumptech.glide:glide:3.7.0'
-
+    implementation 'com.leon:lfilepickerlibrary:1.7.0'
     //极光推送
 //    compile 'cn.jiguang.sdk:jpush:3.1.1'  // 此处以JPush 3.1.1 版本为例。
     implementation 'cn.jiguang.sdk:jcore:1.1.9'  // 此处以JCore 1.1.9 版本为例。

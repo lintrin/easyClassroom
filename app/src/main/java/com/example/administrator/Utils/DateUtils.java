@@ -9,6 +9,7 @@ import java.util.Calendar;
 
 public class DateUtils {
     public static String getDateString(String pattern) {
+
         SimpleDateFormat dateFormat = (SimpleDateFormat) SimpleDateFormat.getInstance();
         dateFormat.applyPattern(pattern);
         Calendar calendar = Calendar.getInstance();

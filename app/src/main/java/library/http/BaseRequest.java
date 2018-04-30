@@ -35,6 +35,13 @@ public class BaseRequest {
         request.setHeader("Content-Type","application/x-www-form-urlencoded");
         addQeueu(request,listener);
     }
+
+    protected static void postFile(String url,  Map<String,Object> data, OnRequestListener listener){
+        Request<String> request = NoHttp.createStringRequest(url, RequestMethod.POST);
+        request.add(data);
+        request.setHeader("Content-Type","multipart/form-data;boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW");
+        addQeueu(request,listener);
+    }
     protected static void post(String url, Map<String,Object> data, OnRequestListener listener){
         Request<String> request = NoHttp.createStringRequest(url, RequestMethod.POST);
         request.add(data);

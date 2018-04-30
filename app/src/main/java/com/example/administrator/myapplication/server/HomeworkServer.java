@@ -3,7 +3,9 @@ package com.example.administrator.myapplication.server;
 import com.example.administrator.Utils.JsonUtils;
 import com.example.administrator.myapplication.api.HomeworkApi;
 import com.example.administrator.myapplication.model.HomeworkOuter;
+import com.yanzhenjie.nohttp.FileBinary;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -37,5 +39,14 @@ public class HomeworkServer extends BaseRequest {
         Map<String,Object> map = new HashMap<>();
         map.put("id",homeworkOuterId);
         get(HomeworkApi.getHomework,map,listener);
+    }
+
+    public static void addStudentHomework(int courseId,int homeworkOuterId,File file,OnRequestListener listener){
+        Map<String,Object> map = new HashMap<>();
+        map.put("courseId",courseId);
+        map.put("homeworkOuterId",homeworkOuterId);
+        map.put("file",new FileBinary(file));
+        postFile(HomeworkApi.getHomeworkStudentAdd,map,listener);
+
     }
 }

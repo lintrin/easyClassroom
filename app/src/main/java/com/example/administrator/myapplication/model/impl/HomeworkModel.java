@@ -3,6 +3,7 @@ package com.example.administrator.myapplication.model.impl;
 import com.example.administrator.myapplication.model.HomeworkOuter;
 import com.example.administrator.myapplication.server.HomeworkServer;
 
+import java.io.File;
 import java.util.List;
 
 import library.http.BaseRequest;
@@ -42,12 +43,15 @@ public class HomeworkModel {
         this.homeworkOuterList = homeworkOuterOuterList;
     }
 
-    public void addHomeWork(HomeworkOuter homeworkOuter,BaseRequest.OnRequestListener listener) {
-
-        HomeworkServer.addHomeWork(homeworkOuter,listener);
+    public void addHomeWork(HomeworkOuter homeworkOuter, BaseRequest.OnRequestListener listener) {
+        HomeworkServer.addHomeWork(homeworkOuter, listener);
     }
 
     public void requestHomework(int homeworkOuterId, BaseRequest.OnRequestListener listener) {
-        HomeworkServer.getHomeWork(homeworkOuterId,listener);
+        HomeworkServer.getHomeWork(homeworkOuterId, listener);
+    }
+
+    public void addStudentHomework(int courseId, int homeworkOuterId, File file, BaseRequest.OnRequestListener listener) {
+        HomeworkServer.addStudentHomework(courseId, homeworkOuterId, file, listener);
     }
 }

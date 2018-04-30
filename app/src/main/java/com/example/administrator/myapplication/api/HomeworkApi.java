@@ -17,6 +17,9 @@ public class HomeworkApi {
     private static final String baseHomeworkUrl = baseUrl+"homework/";
     public static final String getHomework = baseUrl+"homework";
     public static final String getHomeworkList = baseHomeworkUrl+"list";
+    public static final String getHomeworkStudentAdd = baseHomeworkUrl+"student/add";
+
+
 
 
 
