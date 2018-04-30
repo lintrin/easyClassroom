@@ -66,6 +66,15 @@ public class DownloadManager {
     public void download(String url, String dirPath, String filename, BaseDownloader.BaseDownloadListener listener) {
         downloader.download(url, dirPath, filename, false, listener);
     }
+    /**
+     * 下载文件 已存在则直接返回结果
+     * @param url      文件地址
+     * @param dirPath  下载目录
+     * @param listener 两种监听器可选 {@link BaseDownloader.OnDownLoadListener},{@link BaseDownloader.OnDownLoadProgressListener}
+     */
+    public void download(String url, String dirPath,boolean deleteOldFile,  BaseDownloader.BaseDownloadListener listener) {
+        downloader.download(url, dirPath, false, listener);
+    }
 
     public void cancelDownload(){
         downloader.cancelDownload();

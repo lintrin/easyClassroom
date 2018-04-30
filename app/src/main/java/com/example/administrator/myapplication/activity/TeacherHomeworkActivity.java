@@ -1,6 +1,7 @@
 package com.example.administrator.myapplication.activity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -12,6 +13,7 @@ import android.view.View;
 import com.example.administrator.Utils.JsonUtils;
 import com.example.administrator.Utils.TopBarUtils;
 import com.example.administrator.myapplication.R;
+import com.example.administrator.myapplication.adapter.BaseRecycleViewAdapter;
 import com.example.administrator.myapplication.adapter.TeacherHomeworkAdapter;
 import com.example.administrator.myapplication.model.Homework;
 import com.example.administrator.myapplication.model.impl.HomeworkModel;
@@ -36,6 +38,11 @@ public class TeacherHomeworkActivity extends AppCompatActivity {
         context = this;
         initView();
         initData();
+        initListener();
+    }
+
+    private void initListener() {
+
     }
 
     private void initView() {

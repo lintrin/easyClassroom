@@ -8,6 +8,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 
 import com.example.administrator.myapplication.R;
+import com.example.administrator.myapplication.model.DownloadModel;
 
 import library.http.DownloadManager;
 
@@ -41,7 +42,7 @@ public class TeacherHomeworkMarkActivity extends AppCompatActivity implements Vi
             default:
                 break;
             case R.id.iv_mark_file:
-
+//                DownloadModel.getInstance().download();
                 break;
             case R.id.btn_mark_submit:
                 break;

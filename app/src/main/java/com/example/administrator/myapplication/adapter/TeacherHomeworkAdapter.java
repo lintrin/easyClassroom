@@ -1,6 +1,7 @@
 package com.example.administrator.myapplication.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 
 import com.example.administrator.Utils.ImageLoadUtils;
 import com.example.administrator.myapplication.R;
+import com.example.administrator.myapplication.activity.TeacherHomeworkMarkActivity;
 import com.example.administrator.myapplication.model.Homework;
 
 import java.util.List;
@@ -44,7 +46,7 @@ public class TeacherHomeworkAdapter extends BaseRecycleViewAdapter<Homework> {
         ((VHolder)viewHolder).setData(realPosition,data);
     }
 
-    static class VHolder extends RecyclerView.ViewHolder {
+    class VHolder extends RecyclerView.ViewHolder {
 
         ImageView mIvItemTeacherHomework;
         TextView mTvItemTeacherHomeworkName;
@@ -72,7 +74,10 @@ public class TeacherHomeworkAdapter extends BaseRecycleViewAdapter<Homework> {
             mTvItemTeacherHomeworkSubmit.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    //todo 作业平分提交
+                    Intent intent = new Intent(context,TeacherHomeworkMarkActivity.class);
+                    intent.putExtra("fileUrl",data.getHomeworkUrl());
+                    intent.putExtra("id",data.getId());
+                    context.startActivity(intent);
                 }
             });
         }

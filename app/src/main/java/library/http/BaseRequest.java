@@ -5,6 +5,7 @@ import android.widget.Toast;
 
 import com.example.administrator.myapplication.MyApp;
 import com.example.administrator.myapplication.R;
+import com.yanzhenjie.nohttp.FileBinary;
 import com.yanzhenjie.nohttp.NoHttp;
 import com.yanzhenjie.nohttp.RequestMethod;
 import com.yanzhenjie.nohttp.error.NetworkError;
@@ -18,6 +19,7 @@ import com.yanzhenjie.nohttp.rest.Response;
 
 import org.json.JSONObject;
 
+import java.io.File;
 import java.net.ProtocolException;
 import java.util.Map;
 
@@ -39,7 +41,15 @@ public class BaseRequest {
     protected static void postFile(String url,  Map<String,Object> data, OnRequestListener listener){
         Request<String> request = NoHttp.createStringRequest(url, RequestMethod.POST);
         request.add(data);
-        request.setHeader("Content-Type","multipart/form-data;boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW");
+        request.setHeader("Content-Type","");
+        addQeueu(request,listener);
+    }
+
+    protected static void postFile(String url, Map<String, Object> data, File file, OnRequestListener listener) {
+        Request<String> request = NoHttp.createStringRequest(url, RequestMethod.POST);
+        request.add(data);
+        request.add("head",new FileBinary(file));
+        request.setHeader("Content-Type","multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW");
         addQeueu(request,listener);
     }
     protected static void post(String url, Map<String,Object> data, OnRequestListener listener){
