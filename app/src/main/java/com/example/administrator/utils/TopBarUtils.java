@@ -1,8 +1,7 @@
-package com.example.administrator.Utils;
+package com.example.administrator.utils;
 
 import android.app.Activity;
 import android.view.View;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 

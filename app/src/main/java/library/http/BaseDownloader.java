@@ -37,14 +37,15 @@ public class BaseDownloader {
             addDownloadQueue(downloadRequest, (OnDownLoadListener) listener);
         else addDownloadQueue(downloadRequest, (OnDownLoadProgressListener) listener);
     }
-    public void download(String url, String filePath,boolean deleteOldFile, BaseDownloadListener listener) {
-        DownloadRequest downloadRequest = NoHttp.createDownloadRequest(url,RequestMethod.POST,filePath,false,deleteOldFile);
-        downloadRequest.addHeader("referer", "http://joyapper.com");
+    public void download(String url, RequestMethod method,String filePath,String filename,boolean deleteOldFile, BaseDownloadListener listener) {
+        DownloadRequest downloadRequest = NoHttp.createDownloadRequest(url,method,filePath,filename,false,deleteOldFile);
         downloadRequest.setCancelSign(CANCEL_SIGN);
         if (listener instanceof OnDownLoadListener)
             addDownloadQueue(downloadRequest, (OnDownLoadListener) listener);
         else addDownloadQueue(downloadRequest, (OnDownLoadProgressListener) listener);
     }
+
+
 
     private void addDownloadQueue(DownloadRequest downloadRequest, final OnDownLoadListener listener) {
         DownloadServer.getInstance().add(0, downloadRequest, new DownloadListener() {

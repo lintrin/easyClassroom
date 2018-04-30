@@ -13,13 +13,11 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.administrator.Utils.JsonUtils;
+import com.example.administrator.utils.JsonUtils;
 import com.example.administrator.myapplication.R;
 import com.example.administrator.myapplication.model.Course;
 import com.example.administrator.myapplication.model.impl.CourseModel;
 import com.yanzhenjie.nohttp.rest.Response;
-
-import org.greenrobot.eventbus.EventBus;
 
 import java.util.Calendar;
 import java.util.HashMap;

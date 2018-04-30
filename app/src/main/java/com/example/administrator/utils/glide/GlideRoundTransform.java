@@ -1,4 +1,4 @@
-package com.example.administrator.Utils.glide;
+package com.example.administrator.utils.glide;
 
 import android.content.Context;
 import android.content.res.Resources;

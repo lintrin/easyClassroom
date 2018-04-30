@@ -9,7 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.administrator.Utils.JMessageUtil;
+import com.example.administrator.utils.JMessageUtil;
 import com.example.administrator.myapplication.R;
 import com.example.administrator.myapplication.ui.communal.ChattingRoomActivity;
 import com.example.administrator.myapplication.model.Course;

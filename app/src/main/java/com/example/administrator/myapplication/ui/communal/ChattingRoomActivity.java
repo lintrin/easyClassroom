@@ -8,8 +8,8 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.example.administrator.Utils.JMessageUtil;
-import com.example.administrator.Utils.TextUtils;
+import com.example.administrator.utils.JMessageUtil;
+import com.example.administrator.utils.TextUtils;
 import com.example.administrator.myapplication.R;
 
 import java.util.List;
@@ -20,7 +20,6 @@ import cn.jpush.im.android.api.callback.RequestCallback;
 import cn.jpush.im.android.api.event.ChatRoomMessageEvent;
 import cn.jpush.im.android.api.model.Conversation;
 import cn.jpush.im.android.api.model.Message;
-import cn.jpush.im.android.helpers.IMReceiver;
 import cn.jpush.im.api.BasicCallback;
 
 public class ChattingRoomActivity extends AppCompatActivity implements View.OnClickListener {

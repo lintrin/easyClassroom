@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.administrator.Utils.ImageLoadUtils;
+import com.example.administrator.utils.ImageLoadUtils;
 import com.example.administrator.myapplication.R;
 import com.example.administrator.myapplication.ui.teacher.course.next.homework.TeacherHomeworkMarkActivity;
 import com.example.administrator.myapplication.model.Homework;
@@ -43,7 +43,7 @@ public class TeacherHomeworkAdapter extends BaseRecycleViewAdapter<Homework> {
     @Override
     public void onBind(RecyclerView.ViewHolder viewHolder, int realPosition, Homework data) {
 
-        ((VHolder)viewHolder).setData(realPosition,data);
+        ((VHolder) viewHolder).setData(realPosition, data);
     }
 
     class VHolder extends RecyclerView.ViewHolder {
@@ -66,19 +66,21 @@ public class TeacherHomeworkAdapter extends BaseRecycleViewAdapter<Homework> {
         }
 
         void setData(int position, Homework data) {
-            ImageLoadUtils.setImageByUrl(mIvItemTeacherHomework,data.getMarkHomeworkUrl());
-            mTvItemTeacherHomeworkName.setText(data.getUploadName());
-            mTvItemTeacherHomeworkUserId.setText(data.getUserId() + "");
-            mTvItemTeacherHomeworkTime.setText(data.getUploadDate());
-            mTvItemTeacherHomeworkTeacherScore.setText(data.getScore());
-            mTvItemTeacherHomeworkSubmit.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(context,TeacherHomeworkMarkActivity.class);
-                    intent.putExtra("fileUrl",data.getHomeworkUrl());
-                    intent.putExtra("id",data.getId());
-                    context.startActivity(intent);
-                }
+            ImageLoadUtils.setImageByUrl(mIvItemTeacherHomework, data.getMarkHomeworkUrl());
+            mTvItemTeacherHomeworkName.setText("姓名：" + data.getUploadName());
+            mTvItemTeacherHomeworkUserId.setText("学号：" + data.getIdNumber());
+            mTvItemTeacherHomeworkTime.setText("上传时间：" + data.getUploadDate());
+            if (data.getScore() != null)
+                mTvItemTeacherHomeworkTeacherScore.setText("分数：" + data.getScore());
+            else
+                mTvItemTeacherHomeworkTeacherScore.setText("评分");
+
+            itemView.setOnClickListener(v -> {
+                Intent intent = new Intent(context, TeacherHomeworkMarkActivity.class);
+                intent.putExtra("fileUrl", data.getHomeworkUrl());
+                intent.putExtra("userId",data.getIdNumber());
+                intent.putExtra("id", data.getId());
+                context.startActivity(intent);
             });
         }
     }

@@ -45,13 +45,6 @@ public class BaseRequest {
         addQeueu(request,listener);
     }
 
-    protected static void postFile(String url, Map<String, Object> data, File file, OnRequestListener listener) {
-        Request<String> request = NoHttp.createStringRequest(url, RequestMethod.POST);
-        request.add(data);
-        request.add("head",new FileBinary(file));
-        request.setHeader("Content-Type","multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW");
-        addQeueu(request,listener);
-    }
     protected static void post(String url, Map<String,Object> data, OnRequestListener listener){
         Request<String> request = NoHttp.createStringRequest(url, RequestMethod.POST);
         request.add(data);
@@ -59,16 +52,19 @@ public class BaseRequest {
     }
     protected static void post(String url, JSONObject data, OnRequestListener listener){
         Request<String> request = NoHttp.createStringRequest(url, RequestMethod.POST);
+        request.addHeader("Content-Type","application/json");
         request.setDefineRequestBodyForJson(data);
         addQeueu(request,listener);
     }
     protected static void post(String url, String jsonString, OnRequestListener listener){
         Request<String> request = NoHttp.createStringRequest(url, RequestMethod.POST);
+        request.addHeader("Content-Type","application/json");
         request.setDefineRequestBodyForJson(jsonString);
         addQeueu(request,listener);
     }
     protected static void get(String url, JSONObject data, OnRequestListener listener){
         Request<String> request = NoHttp.createStringRequest(url, RequestMethod.GET);
+        request.addHeader("Content-Type","application/json");
         request.setDefineRequestBodyForJson(data);
         addQeueu(request,listener);
     }

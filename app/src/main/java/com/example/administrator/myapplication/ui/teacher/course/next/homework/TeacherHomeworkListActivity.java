@@ -7,8 +7,8 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 
-import com.example.administrator.Utils.JsonUtils;
-import com.example.administrator.Utils.TopBarUtils;
+import com.example.administrator.utils.JsonUtils;
+import com.example.administrator.utils.TopBarUtils;
 import com.example.administrator.myapplication.R;
 import com.example.administrator.myapplication.adapter.TeacherHomeworkAdapter;
 import com.example.administrator.myapplication.model.Homework;
@@ -20,10 +20,10 @@ import java.util.List;
 
 import library.http.BaseRequest;
 
-public class TeacherHomeworkActivity extends AppCompatActivity {
+public class TeacherHomeworkListActivity extends AppCompatActivity {
 
     private Context context;
-    int homeworkOuterId;
+    int homeworkId;
     TeacherHomeworkAdapter adapter;
     private RecyclerView rvHomework;
 
@@ -57,8 +57,17 @@ public class TeacherHomeworkActivity extends AppCompatActivity {
     }
 
     private void initData() {
-        homeworkOuterId = getIntent().getIntExtra("homeworkOuterId",0);
-        HomeworkModel.getInstance().requestHomeworkList(homeworkOuterId, new BaseRequest.OnRequestListener() {
+        homeworkId = getIntent().getIntExtra("id",0);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        getData();
+    }
+
+    private void getData() {
+        HomeworkModel.getInstance().requestHomeworkList(homeworkId, new BaseRequest.OnRequestListener() {
             @Override
             public void onStart() {
 

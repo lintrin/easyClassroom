@@ -1,6 +1,6 @@
 package com.example.administrator.myapplication.server;
 
-import com.example.administrator.Utils.JsonUtils;
+import com.example.administrator.utils.JsonUtils;
 import com.example.administrator.myapplication.api.HomeworkApi;
 import com.example.administrator.myapplication.model.HomeworkOuter;
 import com.yanzhenjie.nohttp.FileBinary;
@@ -29,6 +29,8 @@ public class HomeworkServer extends BaseRequest {
         get(HomeworkApi.getHomeworkList,map,listener);
     }
 
+
+
     public static void addHomeWork(HomeworkOuter homeworkOuter, OnRequestListener listener) {
 
         String jsonString = JsonUtils.toJsonString(homeworkOuter);
@@ -48,5 +50,20 @@ public class HomeworkServer extends BaseRequest {
         map.put("file",new FileBinary(file));
         postFile(HomeworkApi.getHomeworkStudentAdd,map,listener);
 
+    }
+
+    public static void markHomeworkScore(int id, String score, String comment, OnRequestListener listener) {
+        Map<String,Object> map = new HashMap<>();
+        map.put("id",id);
+        map.put("score",score);
+        map.put("comment",comment);
+        postForm(HomeworkApi.markHomeworkScore,map,listener);
+    }
+
+    public static void returnHomework(int id, File file, OnRequestListener listener) {
+        Map<String,Object> map = new HashMap<>();
+        map.put("id",id);
+        map.put("file",new FileBinary(file));
+        postFile(HomeworkApi.returnHomework,map,listener);
     }
 }

@@ -53,7 +53,7 @@
         <activity android:name=".ui.student.course.next.StudentCourseMainActivity" />
         <activity android:name=".ui.teacher.course.TeacherAddCourseActivity" />
         <activity android:name=".ui.teacher.course.next.TeacherCourseMainActivity" />
-        <activity android:name=".ui.teacher.course.next.homework.TeacherHomeworkActivity" />
+        <activity android:name=".ui.teacher.course.next.homework.TeacherHomeworkListActivity" />
         <activity android:name=".ui.student.course.StudentJoinCourseActivity" />
         <activity android:name=".ui.teacher.course.next.sign.TeacherCheckInDetailsActivity" />
         <activity android:name=".ui.student.course.next.homework.StudentHomeworkRecordActivity" />

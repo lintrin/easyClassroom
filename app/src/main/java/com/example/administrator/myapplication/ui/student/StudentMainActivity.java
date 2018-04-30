@@ -8,7 +8,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 
-import com.example.administrator.Utils.JMessageUtil;
+import com.example.administrator.utils.JMessageUtil;
 import com.example.administrator.myapplication.R;
 import com.example.administrator.myapplication.adapter.MainViewPagerAdapter;
 import com.example.administrator.myapplication.ui.student.homepage.StudentFirstFragment;

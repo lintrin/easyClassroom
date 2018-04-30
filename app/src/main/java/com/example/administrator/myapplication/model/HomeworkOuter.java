@@ -1,21 +1,31 @@
 package com.example.administrator.myapplication.model;
 
 public class HomeworkOuter {
-    int createId;
-    int courseId;
-    String homeworkName;
-    String homeworkContent;
-    String createDate;
 
-    public HomeworkOuter() {
+    /**
+     * id : 8
+     * courseId : 20
+     * homeworkName : first
+     * homeworkContent : test
+     * createId : 1
+     * createDate : 20180501021822
+     * modifyDate : null
+     */
+
+    private int id;
+    private int courseId;
+    private String homeworkName;
+    private String homeworkContent;
+    private int createId;
+    private String createDate;
+    private Object modifyDate;
+
+    public int getId() {
+        return id;
     }
 
-    public int getCreateId() {
-        return createId;
-    }
-
-    public void setCreateId(int createId) {
-        this.createId = createId;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public int getCourseId() {
@@ -42,11 +52,27 @@ public class HomeworkOuter {
         this.homeworkContent = homeworkContent;
     }
 
+    public int getCreateId() {
+        return createId;
+    }
+
+    public void setCreateId(int createId) {
+        this.createId = createId;
+    }
+
     public String getCreateDate() {
         return createDate;
     }
 
     public void setCreateDate(String createDate) {
         this.createDate = createDate;
+    }
+
+    public Object getModifyDate() {
+        return modifyDate;
+    }
+
+    public void setModifyDate(Object modifyDate) {
+        this.modifyDate = modifyDate;
     }
 }

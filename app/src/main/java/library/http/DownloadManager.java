@@ -1,5 +1,7 @@
 package library.http;
 
+import com.yanzhenjie.nohttp.RequestMethod;
+
 import java.io.File;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -70,10 +72,11 @@ public class DownloadManager {
      * 下载文件 已存在则直接返回结果
      * @param url      文件地址
      * @param dirPath  下载目录
+     * @param method   请求方式
      * @param listener 两种监听器可选 {@link BaseDownloader.OnDownLoadListener},{@link BaseDownloader.OnDownLoadProgressListener}
      */
-    public void download(String url, String dirPath,boolean deleteOldFile,  BaseDownloader.BaseDownloadListener listener) {
-        downloader.download(url, dirPath, false, listener);
+    public void download(String url,RequestMethod method,String dirPath, String filename, boolean deleteOldFile,  BaseDownloader.BaseDownloadListener listener) {
+        downloader.download(url, method,dirPath, filename, false, listener);
     }
 
     public void cancelDownload(){

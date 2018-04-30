@@ -25,13 +25,14 @@ import java.io.File;
 import java.util.List;
 
 import library.http.BaseRequest;
+import library.http.HttpStateUtils;
 
 public class StudentHomeworkRecordActivity extends AppCompatActivity {
 
 
     private Activity context;
     private Course course;
-    private int homeworkOuterId;
+    private int homeworkId;
     private TextView tvTitle;
     private RecyclerView rvStudentHomeworkMark;
     private Button btnStudentHomeworkSubmit;
@@ -58,7 +59,7 @@ public class StudentHomeworkRecordActivity extends AppCompatActivity {
                         .withMutilyMode(false) //false单选 true多选
                         .start();
             } else {
-                HomeworkModel.getInstance().addStudentHomework(course.getId(), homeworkOuterId, new File(filename), new BaseRequest.OnRequestListener() {
+                HomeworkModel.getInstance().addStudentHomework(course.getId(), homeworkId, new File(filename), new BaseRequest.OnRequestListener() {
                     @Override
                     public void onStart() {
 
@@ -67,6 +68,7 @@ public class StudentHomeworkRecordActivity extends AppCompatActivity {
                     @Override
                     public void onCompleted(Response response) {
                         Log.i("sss", "onCompleted: "+response.toString());
+                        HttpStateUtils.showRequestMsg(context,response);
                     }
 
                     @Override
@@ -93,8 +95,8 @@ public class StudentHomeworkRecordActivity extends AppCompatActivity {
     private void initData() {
         course = CourseModel.getInstance().getCourse();
         tvTitle.setText(course.getName());
-        homeworkOuterId = getIntent().getIntExtra("homeworkOuterId", 0);
-        HomeworkModel.getInstance().requestHomework(homeworkOuterId, new BaseRequest.OnRequestListener() {
+        homeworkId = getIntent().getIntExtra("id", 0);
+        HomeworkModel.getInstance().requestHomework(homeworkId, new BaseRequest.OnRequestListener() {
             @Override
             public void onStart() {
 

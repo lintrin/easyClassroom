@@ -1,4 +1,4 @@
-package com.example.administrator.Utils;
+package com.example.administrator.utils;
 
 /**
  * Created by yejingqi on 2018/4/18.

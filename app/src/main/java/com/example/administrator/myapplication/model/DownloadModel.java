@@ -1,8 +1,9 @@
 package com.example.administrator.myapplication.model;
 
 
-import com.example.administrator.Utils.StoreUtils;
+import com.example.administrator.utils.StoreUtils;
 import com.example.administrator.myapplication.MyApp;
+import com.yanzhenjie.nohttp.RequestMethod;
 
 import java.io.File;
 
@@ -30,7 +31,7 @@ public class DownloadModel {
     }
 
     private DownloadModel() {
-        homeworkPath = StoreUtils.getCacheDirectory(MyApp.context,"homework").getAbsolutePath();
+        homeworkPath = StoreUtils.getCacheDirectory(MyApp.context, "homework").getAbsolutePath();
 
         if (!new File(homeworkPath).exists()) {
             new File(homeworkPath).mkdirs();
@@ -38,9 +39,14 @@ public class DownloadModel {
 
     }
 
-    public void download(String url,String num, BaseDownloader.OnDownLoadListener listener) {
-        DownloadManager.getInstance().download(url, homeworkPath, false, listener);
+    public void downloadByGet(String url, String filename, BaseDownloader.OnDownLoadListener listener) {
+
+        DownloadManager.getInstance().download(url, RequestMethod.GET,homeworkPath, filename,  false, listener);
     }
 
+    public void downloadByPost(String url, String filename, BaseDownloader.OnDownLoadListener listener) {
+
+        DownloadManager.getInstance().download(url, RequestMethod.POST,  homeworkPath,filename, false, listener);
+    }
 
 }

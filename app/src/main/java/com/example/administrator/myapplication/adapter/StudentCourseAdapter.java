@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.administrator.Utils.TextUtils;
+import com.example.administrator.utils.TextUtils;
 import com.example.administrator.myapplication.R;
 import com.example.administrator.myapplication.ui.student.course.next.StudentCourseMainActivity;
 import com.example.administrator.myapplication.model.Course;

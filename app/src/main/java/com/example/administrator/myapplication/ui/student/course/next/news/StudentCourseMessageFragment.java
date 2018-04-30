@@ -12,17 +12,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import com.example.administrator.Utils.JsonUtils;
+import com.example.administrator.utils.JsonUtils;
 import com.example.administrator.myapplication.R;
 import com.example.administrator.myapplication.adapter.CourseMessageAdapter;
-import com.example.administrator.myapplication.model.Course;
 import com.example.administrator.myapplication.model.CourseMessage;
 import com.example.administrator.myapplication.model.impl.CourseMessageModel;
 import com.yanzhenjie.nohttp.rest.Response;
-
-import org.greenrobot.eventbus.EventBus;
-import org.greenrobot.eventbus.Subscribe;
-import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.List;
 

@@ -1,6 +1,6 @@
 package com.example.administrator.myapplication.server;
 
-import com.example.administrator.Utils.JsonUtils;
+import com.example.administrator.utils.JsonUtils;
 import com.example.administrator.myapplication.api.CourseApi;
 import library.http.BaseRequest;
 

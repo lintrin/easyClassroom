@@ -1,9 +1,7 @@
-package com.example.administrator.Utils;
+package com.example.administrator.utils;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import com.example.administrator.myapplication.model.Course;
-import com.example.administrator.myapplication.model.Student;
 
 import java.util.List;
 

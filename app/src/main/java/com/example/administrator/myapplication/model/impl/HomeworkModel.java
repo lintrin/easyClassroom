@@ -54,4 +54,12 @@ public class HomeworkModel {
     public void addStudentHomework(int courseId, int homeworkOuterId, File file, BaseRequest.OnRequestListener listener) {
         HomeworkServer.addStudentHomework(courseId, homeworkOuterId, file, listener);
     }
+
+    public void markHomeworkScore(int id, String score, String comment,BaseRequest.OnRequestListener listener){
+        HomeworkServer.markHomeworkScore(id,score,comment,listener);
+    }
+
+    public void returnHomework(int id, File file,BaseRequest.OnRequestListener listener){
+        HomeworkServer.returnHomework(id,file,listener);
+    }
 }

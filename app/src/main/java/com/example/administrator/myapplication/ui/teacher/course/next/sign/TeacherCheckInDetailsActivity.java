@@ -6,8 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
-import com.example.administrator.Utils.JsonUtils;
-import com.example.administrator.Utils.MyHandler;
+import com.example.administrator.utils.JsonUtils;
+import com.example.administrator.utils.MyHandler;
 import com.example.administrator.myapplication.R;
 import com.example.administrator.myapplication.adapter.CheckInDetailsAdapter;
 import com.example.administrator.myapplication.model.CheckInRecord;

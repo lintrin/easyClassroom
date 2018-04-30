@@ -8,13 +8,14 @@ import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.administrator.Utils.JsonUtils;
-import com.example.administrator.Utils.TopBarUtils;
+import com.example.administrator.utils.JsonUtils;
+import com.example.administrator.utils.TopBarUtils;
 import com.example.administrator.myapplication.R;
 import com.example.administrator.myapplication.adapter.HomeworkOuterAdapter;
 import com.example.administrator.myapplication.model.Course;
@@ -72,6 +73,7 @@ public class StudentHomeworkFragment extends Fragment {
 
             @Override
             public void onCompleted(Response response) {
+                Log.i("sss", "onCompleted: "+response.toString());
                 List<HomeworkOuter> homeworkOuterList = JsonUtils.parseArray(response.get().toString(), "body", HomeworkOuter.class);
                 adapter.refreshData(homeworkOuterList);
             }
@@ -93,7 +95,7 @@ public class StudentHomeworkFragment extends Fragment {
         adapter.setOnItemClickListener((position, _data) -> {
             HomeworkOuter data = (HomeworkOuter) _data;
             Intent intent = new Intent(getContext(), StudentHomeworkRecordActivity.class);
-            intent.putExtra("homeworkOuterId", data.getCreateId());
+            intent.putExtra("id", data.getCreateId());
             intent.putExtra("title", data.getHomeworkName());
             startActivity(intent);
         });

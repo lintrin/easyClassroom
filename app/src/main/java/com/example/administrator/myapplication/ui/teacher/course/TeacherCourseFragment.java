@@ -10,12 +10,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.Toast;
 
-import com.example.administrator.Utils.JsonUtils;
+import com.example.administrator.utils.JsonUtils;
 import com.example.administrator.myapplication.R;
 import com.example.administrator.myapplication.adapter.TeacherCourseAdapter;
 import library.http.BaseRequest;
+import library.http.HttpStateUtils;
+
 import com.example.administrator.myapplication.model.Course;
 import com.example.administrator.myapplication.model.impl.CourseModel;
 import com.example.administrator.myapplication.server.CourseServer;
@@ -25,18 +26,17 @@ import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
-import java.util.HashMap;
 import java.util.List;
 
-public class TeacherSecondFragment extends Fragment {
+public class TeacherCourseFragment extends Fragment {
 
     View mainView;
     RecyclerView rv_course_teacher;
     Button btn_teacher_add_course;
     private TeacherCourseAdapter adapter;
 
-    public static TeacherSecondFragment newInstance() {
-        TeacherSecondFragment fragment = new TeacherSecondFragment();
+    public static TeacherCourseFragment newInstance() {
+        TeacherCourseFragment fragment = new TeacherCourseFragment();
         Bundle args = new Bundle();
         fragment.setArguments(args);
         return fragment;
@@ -128,12 +128,7 @@ public class TeacherSecondFragment extends Fragment {
             @Override
             public void onCompleted(Response response) {
                 Log.i("sss", "onCompleted: " + response.toString());
-                HashMap map = JsonUtils.parseObject(response.toString(), "head", HashMap.class);
-                if (map.get("msg") != null)
-                    Toast.makeText(getContext(), map.get("msg").toString(), Toast.LENGTH_SHORT).show();
-                else {
-                    Toast.makeText(getContext(), map.get("提交失败").toString(), Toast.LENGTH_SHORT).show();
-                }
+                HttpStateUtils.showRequestMsg(getContext(),response);
             }
 
             @Override

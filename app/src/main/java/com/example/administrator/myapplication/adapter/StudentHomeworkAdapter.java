@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.administrator.Utils.ImageLoadUtils;
+import com.example.administrator.utils.ImageLoadUtils;
 import com.example.administrator.myapplication.R;
 import com.example.administrator.myapplication.model.Homework;
 

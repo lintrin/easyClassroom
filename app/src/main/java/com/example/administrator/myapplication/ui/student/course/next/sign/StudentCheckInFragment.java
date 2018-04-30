@@ -14,8 +14,8 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.example.administrator.Utils.JsonUtils;
-import com.example.administrator.Utils.TextUtils;
+import com.example.administrator.utils.JsonUtils;
+import com.example.administrator.utils.TextUtils;
 import com.example.administrator.myapplication.R;
 import com.example.administrator.myapplication.adapter.StudentCheckInAdapter;
 import com.example.administrator.myapplication.model.Course;

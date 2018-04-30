@@ -1,4 +1,4 @@
-package com.example.administrator.Utils;
+package com.example.administrator.utils;
 
 /**
  * Created by yejingqi on 2018/4/23.
@@ -9,7 +9,6 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

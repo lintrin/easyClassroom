@@ -1,4 +1,4 @@
-package com.example.administrator.Utils;
+package com.example.administrator.utils;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;

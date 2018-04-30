@@ -1,4 +1,4 @@
-package com.example.administrator.Utils;
+package com.example.administrator.utils;
 
 import android.content.Context;
 import android.widget.ImageView;
@@ -6,7 +6,7 @@ import android.widget.ImageView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.resource.bitmap.CenterCrop;
-import com.example.administrator.Utils.glide.GlideRoundTransform;
+import com.example.administrator.utils.glide.GlideRoundTransform;
 import com.example.administrator.myapplication.R;
 
 /**
@@ -25,6 +25,10 @@ public class ImageLoadUtils {
     }
 
     public static void setImage(Context context, ImageView imageView, String url, int type, int defaultDrawable) {
+        if (url == null) {
+            imageView.setImageResource(defaultDrawable);
+            return;
+        }
         if (url.startsWith("http"))
             Glide.with(context).load(url)
                     .diskCacheStrategy(DiskCacheStrategy.ALL)

@@ -1,6 +1,5 @@
 package com.example.administrator.myapplication.server;
 
-import com.example.administrator.Utils.JsonUtils;
 import com.example.administrator.myapplication.api.CourseMessageApi;
 import com.example.administrator.myapplication.model.CourseMessage;
 import com.google.common.collect.Maps;

@@ -11,7 +11,7 @@ import android.widget.CheckBox;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.administrator.Utils.JsonUtils;
+import com.example.administrator.utils.JsonUtils;
 import com.example.administrator.myapplication.R;
 import library.http.BaseRequest;
 import com.example.administrator.myapplication.model.User;
@@ -33,7 +33,6 @@ public class LoginActivity extends AppCompatActivity {
     private TextView tv_register;
     private Button btn_login;
     private Context context;
-    public boolean isTeacher;
 
 
     @Override
@@ -56,7 +55,7 @@ public class LoginActivity extends AppCompatActivity {
         btn_login.setOnClickListener(view -> {
             String username = et_username.getText().toString();
             String password = et_password.getText().toString();
-            UserModel.getInstance().login(username, password, isTeacher,new BaseRequest.OnRequestListener() {
+            UserModel.getInstance().login(username, password, login_checkBox.isChecked(),new BaseRequest.OnRequestListener() {
                 @Override
                 public void onStart() {
 
@@ -86,7 +85,6 @@ public class LoginActivity extends AppCompatActivity {
                 }
             });
         });
-        login_checkBox.setOnCheckedChangeListener((buttonView, _isChecked) -> isTeacher = _isChecked);
     }
 
     private void initView() {

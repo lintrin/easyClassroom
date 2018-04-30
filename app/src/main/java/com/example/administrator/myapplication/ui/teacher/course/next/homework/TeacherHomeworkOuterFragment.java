@@ -8,6 +8,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,8 +16,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.administrator.Utils.DateUtils;
-import com.example.administrator.Utils.JsonUtils;
+import com.example.administrator.utils.DateUtils;
+import com.example.administrator.utils.JsonUtils;
 import com.example.administrator.myapplication.R;
 import com.example.administrator.myapplication.adapter.HomeworkOuterAdapter;
 import com.example.administrator.myapplication.model.Course;
@@ -85,6 +86,7 @@ public class TeacherHomeworkOuterFragment extends Fragment {
 
             @Override
             public void onCompleted(Response response) {
+                Log.i("sss", "onCompleted: "+response.toString());
                 List<HomeworkOuter> homeworkOuterList = JsonUtils.parseArray(response.get().toString(),"body",HomeworkOuter.class);
                 adapter.refreshData(homeworkOuterList);
             }
@@ -111,18 +113,15 @@ public class TeacherHomeworkOuterFragment extends Fragment {
         mRvHomework.addItemDecoration(line);
     }
     private void initListener() {
-        btnHomeworkOuterAdd.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialogue = new HomeworkAddDialogue();
-                dialogue.show(getFragmentManager(),"");
-            }
+        btnHomeworkOuterAdd.setOnClickListener(v -> {
+            dialogue = new HomeworkAddDialogue();
+            dialogue.show(getFragmentManager(),"");
         });
 
         adapter.setOnItemClickListener((position, _data) -> {
             HomeworkOuter data = (HomeworkOuter) _data;
-            Intent intent = new Intent(getContext(), TeacherHomeworkActivity.class);
-            intent.putExtra("homeworkOuterId", data.getCreateId());
+            Intent intent = new Intent(getContext(), TeacherHomeworkListActivity.class);
+            intent.putExtra("id", data.getId());
             intent.putExtra("title", data.getHomeworkName());
             startActivity(intent);
         });
