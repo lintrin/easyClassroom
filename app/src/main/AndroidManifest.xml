@@ -57,7 +57,8 @@
         <activity android:name=".ui.student.course.StudentJoinCourseActivity" />
         <activity android:name=".ui.teacher.course.next.sign.TeacherCheckInDetailsActivity" />
         <activity android:name=".ui.student.course.next.homework.StudentHomeworkRecordActivity" />
-        <activity android:name=".ui.teacher.course.next.homework.TeacherHomeworkMarkActivity"></activity>
+        <activity android:name=".ui.teacher.course.next.homework.TeacherHomeworkMarkActivity" />
+        <activity android:name=".ui.communal.ChattingActivity" />
     </application>
 
 </manifest>

@@ -18,4 +18,9 @@ public class CourseApi {
      */
     public static final String JOIN_COURSE = baseCourseUrl + "join";
 
+    /**
+     * 某门课程相关的用户列表
+     */
+    public static final String COURSE_USER_LIST = baseUrl + "courseUser/list?courseId=";
+
 }

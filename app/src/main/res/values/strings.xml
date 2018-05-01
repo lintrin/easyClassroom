@@ -18,4 +18,6 @@
     <string name="student_name">201400001</string>
     <string name="test_password">123456</string>
 
+    <string name="chat_input_hint">输入信息</string>
+
 </resources>

@@ -57,6 +57,10 @@ public class CourseModel {
         CourseServer.joinCourse(courseId, listener);
     }
 
+    public void courseUsers(Integer  courseId, BaseRequest.OnRequestListener listener) {
+        CourseServer.getCourseUserList(courseId, listener);
+    }
+
     public void setCourse(Course course) {
         this.course = course;
     }

@@ -65,6 +65,9 @@ public class LoginActivity extends AppCompatActivity {
                 public void onCompleted(Response response) {
                     User user = JsonUtils.parseObject(response.get().toString(),"body", User.class);
                     if (user!=null) {
+                        UserModel.getInstance().setUser(user);
+                        //进行极光SDK登录或者注册
+                        getUserInfo(user.getIdNumber());
                         //type 2学生 1老师
                         if (user.getType() == 2) {
                             Intent intent = new Intent(context, StudentMainActivity.class);

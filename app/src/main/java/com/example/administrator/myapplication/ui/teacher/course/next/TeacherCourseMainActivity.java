@@ -7,6 +7,7 @@ import android.widget.RadioGroup;
 import android.widget.TabHost;
 
 import com.example.administrator.myapplication.R;
+import com.example.administrator.myapplication.ui.communal.CourseChattingFragment;
 import com.example.administrator.myapplication.ui.communal.CourseRescouresFragment;
 import com.example.administrator.myapplication.ui.communal.HomeworkFragment;
 import com.example.administrator.myapplication.ui.teacher.course.next.sign.TeacherCheckInFragment;
@@ -24,7 +25,7 @@ public class TeacherCourseMainActivity extends AppCompatActivity {
 
     //todo 五个页面实现
     private final Class[] fragments = {CourseRescouresFragment.class,TeacherHomeworkOuterFragment.class,
-            HomeworkFragment.class, TeacherCheckInFragment.class, TeacherCourseMessageFragment.class
+            CourseChattingFragment.class, TeacherCheckInFragment.class, TeacherCourseMessageFragment.class
     };
     @Override
     protected void onCreate(Bundle savedInstanceState) {

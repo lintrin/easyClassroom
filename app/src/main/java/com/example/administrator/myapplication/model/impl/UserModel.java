@@ -7,7 +7,7 @@ import com.example.administrator.myapplication.server.UserServer;
 
 public class UserModel {
     private static UserModel instance;
-    private User user;
+    private static User user;
 
     public static UserModel getInstance() {
         if (instance==null){
@@ -26,10 +26,10 @@ public class UserModel {
 
 
     public User getUser() {
-        return user;
+        return UserModel.user;
     }
 
     public void setUser(User user) {
-        this.user = user;
+        UserModel.user = user;
     }
 }

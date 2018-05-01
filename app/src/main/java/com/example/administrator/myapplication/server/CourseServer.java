@@ -42,4 +42,7 @@ public class CourseServer extends BaseRequest {
         get(CourseRecordApi.GET_COURSE_RECORD_LIST + courseId, listener);
     }
 
+    public static void getCourseUserList(Integer courseId, OnRequestListener listener) {
+        get(CourseApi.COURSE_USER_LIST + courseId, listener);
+    }
 }
