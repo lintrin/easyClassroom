@@ -1,10 +1,12 @@
 package com.example.administrator.myapplication.model;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.UUID;
 
 import cn.jiguang.imui.commons.models.IMessage;
 import cn.jiguang.imui.commons.models.IUser;
+import cn.jpush.im.android.api.model.Message;
 
 /**
  * @author by JingQ on 2018/5/1.
@@ -19,12 +21,14 @@ public class MyMessage implements IMessage {
     private IUser user;
     private String contentFile;
     private long duration;
+    private MessageStatus mMsgStatus = MessageStatus.CREATED;
 
     public MyMessage(String text, int type) {
         this.text = text;
         this.type = type;
         this.id = UUID.randomUUID().getLeastSignificantBits();
     }
+
 
     @Override
     public String getMsgId() {
@@ -82,7 +86,11 @@ public class MyMessage implements IMessage {
 
     @Override
     public MessageStatus getMessageStatus() {
-        return null;
+        return mMsgStatus;
+    }
+
+    public void setMsgStatus(MessageStatus mMsgStatus) {
+        this.mMsgStatus = mMsgStatus;
     }
 
     @Override

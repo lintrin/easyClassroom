@@ -94,8 +94,9 @@ public class StudentHomeworkFragment extends Fragment {
         adapter = new HomeworkOuterAdapter(getContext(), null);
         adapter.setOnItemClickListener((position, _data) -> {
             HomeworkOuter data = (HomeworkOuter) _data;
+
             Intent intent = new Intent(getContext(), StudentHomeworkRecordActivity.class);
-            intent.putExtra("id", data.getCreateId());
+            intent.putExtra("id", data.getId());
             intent.putExtra("title", data.getHomeworkName());
             startActivity(intent);
         });

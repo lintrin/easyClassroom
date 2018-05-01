@@ -96,7 +96,7 @@ public class StudentHomeworkRecordActivity extends AppCompatActivity {
         course = CourseModel.getInstance().getCourse();
         tvTitle.setText(course.getName());
         homeworkId = getIntent().getIntExtra("id", 0);
-        HomeworkModel.getInstance().requestHomework(homeworkId, new BaseRequest.OnRequestListener() {
+        HomeworkModel.getInstance().requestHomeworkList(homeworkId, new BaseRequest.OnRequestListener() {
             @Override
             public void onStart() {
 

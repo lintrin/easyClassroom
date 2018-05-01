@@ -46,7 +46,7 @@
     <cn.jiguang.imui.chatinput.ChatInputView
         android:id="@+id/chat_input"
         android:layout_width="match_parent"
-        android:layout_height="58dp"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         app:cameraBtnIcon="@drawable/aurora_menuitem_camera"
         app:inputCursorDrawable="@drawable/aurora_edittext_cursor_bg"
