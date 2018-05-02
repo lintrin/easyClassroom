@@ -13,12 +13,9 @@ import com.example.administrator.myapplication.model.MyMessage;
 import com.example.administrator.myapplication.model.User;
 import com.example.administrator.myapplication.model.impl.UserModel;
 import com.example.administrator.utils.JMessageUtil;
-import com.example.administrator.utils.wrapper.PathWrapper;
 
-import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 import cn.jiguang.imui.chatinput.ChatInputView;
 import cn.jiguang.imui.chatinput.listener.OnMenuClickListener;
@@ -27,7 +24,6 @@ import cn.jiguang.imui.commons.models.IMessage;
 import cn.jiguang.imui.messages.MessageList;
 import cn.jiguang.imui.messages.MsgListAdapter;
 import cn.jiguang.imui.messages.ptr.PtrDefaultHeader;
-import cn.jiguang.imui.messages.ptr.PtrHandler;
 import cn.jiguang.imui.messages.ptr.PullToRefreshLayout;
 import cn.jiguang.imui.utils.DisplayUtil;
 import cn.jpush.im.android.api.JMessageClient;
@@ -35,7 +31,6 @@ import cn.jpush.im.android.api.content.CustomContent;
 import cn.jpush.im.android.api.content.ImageContent;
 import cn.jpush.im.android.api.content.TextContent;
 import cn.jpush.im.android.api.content.VoiceContent;
-import cn.jpush.im.android.api.enums.ContentType;
 import cn.jpush.im.android.api.event.MessageEvent;
 import cn.jpush.im.android.api.model.Conversation;
 import cn.jpush.im.android.api.model.Message;
@@ -53,25 +48,17 @@ import library.JPush.JPushUtils;
 public class ChattingActivity extends AppCompatActivity {
 
     private Conversation conversation;
-    ChatInputView chatInputView;
 
-    /**
-     * 登陆者
-     */
-    private static User user = UserModel.getInstance().getUser();
+    private User user = UserModel.getInstance().getUser();
     private static DefaultUser myUser;
-    /**
-     * 聊天者
-     */
     private static DefaultUser otherUser;
 
-
+    private ChatInputView chatInputView;
     private PullToRefreshLayout ptrLayout;
-
     private PtrDefaultHeader header;
-
     private MessageList messageList;
-
+    private int page = 0;
+    private int limit = 5; //每次读取N条
     private MsgListAdapter<MyMessage> adapter;
 
     @Override
@@ -147,10 +134,24 @@ public class ChattingActivity extends AppCompatActivity {
         ptrLayout.setPinContent(true);
         ptrLayout.setPtrHandler(layout -> {
             Log.i("MessageListActivity", "Loading next page");
-//                loadNextPage();
+                loadFormerPage();
             // 加载完历史消息后调用
             ptrLayout.refreshComplete();
         });
+
+    }
+
+    private void loadFormerPage() {
+        List<Message> messages = getMessages();
+        List<MyMessage> myMessageList = new ArrayList<>(messages.size());
+        for (int i = 0; i < messages.size(); i++) {
+            Message message = messages.get(i);
+            MyMessage  myMessage = createMessage(message);
+            myMessage.setUserInfo(myUser);
+            myMessageList.add(myMessage);
+        }
+
+        adapter.addToEndChronologically(myMessageList);
 
     }
 
@@ -172,7 +173,7 @@ public class ChattingActivity extends AppCompatActivity {
             @Override
             public void gotResult(int i, String s) {
                 conversation = Conversation.createSingleConversation(otherUser.getId(), JMessageUtil.APP_KEY);
-                getMessageList();
+                initMessageList();
 
             }
         });
@@ -184,26 +185,27 @@ public class ChattingActivity extends AppCompatActivity {
     /**
      * 获取消息列表
      */
-    private void getMessageList() {
-
-
-        List<Message> messages = conversation.getAllMessage();
-        Log.i("sss", "getMessageList: " + messages);
+    private void initMessageList() {
+        List<Message> messages = getMessages();
         List<MyMessage> myMessageList = new ArrayList<>(messages.size());
         for (int i = 0; i < messages.size(); i++) {
-            MyMessage myMessage;
-            int type = 0;
             Message message = messages.get(i);
-            myMessage = createMessage(message);
-
+            MyMessage  myMessage = createMessage(message);
             myMessage.setUserInfo(myUser);
             myMessageList.add(myMessage);
-            adapter.addToStart(myMessage,true);
+            adapter.addToStart(myMessage, true);
 
         }
 
 
+    }
 
+    private List<Message> getMessages() {
+        //参数 offset limit
+        List<Message> messages = conversation.getMessagesFromNewest(page, limit);
+        Log.i("sss", "initMessageList: " + messages);
+        page+=limit;
+        return messages;
     }
 
     /**
@@ -212,10 +214,6 @@ public class ChattingActivity extends AppCompatActivity {
      * @param content 内容
      */
     private void sendMessage(String content) {
-        Log.i("sss", "sendMessage: " + content);
-        Log.i("sss", "sendMessage: " + myUser.getId());
-
-
         Message message = JMessageClient.createSingleTextMessage(otherUser.getId(), JMessageUtil.APP_KEY, content);
         JMessageClient.sendMessage(message);
         MyMessage myMessage = createMessage(message);
@@ -233,13 +231,7 @@ public class ChattingActivity extends AppCompatActivity {
     public void onEvent(MessageEvent event) {
         Message msg = event.getMessage();
         MyMessage myMessage = createMessage(msg);
-        runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                adapter.addToStart(myMessage, true);
-
-            }
-        });
+        runOnUiThread(() -> adapter.addToStart(myMessage, true));
     }
 
     //目前只处理文字信息
