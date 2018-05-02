@@ -159,8 +159,25 @@ public class ChattingActivity extends AppCompatActivity {
         CourseUser courseUser = (CourseUser) getIntent().getSerializableExtra("otherUser");
         myUser = new DefaultUser(user.getIdNumber(), user.getName(), avatarPath);
         otherUser = new DefaultUser(courseUser.getIdNumber(), courseUser.getUserName(), avatarPath);
-        conversation = Conversation.createSingleConversation(myUser.getId(), JMessageUtil.APP_KEY);
-        getMessageList();
+
+        //需要先注册
+//        JMessageClient.register(myUser.getId(), "123456", new BasicCallback() {
+//            @Override
+//            public void gotResult(int i, String s) {
+//
+//            }
+//        });
+        Log.i("sss", "initData: " + myUser.getId());
+        JMessageClient.login(myUser.getId(), "123456", new BasicCallback() {
+            @Override
+            public void gotResult(int i, String s) {
+                conversation = Conversation.createSingleConversation(otherUser.getId(), JMessageUtil.APP_KEY);
+                getMessageList();
+
+            }
+        });
+
+
     }
 
 
@@ -181,11 +198,10 @@ public class ChattingActivity extends AppCompatActivity {
 
             myMessage.setUserInfo(myUser);
             myMessageList.add(myMessage);
-
+            adapter.addToStart(myMessage,true);
 
         }
 
-        adapter.addToEnd(myMessageList);
 
 
     }
@@ -197,9 +213,13 @@ public class ChattingActivity extends AppCompatActivity {
      */
     private void sendMessage(String content) {
         Log.i("sss", "sendMessage: " + content);
-        Log.i("sss", "sendMessage: "+myUser.getId());
-        Message message = JMessageClient.createSingleTextMessage(myUser.getId(), JMessageUtil.APP_KEY, content);
+        Log.i("sss", "sendMessage: " + myUser.getId());
+
+
+        Message message = JMessageClient.createSingleTextMessage(otherUser.getId(), JMessageUtil.APP_KEY, content);
         JMessageClient.sendMessage(message);
+        MyMessage myMessage = createMessage(message);
+        adapter.addToStart(myMessage, true);
     }
 
 
@@ -212,42 +232,17 @@ public class ChattingActivity extends AppCompatActivity {
      */
     public void onEvent(MessageEvent event) {
         Message msg = event.getMessage();
-        switch (msg.getContentType()) {
-            case text:
-                //处理文字消息
-                //  TODO
-                TextContent textContent = (TextContent) msg.getContent();
+        MyMessage myMessage = createMessage(msg);
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                adapter.addToStart(myMessage, true);
 
-                textContent.getText();
-
-                Log.i("sss", "onEvent: " + textContent.getText());
-                break;
-            case image:
-                //处理图片消息
-                ImageContent imageContent = (ImageContent) msg.getContent();
-                imageContent.getLocalPath();//图片本地地址
-                imageContent.getLocalThumbnailPath();//图片对应缩略图的本地地址
-                break;
-            case voice:
-                //处理语音消息
-                VoiceContent voiceContent = (VoiceContent) msg.getContent();
-                voiceContent.getLocalPath();//语音文件本地地址
-                voiceContent.getDuration();//语音文件时长
-                break;
-            case custom:
-                //处理自定义消息
-                CustomContent customContent = (CustomContent) msg.getContent();
-                customContent.getNumberValue("custom_num"); //获取自定义的值
-                customContent.getBooleanValue("custom_boolean");
-                customContent.getStringValue("custom_string");
-                break;
-            default:
-                break;
-
-
-        }
+            }
+        });
     }
 
+    //目前只处理文字信息
     public MyMessage createMessage(Message msg) {
         MyMessage myMessage = null;
         int type = 0;

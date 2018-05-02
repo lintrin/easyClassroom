@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".ui.communal.ChattingActivity">
 
     <cn.jiguang.imui.messages.ptr.PullToRefreshLayout
         android:id="@+id/pull_to_refresh_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginBottom="55dp"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         app:PtrCloseDuration="300"
         app:PtrCloseHeaderDuration="2000"
         app:PtrKeepHeaderWhenRefresh="true"
@@ -47,7 +48,6 @@
         android:id="@+id/chat_input"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
         app:cameraBtnIcon="@drawable/aurora_menuitem_camera"
         app:inputCursorDrawable="@drawable/aurora_edittext_cursor_bg"
         app:inputEditTextBg="@drawable/aurora_edittext_bg"
@@ -61,4 +61,4 @@
         app:voiceBtnIcon="@drawable/aurora_menuitem_mic" />
 
 
-</android.support.constraint.ConstraintLayout>
+</LinearLayout>
