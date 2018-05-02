@@ -8,8 +8,7 @@ import android.widget.TabHost;
 
 import com.example.administrator.myapplication.R;
 import com.example.administrator.myapplication.ui.communal.CourseChattingFragment;
-import com.example.administrator.myapplication.ui.communal.CourseRescouresFragment;
-import com.example.administrator.myapplication.ui.communal.HomeworkFragment;
+import com.example.administrator.myapplication.ui.communal.CourseResourceFragment;
 import com.example.administrator.myapplication.ui.teacher.course.next.sign.TeacherCheckInFragment;
 import com.example.administrator.myapplication.ui.teacher.course.next.news.TeacherCourseMessageFragment;
 import com.example.administrator.myapplication.ui.teacher.course.next.homework.TeacherHomeworkOuterFragment;
@@ -24,7 +23,7 @@ public class TeacherCourseMainActivity extends AppCompatActivity {
     private Course course;
 
     //todo 五个页面实现
-    private final Class[] fragments = {CourseRescouresFragment.class,TeacherHomeworkOuterFragment.class,
+    private final Class[] fragments = {CourseResourceFragment.class,TeacherHomeworkOuterFragment.class,
             CourseChattingFragment.class, TeacherCheckInFragment.class, TeacherCourseMessageFragment.class
     };
     @Override

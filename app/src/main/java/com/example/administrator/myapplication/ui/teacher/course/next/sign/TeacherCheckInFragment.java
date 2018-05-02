@@ -45,11 +45,7 @@ public class TeacherCheckInFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        List<Fragment> fragments = this.getFragmentManager().getFragments();
-        // TODO 猜测，最后要等全部页面填好之后才确定下标
-        if (fragments.size() != 0) {
-            course = (Course) fragments.get(0).getArguments().getSerializable("course");
-        }
+        course = CourseModel.getInstance().getCourse();
     }
 
     @Nullable

@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.administrator.myapplication.model.impl.CourseModel;
 import com.example.administrator.utils.JsonUtils;
 import com.example.administrator.utils.TextUtils;
 import com.example.administrator.myapplication.R;
@@ -54,11 +55,7 @@ public class TeacherCourseMessageFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EventBus.getDefault().register(this);
-        List<Fragment> fragments = this.getFragmentManager().getFragments();
-        // TODO 猜测，最后要等全部页面填好之后才确定下标
-        if (fragments.size() != 0) {
-            course = (Course) fragments.get(0).getArguments().getSerializable("course");
-        }
+        course = CourseModel.getInstance().getCourse();
     }
 
     @Override

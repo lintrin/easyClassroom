@@ -10,8 +10,7 @@ import com.example.administrator.myapplication.R;
 import com.example.administrator.myapplication.ui.communal.CourseChattingFragment;
 import com.example.administrator.myapplication.ui.student.course.next.news.StudentCourseMessageFragment;
 import com.example.administrator.myapplication.ui.student.course.next.sign.StudentCheckInFragment;
-import com.example.administrator.myapplication.ui.communal.CourseRescouresFragment;
-import com.example.administrator.myapplication.ui.communal.HomeworkFragment;
+import com.example.administrator.myapplication.ui.communal.CourseResourceFragment;
 import com.example.administrator.myapplication.ui.student.course.next.homework.StudentHomeworkFragment;
 import com.example.administrator.myapplication.model.Course;
 import com.example.administrator.myapplication.model.impl.CourseModel;
@@ -24,7 +23,7 @@ public class StudentCourseMainActivity extends AppCompatActivity {
     private Course course;
 
     //todo 五个页面实现
-    private final Class[] fragments = {CourseRescouresFragment.class,StudentHomeworkFragment.class,
+    private final Class[] fragments = {CourseResourceFragment.class,StudentHomeworkFragment.class,
             CourseChattingFragment.class, StudentCheckInFragment.class, StudentCourseMessageFragment.class
     };
     @Override
