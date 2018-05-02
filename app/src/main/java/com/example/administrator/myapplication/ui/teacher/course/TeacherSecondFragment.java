@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -20,6 +21,7 @@ import library.http.HttpStateUtils;
 import com.example.administrator.myapplication.model.Course;
 import com.example.administrator.myapplication.model.impl.CourseModel;
 import com.example.administrator.myapplication.server.CourseServer;
+import com.example.administrator.view.DividerLine;
 import com.yanzhenjie.nohttp.rest.Response;
 
 import org.greenrobot.eventbus.EventBus;
@@ -28,15 +30,15 @@ import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.List;
 
-public class TeacherCourseFragment extends Fragment {
+public class TeacherSecondFragment extends Fragment {
 
     View mainView;
     RecyclerView rv_course_teacher;
     Button btn_teacher_add_course;
     private TeacherCourseAdapter adapter;
 
-    public static TeacherCourseFragment newInstance() {
-        TeacherCourseFragment fragment = new TeacherCourseFragment();
+    public static TeacherSecondFragment newInstance() {
+        TeacherSecondFragment fragment = new TeacherSecondFragment();
         Bundle args = new Bundle();
         fragment.setArguments(args);
         return fragment;
@@ -105,7 +107,9 @@ public class TeacherCourseFragment extends Fragment {
         rv_course_teacher = mainView.findViewById(R.id.rv_course_teacher);
 
         adapter = new TeacherCourseAdapter(getContext(),null);
-        rv_course_teacher.setLayoutManager(new GridLayoutManager(getContext(), 3));
+        rv_course_teacher.setLayoutManager(new LinearLayoutManager(getContext()));
+        DividerLine line = new DividerLine();
+        rv_course_teacher.addItemDecoration(line);
         rv_course_teacher.setAdapter(adapter);
         btn_teacher_add_course = mainView.findViewById(R.id.btn_teacher_add_course);
     }

@@ -21,6 +21,7 @@ import com.example.administrator.myapplication.R;
 import com.example.administrator.myapplication.adapter.StudentCourseAdapter;
 import com.example.administrator.myapplication.model.Course;
 import com.example.administrator.myapplication.model.impl.CourseModel;
+import com.example.administrator.view.DividerLine;
 import com.yanzhenjie.nohttp.rest.Response;
 
 import java.util.List;
@@ -93,6 +94,8 @@ public class StudentSecondFragment extends Fragment implements View.OnClickListe
         mRvCourseStudent = mainView.findViewById(R.id.rv_course_student);
         adapter = new StudentCourseAdapter(getContext(),null);
         mRvCourseStudent.setAdapter(adapter);
+        DividerLine line = new DividerLine();
+        mRvCourseStudent.addItemDecoration(line);
         mRvCourseStudent.setLayoutManager(new LinearLayoutManager(getContext()));
         btnSearchCourse = mainView.findViewById(R.id.btn_search_course);
         TopBarUtils topBarUtils = new TopBarUtils(mainView);

@@ -11,7 +11,7 @@ import android.view.MenuItem;
 import com.example.administrator.myapplication.R;
 import com.example.administrator.myapplication.adapter.MainViewPagerAdapter;
 import com.example.administrator.myapplication.ui.teacher.homepage.TeacherFirstFragment;
-import com.example.administrator.myapplication.ui.teacher.course.TeacherCourseFragment;
+import com.example.administrator.myapplication.ui.teacher.course.TeacherSecondFragment;
 import com.example.administrator.myapplication.ui.teacher.chatting.TeacherThirdFragment;
 import com.example.administrator.myapplication.view.SteerableViewPager;
 
@@ -35,7 +35,7 @@ public class TeacherMainActivity extends AppCompatActivity {
 
         List<Fragment> fragmentList = new ArrayList<>(3);
         fragmentList.add(TeacherFirstFragment.newInstance());
-        fragmentList.add(TeacherCourseFragment.newInstance());
+        fragmentList.add(TeacherSecondFragment.newInstance());
         fragmentList.add(TeacherThirdFragment.newInstance());
         vpMain = findViewById(R.id.vp_main);
         vpMain.setLeft_allow(false);

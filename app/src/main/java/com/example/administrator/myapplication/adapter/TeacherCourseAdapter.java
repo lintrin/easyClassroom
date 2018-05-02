@@ -6,11 +6,13 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.administrator.myapplication.R;
 import com.example.administrator.myapplication.ui.teacher.course.next.TeacherCourseMainActivity;
 import com.example.administrator.myapplication.model.Course;
+import com.example.administrator.utils.TextUtils;
 
 import java.util.List;
 
@@ -22,7 +24,6 @@ public class TeacherCourseAdapter extends BaseRecycleViewAdapter<Course> {
         this.context = context;
         setData(list);
     }
-
     @Override
     public int getItemType(int position) {
         return 0;
@@ -30,7 +31,8 @@ public class TeacherCourseAdapter extends BaseRecycleViewAdapter<Course> {
 
     @Override
     public RecyclerView.ViewHolder onCreate(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.item_teacher_course, parent, false);
+
+        View view = LayoutInflater.from(context).inflate(R.layout.item_student_course, parent, false);
         return new VHolder(view);
     }
 
@@ -39,22 +41,33 @@ public class TeacherCourseAdapter extends BaseRecycleViewAdapter<Course> {
         ((VHolder) viewHolder).setData(realPosition, data);
     }
 
-
-
     class VHolder extends RecyclerView.ViewHolder {
-        TextView mTvCourseName;
-        TextView mTvCourseSeason;
+        ImageView mIvItemStudentCourse;
+        TextView mTvItemStudentCourseClass;
+        TextView mTvItemStudentCourseTitle;
+        TextView mTvItemStudentCourseTeacher;
+        TextView mTvItemStudentCourseCode;
 
         VHolder(View view) {
             super(view);
-            this.mTvCourseName = (TextView) view.findViewById(R.id.tv_course_name);
-            this.mTvCourseSeason = (TextView) view.findViewById(R.id.tv_course_season);
+            this.mIvItemStudentCourse = (ImageView) view.findViewById(R.id.iv_item_student_course);
+            this.mTvItemStudentCourseClass = (TextView) view.findViewById(R.id.tv_item_student_course_class);
+            this.mTvItemStudentCourseTitle = (TextView) view.findViewById(R.id.tv_item_student_course_title);
+            this.mTvItemStudentCourseTeacher = (TextView) view.findViewById(R.id.tv_item_student_course_teacher);
+            this.mTvItemStudentCourseCode = (TextView) view.findViewById(R.id.tv_item_student_course_teacher_code);
+
         }
 
         void setData(int position, Course data) {
-            mTvCourseName.setText(data.getName());
-            mTvCourseSeason.setText(data.getBeginPeriod()+"-"+data.getEndPeriod()+" 第"+data.getTerm()+"学期");
-            itemView.setOnClickListener(view -> {
+            mTvItemStudentCourseClass.setText(data.getBuildingNumber() + "# " + data.getClassroom());
+            mTvItemStudentCourseTitle.setText(data.getName());
+            if (TextUtils.isEmpty(data.getTeachers()))
+                mTvItemStudentCourseTeacher.setText("X老师");
+            else
+                mTvItemStudentCourseTeacher.setText(data.getTeachers());
+            mTvItemStudentCourseCode.setText(data.getCode());
+
+            itemView.setOnClickListener(v -> {
                 Intent intent = new Intent(context, TeacherCourseMainActivity.class);
                 intent.putExtra("course", data);
                 context.startActivity(intent);
