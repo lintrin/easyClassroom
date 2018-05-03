@@ -17,9 +17,11 @@ import android.widget.Toast;
 
 import com.example.administrator.config.Consant;
 import com.example.administrator.myapplication.R;
+import com.example.administrator.myapplication.adapter.BaseRecycleViewAdapter;
 import com.example.administrator.myapplication.adapter.CourseResourceAdapter;
 import com.example.administrator.myapplication.model.Course;
 import com.example.administrator.myapplication.model.CourseResource;
+import com.example.administrator.myapplication.model.DownloadModel;
 import com.example.administrator.myapplication.model.User;
 import com.example.administrator.myapplication.model.impl.CourseModel;
 import com.example.administrator.myapplication.model.impl.UserModel;
@@ -31,6 +33,7 @@ import com.yanzhenjie.nohttp.rest.Response;
 import java.io.File;
 import java.util.List;
 
+import library.http.BaseDownloader;
 import library.http.BaseRequest;
 import library.http.HttpStateUtils;
 
@@ -103,8 +106,28 @@ public class CourseResourceFragment extends Fragment {
 
                     @Override
                     public void onCompleted(Response response) {
-                        Log.i("sss", "onCompleted: "+response.toString());
-                        HttpStateUtils.showRequestMsg(context,response);
+                        Log.i("sss", "onCompleted: " + response.toString());
+                        HttpStateUtils.showRequestMsg(context, response);
+                    }
+
+                    @Override
+                    public void onError(String msg) {
+
+                    }
+                });
+            }
+        });
+
+        //todo 点击下载
+        adapter.setOnItemClickListener(new BaseRecycleViewAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(int position, Object _data) {
+                CourseResource data = (CourseResource) _data;
+                Toast.makeText(context, data.getFileUrl(), Toast.LENGTH_SHORT).show();
+                DownloadModel.getInstance().downloadByGet(data.getFileUrl(), null, new BaseDownloader.OnDownLoadListener() {
+                    @Override
+                    public void onCompleted(int position, String filepath) {
+                        Toast.makeText(context,filepath,Toast.LENGTH_SHORT).show();
                     }
 
                     @Override
@@ -158,11 +181,12 @@ public class CourseResourceFragment extends Fragment {
             if (requestCode == Consant.REQUEST_CODE_FROM_ACTIVITY) {
                 List<String> list = data.getStringArrayListExtra(Constant.RESULT_INFO);
                 filename = list.get(0);
-                Log.i("sss", "initListener: "+filename);
+                Log.i("sss", "initListener: " + filename);
                 mBtnUpload.setText("确认提交");
                 Toast.makeText(getApplicationContext(), "选中了" + list.size() + "个文件", Toast.LENGTH_SHORT).show();
             }
         }
     }
+
 
 }

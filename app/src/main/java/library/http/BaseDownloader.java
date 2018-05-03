@@ -44,6 +44,13 @@ public class BaseDownloader {
             addDownloadQueue(downloadRequest, (OnDownLoadListener) listener);
         else addDownloadQueue(downloadRequest, (OnDownLoadProgressListener) listener);
     }
+    public void download(String url, RequestMethod method,String filePath,boolean deleteOldFile, BaseDownloadListener listener) {
+        DownloadRequest downloadRequest = NoHttp.createDownloadRequest(url,method,filePath,false,deleteOldFile);
+        downloadRequest.setCancelSign(CANCEL_SIGN);
+        if (listener instanceof OnDownLoadListener)
+            addDownloadQueue(downloadRequest, (OnDownLoadListener) listener);
+        else addDownloadQueue(downloadRequest, (OnDownLoadProgressListener) listener);
+    }
 
 
 

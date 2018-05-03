@@ -57,9 +57,7 @@ public class CourseResourceAdapter extends BaseRecycleViewAdapter<CourseResource
             mtvFileName.setText(data.getName());
             mtvUploadTime.setText(PeriodUtil.format(data.getUploadDate(), TIME_PATTERN));
 
-            itemView.setOnClickListener(view -> {
-                Toast.makeText(context, data.getFileUrl(), Toast.LENGTH_SHORT).show();
-            });
+
         }
     }
 }
