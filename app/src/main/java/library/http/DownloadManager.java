@@ -33,10 +33,9 @@ public class DownloadManager {
     }
 
 
-
-
     /**
      * 下载或 对比文件大小重新下载文件
+     *
      * @param url      文件地址
      * @param dirPath  下载目录
      * @param filename 文件名 包含后缀
@@ -60,6 +59,7 @@ public class DownloadManager {
 
     /**
      * 下载文件 已存在则直接返回结果
+     *
      * @param url      文件地址
      * @param dirPath  下载目录
      * @param filename 文件名 包含后缀
@@ -68,18 +68,25 @@ public class DownloadManager {
     public void download(String url, String dirPath, String filename, BaseDownloader.BaseDownloadListener listener) {
         downloader.download(url, dirPath, filename, false, listener);
     }
+
     /**
      * 下载文件 已存在则直接返回结果
+     *
      * @param url      文件地址
      * @param dirPath  下载目录
      * @param method   请求方式
      * @param listener 两种监听器可选 {@link BaseDownloader.OnDownLoadListener},{@link BaseDownloader.OnDownLoadProgressListener}
      */
-    public void download(String url,RequestMethod method,String dirPath, String filename, boolean deleteOldFile,  BaseDownloader.BaseDownloadListener listener) {
-        downloader.download(url, method,dirPath, filename, false, listener);
+    public void download(String url, RequestMethod method, String dirPath, String filename, boolean deleteOldFile, BaseDownloader.BaseDownloadListener listener) {
+        if (filename != null)
+            downloader.download(url, method, dirPath, filename, false, listener);
+        else
+            downloader.download(url, method, dirPath, false, listener);
+
     }
 
-    public void cancelDownload(){
+
+    public void cancelDownload() {
         downloader.cancelDownload();
     }
 

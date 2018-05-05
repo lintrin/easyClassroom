@@ -51,7 +51,6 @@ public class CourseChattingFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.context = getContext();
-        List<Fragment> fragments = this.getFragmentManager().getFragments();
         course = CourseModel.getInstance().getCourse();
     }
 

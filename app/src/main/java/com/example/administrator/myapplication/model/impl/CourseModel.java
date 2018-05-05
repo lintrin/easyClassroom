@@ -6,6 +6,8 @@ import library.http.BaseRequest;
 import com.example.administrator.myapplication.model.Course;
 import com.example.administrator.myapplication.server.CourseServer;
 
+import java.io.File;
+
 public class CourseModel {
     private static CourseModel instance;
     private Course course;
@@ -59,6 +61,14 @@ public class CourseModel {
 
     public void courseUsers(Integer  courseId, BaseRequest.OnRequestListener listener) {
         CourseServer.getCourseUserList(courseId, listener);
+    }
+
+    public void getCourseResources(Integer courseId, BaseRequest.OnRequestListener listener) {
+        CourseServer.getCourseResources(courseId, listener);
+    }
+
+    public void uploadCourseResource(Integer courseId, File file, BaseRequest.OnRequestListener listener) {
+        CourseServer.uploadResource(courseId, file, listener);
     }
 
     public void setCourse(Course course) {

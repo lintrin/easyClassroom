@@ -23,4 +23,20 @@ public class CourseApi {
      */
     public static final String COURSE_USER_LIST = baseUrl + "courseUser/list?courseId=";
 
+    private static final String BASE_COURSE_RESOURCE_URL = baseUrl + "file/";
+
+    /**
+     * 上传课程资源
+     */
+    public static final String UPLOAD_COURSE_RESOURCE = BASE_COURSE_RESOURCE_URL + "upload";
+
+    /**
+     * 获取课程资源列表
+     */
+    public static final String GET_COURSE_RESOURCE_LIST = BASE_COURSE_RESOURCE_URL + "list?courseId=";
+
+    /**
+     * 根据ID删除某个课程资源
+     */
+    public static final String DELETE_COURSE_RESOURCE = BASE_COURSE_RESOURCE_URL + "delete?id=";
 }
