@@ -2,6 +2,7 @@ package com.example.administrator.myapplication;
 
 import android.app.Application;
 import android.content.Context;
+import android.support.multidex.MultiDex;
 
 import cn.jpush.im.android.api.event.MessageEvent;
 import library.http.HttpManager;
@@ -22,6 +23,9 @@ public class MyApp extends Application{
 
     }
 
-
-
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(base);
+        MultiDex.install(base);
+    }
 }
