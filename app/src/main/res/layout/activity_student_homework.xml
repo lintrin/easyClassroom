@@ -49,7 +49,7 @@ android:orientation="vertical">
     android:padding="20dp">
 
     <ImageView
-        android:src="@drawable/ic_assignment"
+        tools:src="@drawable/ic_assignment"
         android:id="@+id/iv_student_avatar"
         android:layout_width="42dp"
         android:layout_height="42dp" />
@@ -61,7 +61,7 @@ android:orientation="vertical">
         android:layout_alignTop="@id/iv_student_avatar"
         android:layout_marginLeft="10dp"
         android:layout_toRightOf="@id/iv_student_avatar"
-        android:text="name" />
+        tools:text="name" />
 
     <TextView
         android:layout_marginTop="4dp"
@@ -71,7 +71,7 @@ android:orientation="vertical">
         android:layout_below="@id/tv_student_name"
         android:layout_marginLeft="10dp"
         android:layout_toRightOf="@id/iv_student_avatar"
-        android:text="201400001" />
+        tools:text="201400001" />
 
     <TextView
         android:id="@+id/tv_student_date"
@@ -80,15 +80,15 @@ android:orientation="vertical">
         android:layout_below="@id/tv_student_number"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="4dp"
+        android:layout_marginRight="10dp"
         android:layout_toRightOf="@id/iv_student_avatar"
-        android:text="2018.04.18 13:16" />
+        tools:text="2018.04.18 13:16" />
 
     <TextView
         android:id="@+id/tv_student_homework_state"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignTop="@id/tv_student_date"
-        android:layout_marginLeft="10dp"
         android:layout_toRightOf="@id/tv_student_date"
         android:text="已提交" />
 
@@ -126,10 +126,33 @@ android:orientation="vertical">
     <include layout="@layout/include_stroke" />
 </LinearLayout>
 
-<android.support.v7.widget.RecyclerView
-    android:id="@+id/rv_student_homework_mark"
+<LinearLayout
+    android:padding="10dp"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"/>
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:layout_height="wrap_content">
+    <ImageView
+        android:id="@+id/iv_student_homework_mark_icon"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        tools:src="@drawable/ic_assignment"/>
+
+    <TextView
+        android:layout_marginLeft="12dp"
+        android:id="@+id/tv_student_number2"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/tv_student_homework_score"
+        android:layout_marginRight="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#FF9800"
+        tools:text="4分"/>
+</LinearLayout>
 
 
 </LinearLayout>

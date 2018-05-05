@@ -41,7 +41,6 @@ public class StudentHomeworkFragment extends Fragment {
     private RecyclerView mRvHomework;
     private HomeworkOuterAdapter adapter;
     private Course course;
-    private HomeworkAddDialogue dialogue;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -100,9 +99,7 @@ public class StudentHomeworkFragment extends Fragment {
             startActivity(intent);
         });
         mRvHomework.setAdapter(adapter);
-        DividerLine line = new DividerLine(DividerLine.VERTICAL);
-        line.setSize(1);
-        line.setColor(ContextCompat.getColor(getContext(), R.color.stroke_main));
+        DividerLine line = new DividerLine();
         mRvHomework.addItemDecoration(line);
     }
 
