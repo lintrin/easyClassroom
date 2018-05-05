@@ -15,6 +15,7 @@ import android.widget.TabHost;
 import com.example.administrator.myapplication.R;
 import com.example.administrator.myapplication.adapter.FragmentViewPagerAdapter;
 import com.example.administrator.myapplication.ui.communal.CourseChattingFragment;
+import com.example.administrator.myapplication.ui.communal.CourseResourceFragment;
 import com.example.administrator.myapplication.ui.student.course.next.news.StudentCourseMessageFragment;
 import com.example.administrator.myapplication.ui.student.course.next.sign.StudentCheckInFragment;
 import com.example.administrator.myapplication.ui.communal.CourseRescourceFragment;
@@ -34,7 +35,7 @@ public class StudentCourseMainActivity extends AppCompatActivity {
     private FragmentViewPagerAdapter adapter;
     private Course course;
     private List<Fragment> fragmentList;
-    String title[] = {"公共资源","作业","成员","签到","公共"};
+    String title[] = {"公共资源","作业","成员","签到","公告"};
 
 
     @Override
@@ -53,7 +54,7 @@ public class StudentCourseMainActivity extends AppCompatActivity {
 
     private void initPager() {
         fragmentList =new ArrayList<>(5);
-        fragmentList.add(CourseRescourceFragment.newInstance());
+        fragmentList.add(CourseResourceFragment.newInstance());
         fragmentList.add(StudentHomeworkFragment.newInstance());
         fragmentList.add(CourseChattingFragment.newInstance());
         fragmentList.add(StudentCheckInFragment.newInstance());

@@ -67,6 +67,13 @@ public class CourseResourceFragment extends Fragment {
         // Rescources
     }
 
+    public static CourseResourceFragment newInstance() {
+        Bundle args = new Bundle();
+        CourseResourceFragment fragment = new CourseResourceFragment();
+        fragment.setArguments(args);
+        return fragment;
+    }
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -108,6 +115,8 @@ public class CourseResourceFragment extends Fragment {
                     public void onCompleted(Response response) {
                         Log.i("sss", "onCompleted: " + response.toString());
                         HttpStateUtils.showRequestMsg(context, response);
+                        Toast.makeText(context, "上传成功", Toast.LENGTH_SHORT).show();
+                        initData();
                     }
 
                     @Override
