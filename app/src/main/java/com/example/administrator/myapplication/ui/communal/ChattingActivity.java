@@ -192,10 +192,8 @@ public class ChattingActivity extends AppCompatActivity {
             Message message = messages.get(i);
             MyMessage  myMessage = createMessage(message);
             myMessageList.add(myMessage);
-            adapter.addToStart(myMessage, true);
-
         }
-
+        adapter.addToEnd(myMessageList);
 
     }
 

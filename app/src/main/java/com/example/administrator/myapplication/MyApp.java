@@ -3,6 +3,7 @@ package com.example.administrator.myapplication;
 import android.app.Application;
 import android.content.Context;
 
+import cn.jpush.im.android.api.event.MessageEvent;
 import library.http.HttpManager;
 
 import cn.jpush.im.android.api.JMessageClient;
@@ -18,5 +19,9 @@ public class MyApp extends Application{
         context = this;
         HttpManager.initNoHttpWhitDBCache(this, false, true);
         JMessageClient.init(context);
+
     }
+
+
+
 }

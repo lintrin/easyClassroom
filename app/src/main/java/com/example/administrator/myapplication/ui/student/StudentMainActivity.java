@@ -1,5 +1,7 @@
 package com.example.administrator.myapplication.ui.student;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -8,6 +10,8 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 
+import com.example.administrator.myapplication.model.CourseUser;
+import com.example.administrator.myapplication.ui.communal.ChattingActivity;
 import com.example.administrator.utils.JMessageUtil;
 import com.example.administrator.myapplication.R;
 import com.example.administrator.myapplication.adapter.MainViewPagerAdapter;
@@ -20,19 +24,25 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cn.jpush.im.android.api.JMessageClient;
+import cn.jpush.im.android.api.callback.GetUserInfoCallback;
+import cn.jpush.im.android.api.event.NotificationClickEvent;
 import cn.jpush.im.android.api.model.Conversation;
+import cn.jpush.im.android.api.model.UserInfo;
 
 public class StudentMainActivity extends AppCompatActivity {
 
     private SteerableViewPager vpMain;
     private BottomNavigationView navigation;
+    private Context context;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        context = this;
         initView();
+        JMessageClient.registerEventReceiver(this);
     }
 
     private void initView() {
@@ -107,5 +117,30 @@ public class StudentMainActivity extends AppCompatActivity {
      */
     private void sendMessage() {
         JMessageClient.createSingleTextMessage("101026", JMessageUtil.APP_KEY, "第一条测试消息");
+    }
+
+    @Override
+    protected void onDestroy() {
+        JMessageClient.unRegisterEventReceiver(this);
+        super.onDestroy();
+    }
+
+    public void onEvent(NotificationClickEvent event) {
+
+        JMessageClient.getUserInfo(event.getMessage().getFromUser().getUserName(), new GetUserInfoCallback() {
+            @Override
+            public void gotResult(int i, String s, UserInfo userInfo) {
+                if (userInfo != null) {
+                    CourseUser courseUser = new CourseUser();
+                    courseUser.setIdNumber(event.getMessage().getFromUser().getUserName());
+                    courseUser.setUserName(event.getMessage().getFromUser().getNickname());
+                    Intent notificationIntent = new Intent(context, ChattingActivity.class);
+                    notificationIntent.putExtra("otherUser", courseUser);
+                    startActivity(notificationIntent);//自定义跳转到指定页面
+                }
+            }
+        });
+
+
     }
 }
