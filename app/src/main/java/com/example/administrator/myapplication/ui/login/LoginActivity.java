@@ -13,6 +13,8 @@ import android.widget.Toast;
 
 import com.example.administrator.utils.JsonUtils;
 import com.example.administrator.myapplication.R;
+
+import cn.jpush.im.android.api.options.RegisterOptionalUserInfo;
 import library.http.BaseRequest;
 import com.example.administrator.myapplication.model.User;
 import com.example.administrator.myapplication.model.impl.UserModel;
@@ -114,7 +116,11 @@ public class LoginActivity extends AppCompatActivity {
 
     private void registerIM(String idNumber) {
         String defaultPassword = "123456";
-        JMessageClient.register(idNumber, defaultPassword, new BasicCallback() {
+        User user = UserModel.getInstance().getUser();
+        // 极光用户注册信息
+        RegisterOptionalUserInfo userInfo = new RegisterOptionalUserInfo();
+        userInfo.setNickname(user.getName());
+        JMessageClient.register(idNumber, defaultPassword, userInfo, new BasicCallback() {
             @Override
             public void gotResult(int i, String s) {
                 loginIM(idNumber);
