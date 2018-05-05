@@ -7,8 +7,6 @@
     android:layout_height="match_parent"
     tools:context="com.example.administrator.myapplication.ui.teacher.course.next.homework.TeacherHomeworkListActivity">
 
-    <include layout="@layout/include_topbar_back"/>
-
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_student_homework"
         android:layout_width="match_parent"

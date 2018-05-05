@@ -14,6 +14,7 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.administrator.myapplication.ui.communal.CourseChattingFragment;
 import com.example.administrator.utils.JsonUtils;
 import com.example.administrator.utils.TextUtils;
 import com.example.administrator.myapplication.R;
@@ -48,11 +49,9 @@ public class StudentCheckInFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        List<Fragment> fragments = this.getFragmentManager().getFragments();
-        // TODO 猜测，最后要等全部页面填好之后才确定下标
-        if (fragments.size() != 0) {
-            course = (Course) fragments.get(0).getArguments().getSerializable("course");
-        }
+
+            course = CourseModel.getInstance().getCourse();
+
     }
 
     @Nullable
@@ -149,5 +148,17 @@ public class StudentCheckInFragment extends Fragment {
 
             }
         });
+    }
+
+    public static StudentCheckInFragment newInstance() {
+        Bundle args = new Bundle();
+        StudentCheckInFragment fragment = new StudentCheckInFragment();
+        fragment.setArguments(args);
+        return fragment;
+    }
+
+    @Override
+    public void setArguments(Bundle args) {
+        super.setArguments(args);
     }
 }

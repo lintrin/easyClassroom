@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.administrator.myapplication.ui.communal.CourseRescourceFragment;
 import com.example.administrator.utils.JsonUtils;
 import com.example.administrator.utils.TopBarUtils;
 import com.example.administrator.myapplication.R;
@@ -87,8 +88,6 @@ public class StudentHomeworkFragment extends Fragment {
 
 
     private void initView() {
-        TopBarUtils topBar = new TopBarUtils(view);
-        topBar.setTitle(course.getName());
         mRvHomework = view.findViewById(R.id.rv_student_homework);
         mRvHomework.setLayoutManager(new LinearLayoutManager(getContext()));
         adapter = new HomeworkOuterAdapter(getContext(), null);
@@ -113,4 +112,15 @@ public class StudentHomeworkFragment extends Fragment {
         super.onDestroy();
     }
 
+    public static StudentHomeworkFragment newInstance() {
+        Bundle args = new Bundle();
+        StudentHomeworkFragment fragment = new StudentHomeworkFragment();
+        fragment.setArguments(args);
+        return fragment;
+    }
+
+    @Override
+    public void setArguments(Bundle args) {
+        super.setArguments(args);
+    }
 }

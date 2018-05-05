@@ -59,6 +59,8 @@
         <activity android:name=".ui.student.course.next.homework.StudentHomeworkRecordActivity" />
         <activity android:name=".ui.teacher.course.next.homework.TeacherHomeworkMarkActivity" />
         <activity android:name=".ui.communal.ChattingActivity" />
+
+
     </application>
 
 </manifest>

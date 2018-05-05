@@ -12,6 +12,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.example.administrator.myapplication.model.Course;
+import com.example.administrator.myapplication.model.impl.CourseModel;
+import com.example.administrator.myapplication.ui.communal.CourseRescourceFragment;
 import com.example.administrator.utils.JsonUtils;
 import com.example.administrator.myapplication.R;
 import com.example.administrator.myapplication.adapter.CourseMessageAdapter;
@@ -33,6 +36,7 @@ public class StudentCourseMessageFragment extends Fragment {
     private RecyclerView rvCourseMessage;
 
     private Button btnSend;
+    private Course course;
 
     private CourseMessageAdapter courseMessageAdapter;
 
@@ -43,6 +47,7 @@ public class StudentCourseMessageFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        course = CourseModel.getInstance().getCourse();
     }
 
     @Override
@@ -97,5 +102,17 @@ public class StudentCourseMessageFragment extends Fragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
+    }
+
+    public static StudentCourseMessageFragment newInstance() {
+        Bundle args = new Bundle();
+        StudentCourseMessageFragment fragment = new StudentCourseMessageFragment();
+        fragment.setArguments(args);
+        return fragment;
+    }
+
+    @Override
+    public void setArguments(Bundle args) {
+        super.setArguments(args);
     }
 }

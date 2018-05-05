@@ -16,6 +16,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.administrator.myapplication.ui.communal.CourseRescourceFragment;
 import com.example.administrator.utils.DateUtils;
 import com.example.administrator.utils.JsonUtils;
 import com.example.administrator.myapplication.R;
@@ -44,7 +45,6 @@ public class TeacherHomeworkOuterFragment extends Fragment {
 
 
     private View view;
-    private TextView mTvTitle;
     private RecyclerView mRvHomework;
     private Button btnHomeworkOuterAdd;
     private HomeworkOuterAdapter adapter;
@@ -55,6 +55,19 @@ public class TeacherHomeworkOuterFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EventBus.getDefault().register(this);
+    }
+
+
+    public static TeacherHomeworkOuterFragment newInstance() {
+        Bundle args = new Bundle();
+        TeacherHomeworkOuterFragment fragment = new TeacherHomeworkOuterFragment();
+        fragment.setArguments(args);
+        return fragment;
+    }
+
+    @Override
+    public void setArguments(Bundle args) {
+        super.setArguments(args);
     }
 
     @Override
@@ -100,8 +113,7 @@ public class TeacherHomeworkOuterFragment extends Fragment {
 
 
     private void initView() {
-        mTvTitle = view.findViewById(R.id.tv_title);
-        mTvTitle.setText(course.getName());
+
         mRvHomework = view.findViewById(R.id.rv_homework);
         btnHomeworkOuterAdd = view.findViewById(R.id.btn_homework_outer_add);
         mRvHomework.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -165,4 +177,6 @@ public class TeacherHomeworkOuterFragment extends Fragment {
         super.onDestroy();
         EventBus.getDefault().unregister(this);
     }
+
+
 }

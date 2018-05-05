@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.example.administrator.myapplication.ui.communal.CourseChattingFragment;
 import com.example.administrator.utils.JsonUtils;
 import com.example.administrator.myapplication.R;
 import com.example.administrator.myapplication.adapter.TeacherCheckInAdapter;
@@ -39,17 +40,24 @@ public class TeacherCheckInFragment extends Fragment {
 
     private Course course;
 
-    private FragmentManager manager;
-    private FragmentTransaction transaction;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         List<Fragment> fragments = this.getFragmentManager().getFragments();
-        // TODO 猜测，最后要等全部页面填好之后才确定下标
-        if (fragments.size() != 0) {
-            course = (Course) fragments.get(0).getArguments().getSerializable("course");
-        }
+        course = CourseModel.getInstance().getCourse();
+    }
+
+    public static TeacherCheckInFragment newInstance() {
+        Bundle args = new Bundle();
+        TeacherCheckInFragment fragment = new TeacherCheckInFragment();
+        fragment.setArguments(args);
+        return fragment;
+    }
+
+    @Override
+    public void setArguments(Bundle args) {
+        super.setArguments(args);
     }
 
     @Nullable
@@ -57,7 +65,7 @@ public class TeacherCheckInFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         if (mainView == null) {
             mainView = inflater.inflate(R.layout.fragment_teacher_check_in, container, false);
-            
+
             initView();
             initData();
             initListener();
@@ -104,4 +112,6 @@ public class TeacherCheckInFragment extends Fragment {
             }
         });
     }
+
+
 }

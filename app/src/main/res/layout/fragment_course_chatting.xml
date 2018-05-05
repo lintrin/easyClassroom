@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <include layout="@layout/include_topbar_back" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_chatting_users"

@@ -12,14 +12,20 @@ import com.example.administrator.myapplication.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class CourseRescouresFragment extends Fragment {
-
-
-    public CourseRescouresFragment() {
-        // Required empty public constructor
-
-        // Rescources
+public class CourseRescourceFragment extends Fragment {
+    public static CourseRescourceFragment newInstance() {
+        Bundle args = new Bundle();
+        CourseRescourceFragment fragment = new CourseRescourceFragment();
+        fragment.setArguments(args);
+        return fragment;
     }
+
+    @Override
+    public void setArguments(Bundle args) {
+        super.setArguments(args);
+    }
+
+
 
 
     @Override
@@ -28,5 +34,6 @@ public class CourseRescouresFragment extends Fragment {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_course_rescoures  , container, false);
     }
+
 
 }

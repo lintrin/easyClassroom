@@ -17,6 +17,7 @@ import com.example.administrator.myapplication.adapter.CourseUserAdapter;
 import com.example.administrator.myapplication.model.Course;
 import com.example.administrator.myapplication.model.CourseUser;
 import com.example.administrator.myapplication.model.impl.CourseModel;
+import com.example.administrator.myapplication.ui.student.course.next.homework.StudentHomeworkFragment;
 import com.example.administrator.utils.JsonUtils;
 import com.yanzhenjie.nohttp.rest.Response;
 
@@ -51,10 +52,7 @@ public class CourseChattingFragment extends Fragment {
         super.onCreate(savedInstanceState);
         this.context = getContext();
         List<Fragment> fragments = this.getFragmentManager().getFragments();
-        // TODO 猜测，最后要等全部页面填好之后才确定下标
-        if (fragments.size() != 0) {
-            course = (Course) fragments.get(0).getArguments().getSerializable("course");
-        }
+        course = CourseModel.getInstance().getCourse();
     }
 
     @Nullable
@@ -100,5 +98,17 @@ public class CourseChattingFragment extends Fragment {
 
             }
         });
+    }
+
+    public static CourseChattingFragment newInstance() {
+        Bundle args = new Bundle();
+        CourseChattingFragment fragment = new CourseChattingFragment();
+        fragment.setArguments(args);
+        return fragment;
+    }
+
+    @Override
+    public void setArguments(Bundle args) {
+        super.setArguments(args);
     }
 }
