@@ -191,7 +191,6 @@ public class ChattingActivity extends AppCompatActivity {
         for (int i = 0; i < messages.size(); i++) {
             Message message = messages.get(i);
             MyMessage  myMessage = createMessage(message);
-            myMessage.setUserInfo(myUser);
             myMessageList.add(myMessage);
             adapter.addToStart(myMessage, true);
 
@@ -239,6 +238,7 @@ public class ChattingActivity extends AppCompatActivity {
         MyMessage myMessage = null;
         int type = 0;
         DefaultUser user;
+        Log.i("sss", "createMessage: "+msg.getFromUser().getUserName());
         if (msg.getFromUser().getUserName().equals(myUser.getId())) {
             type = IMessage.MessageType.SEND_TEXT.ordinal();
             user = myUser;
@@ -278,6 +278,10 @@ public class ChattingActivity extends AppCompatActivity {
             default:
                 break;
 
+        }
+        if (myMessage != null) {
+            Log.i("sss", "createMessage: "+user.getId());
+            myMessage.setUserInfo(user);
         }
 
         return myMessage;
