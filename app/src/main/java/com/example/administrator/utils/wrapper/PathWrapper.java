@@ -15,7 +15,7 @@ import java.io.File;
 
 public class PathWrapper {
     public static String getDocFilePath(Context context, String filename){
-        return StoreUtils.getCacheDirectory(context,"homework").getAbsolutePath()
+        return StoreUtils.getSystemStore(context)
                 + File.separator
                 +FilenameWrapper.getDocFilename(filename);
     }

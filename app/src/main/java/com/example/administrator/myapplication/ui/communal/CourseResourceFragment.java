@@ -26,6 +26,7 @@ import com.example.administrator.myapplication.model.User;
 import com.example.administrator.myapplication.model.impl.CourseModel;
 import com.example.administrator.myapplication.model.impl.UserModel;
 import com.example.administrator.utils.JsonUtils;
+import com.example.administrator.utils.StoreUtils;
 import com.leon.lfilepickerlibrary.LFilePicker;
 import com.leon.lfilepickerlibrary.utils.Constant;
 import com.yanzhenjie.nohttp.rest.Response;
@@ -101,6 +102,7 @@ public class CourseResourceFragment extends Fragment {
                 new LFilePicker()
                         .withActivity(getActivity())
                         .withRequestCode(Consant.REQUEST_CODE_FROM_ACTIVITY)
+                        .withStartPath(StoreUtils.getSystemStore(context))
                         .withIconStyle(Constant.ICON_STYLE_GREEN)
                         .withMutilyMode(false) //false单选 true多选
                         .start();
@@ -132,18 +134,29 @@ public class CourseResourceFragment extends Fragment {
             @Override
             public void onItemClick(int position, Object _data) {
                 CourseResource data = (CourseResource) _data;
-                Toast.makeText(context, data.getFileUrl(), Toast.LENGTH_SHORT).show();
-                DownloadModel.getInstance().downloadByGet(data.getFileUrl(), null, new BaseDownloader.OnDownLoadListener() {
-                    @Override
-                    public void onCompleted(int position, String filepath) {
-                        Toast.makeText(context,filepath,Toast.LENGTH_SHORT).show();
-                    }
+                File file = new File(StoreUtils.getSystemStore(context) + data.getName());
+                if (!file.exists()) {
+                    Toast.makeText(context, "开始下载", Toast.LENGTH_SHORT).show();
+                    DownloadModel.getInstance().downloadByGet(data.getFileUrl(), data.getName(), new BaseDownloader.OnDownLoadListener() {
+                        @Override
+                        public void onCompleted(int position, String filepath) {
+                            Toast.makeText(context, "下载完成，点击图标打开文件" + filepath, Toast.LENGTH_SHORT).show();
+                        }
 
-                    @Override
-                    public void onError(String msg) {
+                        @Override
+                        public void onError(String msg) {
 
-                    }
-                });
+                        }
+                    });
+                }else{
+                    new LFilePicker()
+                            .withActivity(getActivity())
+                            .withRequestCode(Consant.REQUEST_CODE_FROM_ACTIVITY)
+                            .withStartPath(StoreUtils.getSystemStore(context))
+                            .withIconStyle(Constant.ICON_STYLE_GREEN)
+                            .withMutilyMode(false) //false单选 true多选
+                            .start();
+                }
             }
         });
     }
@@ -172,6 +185,7 @@ public class CourseResourceFragment extends Fragment {
 
             @Override
             public void onCompleted(Response response) {
+                Log.i("sss", "onCompleted: " + response.toString());
                 List<CourseResource> resources = JsonUtils.parseArray(response.get().toString(), "body", CourseResource.class);
                 adapter.refreshData(resources);
             }

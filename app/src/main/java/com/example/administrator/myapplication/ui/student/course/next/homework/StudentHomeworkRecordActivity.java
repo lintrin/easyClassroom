@@ -26,6 +26,7 @@ import com.example.administrator.myapplication.model.impl.UserModel;
 import com.example.administrator.utils.ImageLoadUtils;
 import com.example.administrator.utils.JsonUtils;
 import com.example.administrator.utils.PeriodUtil;
+import com.example.administrator.utils.StoreUtils;
 import com.leon.lfilepickerlibrary.LFilePicker;
 import com.leon.lfilepickerlibrary.utils.Constant;
 import com.yanzhenjie.nohttp.rest.Response;
@@ -70,6 +71,7 @@ public class StudentHomeworkRecordActivity extends AppCompatActivity {
                 new LFilePicker()
                         .withActivity(context)
                         .withRequestCode(Consant.REQUEST_CODE_FROM_ACTIVITY)
+                        .withStartPath(StoreUtils.getSystemStore(context))
                         .withIconStyle(Constant.ICON_STYLE_GREEN)
                         .withMutilyMode(false) //false单选 true多选
                         .start();

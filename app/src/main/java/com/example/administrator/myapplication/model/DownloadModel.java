@@ -31,7 +31,7 @@ public class DownloadModel {
     }
 
     private DownloadModel() {
-        homeworkPath = StoreUtils.getCacheDirectory(MyApp.context, "homework").getAbsolutePath();
+        homeworkPath = StoreUtils.getSystemStore(MyApp.context);
 
         if (!new File(homeworkPath).exists()) {
             new File(homeworkPath).mkdirs();
