@@ -19,5 +19,7 @@
     <string name="test_password">123456</string>
 
     <string name="chat_input_hint">输入信息</string>
+    <string name="open">打开</string>
+    <string name="close">关闭</string>
 
 </resources>

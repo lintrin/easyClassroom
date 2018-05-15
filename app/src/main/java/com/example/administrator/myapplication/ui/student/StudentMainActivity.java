@@ -2,16 +2,23 @@ package com.example.administrator.myapplication.ui.student;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.LinearLayout;
 
 import com.example.administrator.myapplication.model.CourseUser;
 import com.example.administrator.myapplication.ui.communal.ChattingActivity;
+import com.example.administrator.myapplication.view.MySlidingPaneLayout;
 import com.example.administrator.utils.JMessageUtil;
 import com.example.administrator.myapplication.R;
 import com.example.administrator.myapplication.adapter.MainViewPagerAdapter;
@@ -31,9 +38,13 @@ import cn.jpush.im.android.api.model.UserInfo;
 
 public class StudentMainActivity extends AppCompatActivity {
 
+    private Toolbar toolbar;
     private SteerableViewPager vpMain;
     private BottomNavigationView navigation;
     private Context context;
+    private ActionBarDrawerToggle drawerToggle;
+    public MySlidingPaneLayout slidingPaneLayout;
+    public LinearLayout leftLayout;
 
 
     @Override
@@ -55,8 +66,30 @@ public class StudentMainActivity extends AppCompatActivity {
         vpMain.setRight_allow(false);
         vpMain.setAdapter(new MainViewPagerAdapter(getSupportFragmentManager(), fragmentList));
         navigation = findViewById(R.id.navigation);
+        initLeftLayout();
         initListener();
 //        getConversation();
+    }
+
+    private void initLeftLayout() {
+        toolbar = findViewById(R.id.toolbar);
+        slidingPaneLayout = findViewById(R.id.main_sliding_layout);
+        slidingPaneLayout.setViewPager(vpMain);
+        leftLayout = findViewById(R.id.layout_left);
+//        drawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.open, R.string.close) {
+//            //菜单打开
+//            @Override
+//            public void onDrawerOpened(View drawerView) {
+//                super.onDrawerOpened(drawerView);
+//            }
+//
+//            // 菜单关闭
+//            @Override
+//            public void onDrawerClosed(View drawerView) {
+//                super.onDrawerClosed(drawerView);
+//            }
+//        };
+
     }
 
     private void initListener() {
