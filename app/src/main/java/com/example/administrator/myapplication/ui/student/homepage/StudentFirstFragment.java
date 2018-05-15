@@ -80,10 +80,7 @@ public class StudentFirstFragment extends Fragment implements OnItemClickListene
 
             @Override
             public void onCompleted(Response response) {
-                News news = JsonUtils.parseObject(response.get().toString(), "body", News.class);
-                List<News> newsList = new ArrayList<>();
-                newsList.add(news);
-                Log.i("sss", "onCompleted: " + news.toString());
+                List<News> newsList = JsonUtils.parseArray(response.get().toString(), "body", News.class);
                 SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
                 for (int i = 0; i < newsList.size(); i++) {
                     Date dt = new Date(newsList.get(i).getCreateTime());

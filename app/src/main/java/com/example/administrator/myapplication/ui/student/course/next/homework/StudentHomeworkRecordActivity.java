@@ -17,6 +17,7 @@ import com.example.administrator.config.Consant;
 import com.example.administrator.myapplication.R;
 import com.example.administrator.myapplication.adapter.StudentHomeworkMarkAdapter;
 import com.example.administrator.myapplication.model.Course;
+import com.example.administrator.myapplication.model.DownloadModel;
 import com.example.administrator.myapplication.model.Homework;
 import com.example.administrator.myapplication.model.Student;
 import com.example.administrator.myapplication.model.User;
@@ -34,6 +35,7 @@ import com.yanzhenjie.nohttp.rest.Response;
 import java.io.File;
 import java.util.List;
 
+import library.http.BaseDownloader;
 import library.http.BaseRequest;
 import library.http.HttpStateUtils;
 
@@ -54,6 +56,7 @@ public class StudentHomeworkRecordActivity extends AppCompatActivity {
     private TextView tv_student_homework_score;
     private TextView tv_student_number2;
     private ImageView iv_student_homework_mark_icon;
+    private Homework markHomework;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,6 +98,32 @@ public class StudentHomeworkRecordActivity extends AppCompatActivity {
                 });
             }
         });
+
+        iv_student_homework_mark_icon.setOnClickListener(view -> {
+            File file = new File(StoreUtils.getSystemStore(context) + "批改_" + markHomework.getHomeworkName());
+            if (!file.exists()) {
+                Toast.makeText(context, "开始下载", Toast.LENGTH_SHORT).show();
+                DownloadModel.getInstance().downloadByGet(markHomework.getMarkHomeworkUrl(), "批改_" + markHomework.getHomeworkName(), new BaseDownloader.OnDownLoadListener() {
+                    @Override
+                    public void onCompleted(int position, String filepath) {
+                        Toast.makeText(context, "下载完成，点击图标打开文件" + filepath, Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onError(String msg) {
+
+                    }
+                });
+            }else{
+                new LFilePicker()
+                        .withActivity(this)
+                        .withRequestCode(Consant.REQUEST_CODE_FROM_ACTIVITY)
+                        .withStartPath(StoreUtils.getSystemStore(context))
+                        .withIconStyle(Constant.ICON_STYLE_GREEN)
+                        .withMutilyMode(false) //false单选 true多选
+                        .start();
+            }
+        });
     }
 
     private void initView() {
@@ -129,6 +158,7 @@ public class StudentHomeworkRecordActivity extends AppCompatActivity {
                 List<Homework> homeworkList = JsonUtils.parseArray(response.get().toString(), "body", Homework.class);
                 if (homeworkList.size() > 0) {
                     Homework homework = homeworkList.get(0);
+                    markHomework = homework;
                     tv_student_name.setText(homework.getUploadName());
                     tv_student_number.setText(homework.getIdNumber());
                     tv_student_date.setText(homework.getCreateDate());

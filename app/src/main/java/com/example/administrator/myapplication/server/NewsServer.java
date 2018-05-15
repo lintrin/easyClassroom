@@ -7,7 +7,7 @@ public class NewsServer extends BaseRequest {
 
 
     public static void getNews(OnRequestListener listener) {
-        get(NewsApi.getNews, listener);
+        get(NewsApi.GET_NEWS_LIST, listener);
     }
 
 }

@@ -25,6 +25,7 @@ import com.example.administrator.myapplication.model.DownloadModel;
 import com.example.administrator.myapplication.model.User;
 import com.example.administrator.myapplication.model.impl.CourseModel;
 import com.example.administrator.myapplication.model.impl.UserModel;
+import com.example.administrator.utils.CollectionUtils;
 import com.example.administrator.utils.JsonUtils;
 import com.example.administrator.utils.StoreUtils;
 import com.leon.lfilepickerlibrary.LFilePicker;
@@ -171,7 +172,7 @@ public class CourseResourceFragment extends Fragment {
         mBtnUpload = mainView.findViewById(R.id.btn_teacher_add_resource);
         // 学生隐藏上传公共资源按钮
         if (user.getType() == 2) {
-            mBtnUpload.setVisibility(View.INVISIBLE);
+            mBtnUpload.setVisibility(View.GONE);
         }
 
     }
@@ -187,7 +188,9 @@ public class CourseResourceFragment extends Fragment {
             public void onCompleted(Response response) {
                 Log.i("sss", "onCompleted: " + response.toString());
                 List<CourseResource> resources = JsonUtils.parseArray(response.get().toString(), "body", CourseResource.class);
-                adapter.refreshData(resources);
+                if (!CollectionUtils.isEmpty(resources)) {
+                    adapter.refreshData(resources);
+                }
             }
 
             @Override

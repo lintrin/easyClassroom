@@ -136,7 +136,7 @@ android:orientation="vertical">
         android:id="@+id/iv_student_homework_mark_icon"
         android:layout_width="48dp"
         android:layout_height="48dp"
-        tools:src="@drawable/ic_assignment"/>
+        android:src="@drawable/ic_assignment"/>
 
     <TextView
         android:layout_marginLeft="12dp"
