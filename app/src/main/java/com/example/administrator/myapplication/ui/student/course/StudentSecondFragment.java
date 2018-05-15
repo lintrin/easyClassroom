@@ -155,4 +155,10 @@ public class StudentSecondFragment extends Fragment implements View.OnClickListe
             }
         });
     }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        initData();
+    }
 }

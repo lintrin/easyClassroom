@@ -89,6 +89,7 @@ public class StudentHomeworkRecordActivity extends AppCompatActivity {
                     public void onCompleted(Response response) {
                         Log.i("sss", "onCompleted: " + response.toString());
                         HttpStateUtils.showRequestMsg(context, response);
+                        initData();
                     }
 
                     @Override
