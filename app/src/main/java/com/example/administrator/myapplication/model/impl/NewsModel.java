@@ -38,4 +38,8 @@ public class NewsModel {
         }
         newsList.addAll(_newsList);
     }
+
+    public void sendNotice(News news, BaseRequest.OnRequestListener listener) {
+        NewsServer.sendNotice(news,listener);
+    }
 }

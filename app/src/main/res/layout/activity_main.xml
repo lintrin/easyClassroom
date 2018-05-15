@@ -13,10 +13,7 @@
         android:layout_width="250dp"
         android:layout_height="match_parent">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:text="ssss"/>
+        <include layout="@layout/include_user_info"/>
     </LinearLayout>
 
     <LinearLayout

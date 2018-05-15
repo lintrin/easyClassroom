@@ -101,8 +101,7 @@ public class StudentSecondFragment extends Fragment implements View.OnClickListe
         mRvCourseStudent.addItemDecoration(decoration);
         mRvCourseStudent.setLayoutManager(new LinearLayoutManager(getContext()));
         btnSearchCourse = mainView.findViewById(R.id.btn_search_course);
-        TopBarUtils topBarUtils = new TopBarUtils(mainView);
-        topBarUtils.setTitle("课程");
+
     }
 
     @Override

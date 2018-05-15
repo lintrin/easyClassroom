@@ -14,11 +14,17 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.example.administrator.myapplication.model.CourseUser;
+import com.example.administrator.myapplication.model.User;
+import com.example.administrator.myapplication.model.impl.UserModel;
 import com.example.administrator.myapplication.ui.communal.ChattingActivity;
+import com.example.administrator.myapplication.ui.communal.UserInfoActivity;
 import com.example.administrator.myapplication.view.MySlidingPaneLayout;
+import com.example.administrator.utils.ImageLoadUtils;
 import com.example.administrator.utils.JMessageUtil;
 import com.example.administrator.myapplication.R;
 import com.example.administrator.myapplication.adapter.MainViewPagerAdapter;
@@ -38,13 +44,20 @@ import cn.jpush.im.android.api.model.UserInfo;
 
 public class StudentMainActivity extends AppCompatActivity {
 
-    private Toolbar toolbar;
     private SteerableViewPager vpMain;
     private BottomNavigationView navigation;
     private Context context;
-    private ActionBarDrawerToggle drawerToggle;
+
+
+    /*
+    侧边栏
+     */
     public MySlidingPaneLayout slidingPaneLayout;
     public LinearLayout leftLayout;
+    private TextView tv_user_info_modify;
+    private ImageView iv_user_info_avatar;
+    private TextView tv_user_info_name;
+    private TextView tv_id_number;
 
 
     @Override
@@ -66,33 +79,34 @@ public class StudentMainActivity extends AppCompatActivity {
         vpMain.setRight_allow(false);
         vpMain.setAdapter(new MainViewPagerAdapter(getSupportFragmentManager(), fragmentList));
         navigation = findViewById(R.id.navigation);
+        //初始化侧边栏
         initLeftLayout();
         initListener();
 //        getConversation();
     }
 
     private void initLeftLayout() {
-        toolbar = findViewById(R.id.toolbar);
+
         slidingPaneLayout = findViewById(R.id.main_sliding_layout);
         slidingPaneLayout.setViewPager(vpMain);
         leftLayout = findViewById(R.id.layout_left);
-//        drawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.open, R.string.close) {
-//            //菜单打开
-//            @Override
-//            public void onDrawerOpened(View drawerView) {
-//                super.onDrawerOpened(drawerView);
-//            }
-//
-//            // 菜单关闭
-//            @Override
-//            public void onDrawerClosed(View drawerView) {
-//                super.onDrawerClosed(drawerView);
-//            }
-//        };
+        tv_id_number = findViewById(R.id.tv_id_number);
+        tv_user_info_modify = findViewById(R.id.tv_user_info_modify);
+        iv_user_info_avatar = findViewById(R.id.iv_user_info_avatar);
+        tv_user_info_name = findViewById(R.id.tv_user_info_name);
+
+        User user = UserModel.getInstance().getUser();
+        ImageLoadUtils.setAvatarImage(context,iv_user_info_avatar,R.mipmap.avatar1,R.mipmap.avatar1);
+        tv_id_number.setText(user.getIdNumber());
+        tv_user_info_name.setText(user.getName());
 
     }
 
     private void initListener() {
+        tv_user_info_modify.setOnClickListener(v -> {
+            Intent intent = new Intent(context, UserInfoActivity.class);
+            startActivity(intent);
+        });
         vpMain.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
